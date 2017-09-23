@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="PHP 5 SYNTAX
+BASIC PHP SYNTAX
+A PHP script can be placed anywhere in the document.
+
+A PHP script starts with <?php and ends with ?>:
+
+<?php
+// PHP code goes here
+?>
+The default file extension for PHP files is “.php”.
+
+A PHP file normally contains HTML tags, and some PHP scripting code.
+
+Below, we have an example of a simple PHP file, with a PHP script that uses a built-in PHP function “echo” to output the text “Hello World!” on a web page:
+
+EXAMPLE
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+<h1>My first PHP page</h1><?php
+echo “Hello World!”;
+?>
+ 
+
+  <input name="animation" type="hidden">
+  </body>
+</html>
+
+Note: PHP statements end with a semicolon (;).
+
+COMMENTS IN PHP
+A comment in PHP code is a line that is not read/executed as part of the program. Its only purpose is to be read by someone who is looking at the code.
+
+Comments can be used to:
+
+Let others understand what you are doing
+Remind yourself of what you did – Most programmers have experienced coming back to their own work a year or two later and having to re-figure out what they did. Comments can remind you of what you were thinking when you wrote the code
+PHP supports several ways of commenting:
+
+EXAMPLE
+<!DOCTYPE html>
+<html>
+<body><?php
+// This is a single-line comment# This is also a single-line comment
+ 
+
+/*
+This is a multiple-lines comment block
+that spans over multiple
+lines
+*/
+
+// You can also use comments to leave out parts of a code line
+$x = 5 /* + 15 */ + 5;
+echo $x;
+?>
+
+</body>
+</html>
+
+PHP CASE SENSITIVITY
+In PHP, all keywords (e.g. if, else, while, echo, etc.), classes, functions, and user-defined functions are NOT case-sensitive.
+
+In the example below, all three echo statements below are legal (and equal):
+
+EXAMPLE
+<!DOCTYPE html>
+<html>
+<body><?php
+ECHO “Hello World!<br>”;
+echo “Hello World!<br>”;
+EcHo “Hello World!<br>”;
+?></body>
+</html>
+ 
+
+However; all variable names are case-sensitive.
+
+In the example below, only the first statement will display the value of the $color variable (this is because $color, $COLOR, and $coLOR are treated as three different variables):
+
+EXAMPLE
+<!DOCTYPE html>
+<html>
+<body><?php
+$color = “red”;
+echo “My car is ” . $color . “<br>”;
+echo “My house is ” . $COLOR . “<br>”;
+echo “My boat is ” . $coLOR . “<br>”;
+?></body>
+</html>">
+  <title>Syntax</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+<section id="ext_menu-2h" data-rv-view="257">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/m">bootstrap table</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-3p" data-rv-view="252" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Syntex</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-4s" data-rv-view="255" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><div id="main-content"><div class="container"><div id="content-area" class="with_sidebar with_sidebar_right clearfix"><div class="et_pb_extra_column_main"><article id="post-212" class="post-212 page type-page status-publish hentry"><div class="post-wrap"><h1 id="mcetoc_1bmgs1i4ih" class="entry-title">PHP 5 SYNTAX</h1><div class="post-content entry-content"><div class="et_pb_section  et_pb_section_0 et_section_regular"><div class=" et_pb_row et_pb_row_0"><div class="et_pb_column et_pb_column_4_4  et_pb_column_0"><div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_0"><div class="et_pb_text_inner"><h2 id="mcetoc_1bmgs1i4ii">BASIC PHP SYNTAX</h2><p>A PHP script can be placed anywhere in the document.</p><p>A PHP script starts with&nbsp;<strong>&lt;?php</strong>&nbsp;and ends with&nbsp;<strong>?&gt;</strong>:</p><div class="w3-code w3-border notranslate"><blockquote><div>&lt;?php<br>// PHP code goes here<br>?&gt;</div></blockquote></div><p>The default file extension for PHP files is “.php”.</p><p>A PHP file normally contains HTML tags, and some PHP scripting code.</p><p>Below, we have an example of a simple PHP file, with a PHP script that uses a built-in PHP function “echo” to output the text “Hello World!” on a web page:</p><div class="w3-example"><h3 id="mcetoc_1bmgs1i4ij">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;body&gt;&lt;h1&gt;My first PHP page&lt;/h1&gt;&lt;?php<br>echo “Hello World!”;<br>?&gt; </strong><p><strong>&nbsp;</strong></p><p><strong>&lt;/body&gt;<br>&lt;/html&gt;</strong></p></div></blockquote></div><p><strong>Note:</strong>&nbsp;PHP statements end with a semicolon (;).</p><h2 id="mcetoc_1bmgs1i4ik">COMMENTS IN PHP</h2><p>A comment in PHP code is a line that is not read/executed as part of the program. Its only purpose is to be read by someone who is looking at the code.</p><p>Comments can be used to:</p><ul><li>Let others understand what you are doing</li><li>Remind yourself of what you did – Most programmers have experienced coming back to their own work a year or two later and having to re-figure out what they did. Comments can remind you of what you were thinking when you wrote the code</li></ul><p>PHP supports several ways of commenting:</p><div class="w3-example"><h3 id="mcetoc_1bmgs1i4il">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;body&gt;&lt;?php<br>// This is a single-line comment# This is also a single-line comment </strong><p><strong>&nbsp;</strong></p><p><strong>/*<br>This is a multiple-lines comment block<br>that spans over multiple<br>lines<br>*/</strong></p><p><strong>// You can also use comments to leave out parts of a code line<br>$x = 5 /* + 15 */ + 5;<br>echo $x;<br>?&gt;</strong></p><p><strong>&lt;/body&gt;<br>&lt;/html&gt;</strong></p></div></blockquote></div><h2 id="mcetoc_1bmgs1i4im">PHP CASE SENSITIVITY</h2><p>In PHP, all keywords (e.g. if, else, while, echo, etc.), classes, functions, and user-defined functions are NOT case-sensitive.</p><p>In the example below, all three echo statements below are legal (and equal):</p><div class="w3-example"><h3 id="mcetoc_1bmgs1i4in">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;body&gt;&lt;?php<br>ECHO “Hello World!&lt;br&gt;”;<br>echo “Hello World!&lt;br&gt;”;<br>EcHo “Hello World!&lt;br&gt;”;<br>?&gt;&lt;/body&gt;<br>&lt;/html&gt; </strong><p>&nbsp;</p></div></blockquote></div><p>However; all variable names are case-sensitive.</p><p>In the example below, only the first statement will display the value of the $color variable (this is because $color, $COLOR, and $coLOR are treated as three different variables):</p><div class="w3-example"><h3 id="mcetoc_1bmgs1i4io">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;body&gt;&lt;?php<br>$color = “red”;<br>echo “My car is ” . $color . “&lt;br&gt;”;<br>echo “My house is ” . $COLOR . “&lt;br&gt;”;<br>echo “My boat is ” . $coLOR . “&lt;br&gt;”;<br>?&gt;&lt;/body&gt;<br>&lt;/html&gt;</strong></div></blockquote></div></div></div></div></div></div></div></div></article></div></div></div></div></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-2i" data-rv-view="259" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="vn/5xNGeIMZ0JUKyWryk8DmuHkR3LroppDe7PLmwf4mk8L2rHYd2OwIgKhdwUNw2raNc78Rxw4asTlJfr2bVq7OKsk50GqG1gKmwmm1dD4dpC+j0jZSDbPHwFVz7BAw6" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-2i-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-2i-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-2i-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-2i-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-2i-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-2i-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
+</html>

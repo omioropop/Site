@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="The code below shows a simple way to check if the name field only contains letters and whitespace. If the value of the name field is not valid, then store an error message:
+
+$name = test_input($_POST["name"]);
+if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+  $nameErr = "Only letters and white space allowed"; 
+}
+ 
+
+The preg_match() function searches a string for pattern, returning true if the pattern exists, and false otherwise.
+
+PHP - Validate E-mail
+The easiest and safest way to check whether an email address is well-formed is to use PHP's filter_var() function.
+
+In the code below, if the e-mail address is not well-formed, then store an error message:
+
+$email = test_input($_POST["email"]);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  $emailErr = "Invalid email format"; 
+}
+PHP - Validate URL
+The code below shows a way to check if a URL address syntax is valid (this regular expression also allows dashes in the URL). If the URL address syntax is not valid, then store an error message:
+
+$website = test_input($_POST["website"]);
+if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+  $websiteErr = "Invalid URL"; 
+}
+
+ 
+PHP - Validate Name, E-mail, and URL
+Now, the script looks like this:
+
+Example
+<?php
+// define variables and set to empty values
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+  } else {
+    $name = test_input($_POST["name"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+      $nameErr = "Only letters and white space allowed"; 
+    }
+  }
+
+  if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email = test_input($_POST["email"]);
+    // check if e-mail address is well-formed
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "Invalid email format"; 
+    }
+  }
+
+  if (empty($_POST["website"])) {
+    $website = "";
+  } else {
+    $website = test_input($_POST["website"]);
+    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+      $websiteErr = "Invalid URL"; 
+    }
+  }
+
+  if (empty($_POST["comment"])) {
+    $comment = "";
+  } else {
+    $comment = test_input($_POST["comment"]);
+  }
+
+  if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+  } else {
+    $gender = test_input($_POST["gender"]);
+  }
+}
+?>">
+  <title>Php Form - Validate E-Mail And URL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-50" data-rv-view="545">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/k">free bootstrap template</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-5a" data-rv-view="540" style="background-color: rgb(124, 112, 107); padding-top: 120px; padding-bottom: 40px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Form - Validate E-Mail And URL</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-5b" data-rv-view="543" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><header class="header left-right"><div id="main-header-wrapper"><div id="main-header" data-fixed-height="80"><div class="container"><div id="et-navigation" class=""><ul id="et-menu" class="nav"><li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-page-ancestor menu-item-202"><p>The code below shows a simple way to check if the name field only contains letters and whitespace. If the value of the name field is not valid, then store an error message:</p><div class="w3-code w3-border notranslate"><div><strong>$name = test_input($_POST["name"]);</strong><br><strong>if (!preg_match("/^[a-zA-Z ]*$/",$name)) {</strong><br><strong>&nbsp; $nameErr = "Only letters and white space allowed";&nbsp;</strong><br><strong>}</strong></div></div><div class="w3-panel w3-note"><p>&nbsp;</p><p><strong>The preg_match() function searches a string for pattern, returning true if the pattern exists, and false otherwise.</strong></p></div><h2 id="mcetoc_1bmguk30950">PHP - Validate E-mail</h2><p>The easiest and safest way to check whether an email address is well-formed is to use PHP's filter_var() function.</p><p>In the code below, if the e-mail address is not well-formed, then store an error message:</p><div class="w3-code w3-border notranslate"><div><strong>$email = test_input($_POST["email"]);</strong><br><strong>if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {</strong><br><strong>&nbsp; $emailErr = "Invalid email format";&nbsp;</strong><br><strong>}</strong></div></div><h2 id="mcetoc_1bmguk30951">PHP - Validate URL</h2><p>The code below shows a way to check if a URL address syntax is valid (this regular expression also allows dashes in the URL). If the URL address syntax is not valid, then store an error message:</p><div class="w3-code w3-border notranslate"><div><strong>$website = test_input($_POST["website"]);</strong><br><strong>if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&amp;@#\/%?=~_|!:,.;]*[-a-z0-9+&amp;@#\/%=~_|]/i",$website)) {</strong><br><strong>&nbsp;&nbsp;$websiteErr = "Invalid URL";&nbsp;</strong><br><strong>}</strong></div></div><br><div>&nbsp;</div><h2 id="mcetoc_1bmguk30952">PHP - Validate Name, E-mail, and URL</h2><p>Now, the script looks like this:</p><div class="w3-example"><h3 id="mcetoc_1bmguk30953">Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>// define variables and set to empty values</strong><br><strong>$nameErr = $emailErr = $genderErr = $websiteErr =&nbsp;"";</strong><br><strong>$name = $email = $gender = $comment = $website =&nbsp;"";</strong><br><br><strong>if&nbsp;($_SERVER["REQUEST_METHOD"] ==&nbsp;"POST") {</strong><br><strong>&nbsp;&nbsp;if&nbsp;(empty($_POST["name"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $nameErr =&nbsp;"Name is required";</strong><br><strong>&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; $name = test_input($_POST["name"]);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// check if name only contains letters and whitespace</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!preg_match("/^[a-zA-Z ]*$/",$name)) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $nameErr =&nbsp;"Only letters and white space allowed";&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp; }</strong><br><br><strong>&nbsp;&nbsp;if&nbsp;(empty($_POST["email"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $emailErr =&nbsp;"Email is required";</strong><br><strong>&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; $email = test_input($_POST["email"]);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// check if e-mail address is well-formed</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!filter_var($email, FILTER_VALIDATE_EMAIL)) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $emailErr =&nbsp;"Invalid email format";&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp; }</strong><br><br><strong>&nbsp;&nbsp;if&nbsp;(empty($_POST["website"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $website =&nbsp;"";</strong><br><strong>&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; $website = test_input($_POST["website"]);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// check if URL address syntax is valid (this regular expression also allows dashes in the URL)</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&amp;@#\/%?=~_|!:,.;]*[-a-z0-9+&amp;@#\/%=~_|]/i",$website)) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $websiteErr =&nbsp;"Invalid URL";&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp; }</strong><br><br><strong>&nbsp;&nbsp;if&nbsp;(empty($_POST["comment"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $comment =&nbsp;"";</strong><br><strong>&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; $comment = test_input($_POST["comment"]);</strong><br><strong>&nbsp; }</strong><br><br><strong>&nbsp;&nbsp;if&nbsp;(empty($_POST["gender"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $genderErr =&nbsp;"Gender is required";</strong><br><strong>&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; $gender = test_input($_POST["gender"]);</strong><br><strong>&nbsp; }</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div></li></ul></div></div></div></div></header></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-51" data-rv-view="547" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="sot7o9hbwfoOnMGDWN9snFPaEdi9rkMOfXugOil99jQ5/PT9fbt/TLUknNXro+RAJ0RMrbJjr+bbAXRafJM/8DTu9egrU1bmsUX0wGjKSm2BNfDhOQIv7CG0PIgqOTpv" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-51-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-51-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-51-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-51-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-51-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-51-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="Validate an Integer Within a Range
+The following example uses the filter_var() function to check if a variable is both of type INT, and between 1 and 200:
+
+Example
+<?php
+$int = 122;
+$min = 1;
+$max = 200;
+
+if (filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false) {
+    echo("Variable value is not within the legal range");
+} else {
+    echo("Variable value is within the legal range");
+}
+?>
+Validate IPv6 Address
+The following example uses the filter_var() function to check if the variable $ip is a valid IPv6 address:
+
+Example
+<?php
+$ip = "2001:0db8:85a3:08d3:1319:8a2e:0370:7334";
+
+if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {
+    echo("$ip is a valid IPv6 address");
+} else {
+    echo("$ip is not a valid IPv6 address");
+}
+?>
+Validate URL - Must Contain QueryString
+The following example uses the filter_var() function to check if the variable $url is a URL with a querystring:
+
+Example
+<?php
+$url = "https://www.w3schools.com";
+
+if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED) === false) {
+    echo("$url is a valid URL");
+} else {
+    echo("$url is not a valid URL");
+}
+?>
+Remove Characters With ASCII Value > 127
+The following example uses the filter_var() function to sanitize a string. It will both remove all HTML tags, and all characters with ASCII value > 127, from the string:
+
+Example
+<?php
+$str = "<h1>Hello WorldÆØÅ!</h1>";
+
+$newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+echo $newstr;
+?>
+Complete PHP Filter Reference
+For a complete reference of all filter functions, go to our complete PHP Filter Reference. Check each filter to see what options and flags are available.
+
+The reference contains a brief description, and examples of use, for each function!">
+  <title>Php Filters Advanced</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-5y" data-rv-view="732">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/j">design a website for free</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-6p" data-rv-view="734" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Filters Advanced</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-6q" data-rv-view="737" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>Validate an Integer Within a Range</h2><p>The following example uses the filter_var() function to check if a variable is both of type INT, and between 1 and 200:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$int =&nbsp;122;</strong><br><strong>$min =&nbsp;1;</strong><br><strong>$max =&nbsp;200;</strong><br><br><strong>if&nbsp;(filter_var($int, FILTER_VALIDATE_INT,&nbsp;array("options"&nbsp;=&gt;&nbsp;array("min_range"=&gt;$min,&nbsp;"max_range"=&gt;$max))) === false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("Variable value is not within the legal range");</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("Variable value is within the legal range");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><h2>Validate IPv6 Address</h2><p>The following example uses the filter_var() function to check if the variable $ip is a valid IPv6 address:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$ip =&nbsp;"2001:0db8:85a3:08d3:1319:8a2e:0370:7334";</strong><br><br><strong>if&nbsp;(!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$ip is a valid IPv6 address");</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$ip is not a valid IPv6 address");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><h2>Validate URL - Must Contain QueryString</h2><p>The following example uses the filter_var() function to check if the variable $url is a URL with a querystring:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$url =&nbsp;"https://www.w3schools.com";</strong><br><br><strong>if&nbsp;(!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED) === false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$url is a valid URL");</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$url is not a valid URL");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><h2>Remove Characters With ASCII Value &gt; 127</h2><p>The following example uses the filter_var() function to sanitize a string. It will both remove all HTML tags, and all characters with ASCII value &gt; 127, from the string:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$str =&nbsp;"&lt;h1&gt;Hello WorldÆØÅ!&lt;/h1&gt;";</strong><br><br><strong>$newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);</strong><br><strong>echo&nbsp;$newstr;</strong><br><strong>?&gt;</strong></div></div><h2>Complete PHP Filter Reference</h2><p>For a complete reference of all filter functions, go to our complete&nbsp;<a href="https://www.w3schools.com/php/php_ref_filter.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/php_ref_filter.asp">PHP Filter Reference.</a>&nbsp;Check each filter to see what options and flags are available.</p><p>The reference contains a brief description, and examples of use, for each function!</p></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-5z" data-rv-view="739" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="O/NE53bYdbGTG+LzPORFEu3EIl1jQvi9fDybe94rUtGjAGM2DeKdnrmjpx+w+6WROxjflY7x/PFSXF9pi7K6wZJONpVs7+uBcrkOs51wIw/d4AwKwSGpQ6BE9HAHFgzs" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5z-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-5z-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5z-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-5z-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5z-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-5z-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

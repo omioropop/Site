@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="Variables can store data of different types, and different data types can do different things.
+
+PHP supports the following data types:
+
+String
+Integer
+Float (floating point numbers – also called double)
+Boolean
+Array
+Object
+NULL
+Resource
+PHP STRING
+A string is a sequence of characters, like “Hello world!”.
+
+A string can be any text inside quotes. You can use single or double quotes:
+
+EXAMPLE
+<?php 
+$x = “Hello world!”;
+$y = ‘Hello world!’;echo $x;
+echo “<br>”; 
+echo $y;
+?>
+PHP INTEGER
+An integer data type is a non-decimal number between -2,147,483,648 and 2,147,483,647.
+
+Rules for integers:
+
+An integer must have at least one digit
+An integer must not have a decimal point
+An integer can be either positive or negative
+Integers can be specified in three formats: decimal (10-based), hexadecimal (16-based – prefixed with 0x) or octal (8-based – prefixed with 0)
+In the following example $x is an integer. The PHP var_dump() function returns the data type and value:
+
+EXAMPLE
+<?php 
+$x = 5985;
+var_dump($x);
+?>
+PHP FLOAT
+A float (floating point number) is a number with a decimal point or a number in exponential form.
+
+In the following example $x is a float. The PHP var_dump() function returns the data type and value:
+
+EXAMPLE
+<?php 
+$x = 10.365;
+var_dump($x);
+?>
+PHP BOOLEAN
+A Boolean represents two possible states: TRUE or FALSE.
+
+$x = true;
+$y = false;
+Booleans are often used in conditional testing. You will learn more about conditional testing in a later chapter of this tutorial.
+
+PHP ARRAY
+An array stores multiple values in one single variable.
+
+In the following example $cars is an array. The PHP var_dump() function returns the data type and value:
+
+EXAMPLE
+<?php 
+$cars = array(“Volvo”,”BMW”,”Toyota”);
+var_dump($cars);
+?>
+You will learn a lot more about arrays in later chapters of this tutorial.
+
+PHP OBJECT
+An object is a data type which stores data and information on how to process that data.
+
+In PHP, an object must be explicitly declared.
+
+First we must declare a class of object. For this, we use the class keyword. A class is a structure that can contain properties and methods:
+
+EXAMPLE
+<?php
+class Car {
+    function Car() {
+        $this->model = “VW”;
+    }
+}// create an object
+$herbie = new Car();// show object properties
+echo $herbie->model;
+?>
+You will learn more about objects in a later chapter of this tutorial.
+
+PHP NULL VALUE
+Null is a special data type which can have only one value: NULL.
+
+A variable of data type NULL is a variable that has no value assigned to it.
+
+Tip: If a variable is created without a value, it is automatically assigned a value of NULL.
+
+Variables can also be emptied by setting the value to NULL:
+
+EXAMPLE
+<?php
+$x = “Hello world!”;
+$x = null;
+var_dump($x);
+?>
+PHP RESOURCE
+The special resource type is not an actual data type. It is the storing of a reference to functions and resources external to PHP.
+
+A common example of using the resource data type is a database call.
+
+We will not talk about the resource type here, since it is an advanced topic.">
+  <title>Data Types</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-2n" data-rv-view="284">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/q">bootstrap carousel</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-3s" data-rv-view="286" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Data Types</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-4t" data-rv-view="289" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><header class="header left-right"><div id="main-header-wrapper"><div id="main-header" data-fixed-height="80"><div class="container"><div id="et-navigation" class=""><ul id="et-menu" class="nav"><li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-page-ancestor menu-item-202"><p>Variables can store data of different types, and different data types can do different things.</p><p>PHP supports the following data types:</p><ul><li>String</li><li>Integer</li><li>Float (floating point numbers – also called double)</li><li>Boolean</li><li>Array</li><li>Object</li><li>NULL</li><li>Resource</li></ul><h2 id="mcetoc_1bmgscv561e">PHP STRING</h2><p>A string is a sequence of characters, like “Hello world!”.</p><p>A string can be any text inside quotes. You can use single or double quotes:</p><div class="w3-example"><h3 id="mcetoc_1bmgscv561f">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php&nbsp;<br>$x = “Hello world!”;<br>$y = ‘Hello world!’;echo $x;<br>echo “&lt;br&gt;”;&nbsp;<br>echo $y;<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgscv561g">PHP INTEGER</h2><p>An integer data type is a non-decimal number between -2,147,483,648 and 2,147,483,647.</p><p>Rules for integers:</p><ul><li>An integer must have at least one digit</li><li>An integer must not have a decimal point</li><li>An integer can be either positive or negative</li><li>Integers can be specified in three formats: decimal (10-based), hexadecimal (16-based – prefixed with 0x) or octal (8-based – prefixed with 0)</li></ul><p>In the following example $x is an integer. The PHP var_dump() function returns the data type and value:</p><div class="w3-example"><h3 id="mcetoc_1bmgscv561h">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php&nbsp;<br>$x = 5985;<br>var_dump($x);<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgscv561i">PHP FLOAT</h2><p>A float (floating point number) is a number with a decimal point or a number in exponential form.</p><p>In the following example $x is a float. The PHP var_dump() function returns the data type and value:</p><div class="w3-example"><h3 id="mcetoc_1bmgscv561j">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php&nbsp;<br>$x = 10.365;<br>var_dump($x);<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgscv561k">PHP BOOLEAN</h2><p>A Boolean represents two possible states: TRUE or FALSE.</p><div class="w3-code htmlHigh w3-border notranslate"><div>$x = true;<br>$y = false;</div></div><p>Booleans are often used in conditional testing. You will learn more about conditional testing in a later chapter of this tutorial.</p><h2 id="mcetoc_1bmgscv561l">PHP ARRAY</h2><p>An array stores multiple values in one single variable.</p><p>In the following example $cars is an array. The PHP var_dump() function returns the data type and value:</p><div class="w3-example"><h3 id="mcetoc_1bmgscv561m">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php&nbsp;<br>$cars = array(“Volvo”,”BMW”,”Toyota”);<br>var_dump($cars);<br>?&gt;</strong></div></blockquote></div><p>You will learn a lot more about arrays in later chapters of this tutorial.</p><h2 id="mcetoc_1bmgscv561n">PHP OBJECT</h2><p>An object is a data type which stores data and information on how to process that data.</p><p>In PHP, an object must be explicitly declared.</p><p>First we must declare a class of object. For this, we use the class keyword. A class is a structure that can contain properties and methods:</p><div class="w3-example"><h3 id="mcetoc_1bmgscv561o">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>class Car {<br>&nbsp;&nbsp;&nbsp; function Car() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $this-&gt;model = “VW”;<br>&nbsp;&nbsp;&nbsp; }<br>}// create an object<br>$herbie = new Car();// show object properties<br>echo $herbie-&gt;model;<br>?&gt;</strong></div></blockquote></div><p>You will learn more about objects in a later chapter of this tutorial.</p><h2 id="mcetoc_1bmgscv561p">PHP NULL VALUE</h2><p>Null is a special data type which can have only one value: NULL.</p><p>A variable of data type NULL is a variable that has no value assigned to it.</p><p><strong>Tip:</strong>&nbsp;If a variable is created without a value, it is automatically assigned a value of NULL.</p><p>Variables can also be emptied by setting the value to NULL:</p><div class="w3-example"><h3 id="mcetoc_1bmgscv561q">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$x = “Hello world!”;<br>$x = null;<br>var_dump($x);<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgscv561r">PHP RESOURCE</h2><p>The special resource type is not an actual data type. It is the storing of a reference to functions and resources external to PHP.</p><p>A common example of using the resource data type is a database call.</p><p>We will not talk about the resource type here, since it is an advanced topic.</p></li></ul></div></div></div></div></header></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-2o" data-rv-view="291" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="2dJbjLC8MWMxEnZ3/66qK4YXUWN7Fg2YKzH93W5mUsGMGahjXWm9hPJxCMDprbfFQ22ociJ3WsUV0Oz0qDGd4uMYIQ3oV4qEZohW5z7nkTYUxnjmESD37+3O7ropYf8R" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-2o-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-2o-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-2o-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-2o-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-2o-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-2o-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

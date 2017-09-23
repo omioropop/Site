@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="The example below displays a simple HTML form with two input fields and a submit button:
+
+Example
+<html>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+
+<form action="welcome.php" method="post">
+Name: <input type="text" name="name"><br>
+E-mail: <input type="text" name="email"><br>
+<input type="submit">
+</form>
+
+  <input name="animation" type="hidden">
+  </body>
+</html>
+When the user fills out the form above and clicks the submit button, the form data is sent for processing to a PHP file named "welcome.php". The form data is sent with the HTTP POST method.
+
+To display the submitted data you could simply echo all the variables. The "welcome.php" looks like this:
+
+<html>
+<body>
+
+Welcome <?php echo $_POST["name"]; ?><br>
+Your email address is: <?php echo $_POST["email"]; ?>
+
+</body>
+</html>
+The output could be something like this:
+
+Welcome John
+Your email address is john.doe@example.com
+The same result could also be achieved using the HTTP GET method:
+
+Example
+<html>
+<body>
+
+<form action="welcome_get.php" method="get">
+Name: <input type="text" name="name"><br>
+E-mail: <input type="text" name="email"><br>
+<input type="submit">
+</form>
+
+</body>
+</html>
+and "welcome_get.php" looks like this:
+
+<html>
+<body>
+
+Welcome <?php echo $_GET["name"]; ?><br>
+Your email address is: <?php echo $_GET["email"]; ?>
+
+</body>
+</html>
+The code above is quite simple. However, the most important thing is missing. You need to validate form data to protect your script from malicious code.
+
+Think SECURITY when processing PHP forms!
+
+This page does not contain any form validation, it just shows how you can send and retrieve form data.
+
+However, the next pages will show how to process PHP forms with security in mind! Proper validation of form data is important to protect your form from hackers and spammers!
+
+GET vs. POST
+Both GET and POST create an array (e.g. array( key => value, key2 => value2, key3 => value3, ...)). This array holds key/value pairs, where keys are the names of the form controls and values are the input data from the user.
+
+Both GET and POST are treated as $_GET and $_POST. These are superglobals, which means that they are always accessible, regardless of scope - and you can access them from any function, class or file without having to do anything special.
+
+$_GET is an array of variables passed to the current script via the URL parameters.
+
+$_POST is an array of variables passed to the current script via the HTTP POST method.
+
+When to use GET?
+Information sent from a form with the GET method is visible to everyone (all variable names and values are displayed in the URL). GET also has limits on the amount of information to send. The limitation is about 2000 characters. However, because the variables are displayed in the URL, it is possible to bookmark the page. This can be useful in some cases.
+
+GET may be used for sending non-sensitive data.
+
+Note: GET should NEVER be used for sending passwords or other sensitive information!
+
+When to use POST?
+Information sent from a form with the POST method is invisible to others (all names/values are embedded within the body of the HTTP request) and has no limits on the amount of information to send.
+
+Moreover POST supports advanced functionality such as support for multi-part binary input while uploading files to server.
+
+However, because the variables are not displayed in the URL, it is not possible to bookmark the page.
+
+Developers prefer POST for sending form data.
+
+Next, lets see how we can process PHP forms the secure way!">
+  <title>Php Form Handling</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+<section id="ext_menu-4u" data-rv-view="497">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/i">build your own website</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-54" data-rv-view="492" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Form Handling</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-55" data-rv-view="495" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><header class="header left-right"><div id="main-header-wrapper"><div id="main-header" data-fixed-height="80"><div class="container"><div id="et-navigation" class=""><ul id="et-menu" class="nav"><li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-page-ancestor menu-item-202"><div class="w3-panel w3-note"><p>The example below displays a simple HTML form with two input fields and a submit button:</p><div class="w3-example"><h3 id="mcetoc_1bmgv8ncc5f">Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;form&nbsp;action="welcome.php"&nbsp;method="post"&gt;</strong><br><strong>Name:&nbsp;&lt;input&nbsp;type="text"&nbsp;name="name"&gt;&lt;br&gt;</strong><br><strong>E-mail:&nbsp;&lt;input&nbsp;type="text"&nbsp;name="email"&gt;&lt;br&gt;</strong><br><strong>&lt;input&nbsp;type="submit"&gt;</strong><br><strong>&lt;/form&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>When the user fills out the form above and clicks the submit button, the form data is sent for processing to a PHP file named "welcome.php". The form data is sent with the HTTP POST method.</p><p>To display the submitted data you could simply echo all the variables. The "welcome.php" looks like this:</p><div class="w3-code w3-border notranslate"><div><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>Welcome &lt;?php echo $_POST["name"]; ?&gt;&lt;br&gt;</strong><br><strong>Your email address is: &lt;?php echo $_POST["email"]; ?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>The output could be something like this:</p><div class="w3-code htmlHigh w3-border notranslate"><div><strong>Welcome John</strong><br><strong>Your email address is john.doe@example.com</strong></div></div><p>The same result could also be achieved using the HTTP GET method:</p><div class="w3-example"><h3 id="mcetoc_1bmgv8ncc5g">Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;form&nbsp;action="welcome_get.php"&nbsp;method="get"&gt;</strong><br><strong>Name:&nbsp;&lt;input&nbsp;type="text"&nbsp;name="name"&gt;&lt;br&gt;</strong><br><strong>E-mail:&nbsp;&lt;input&nbsp;type="text"&nbsp;name="email"&gt;&lt;br&gt;</strong><br><strong>&lt;input&nbsp;type="submit"&gt;</strong><br><strong>&lt;/form&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>and "welcome_get.php" looks like this:</p><div class="w3-code w3-border notranslate"><div><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>Welcome &lt;?php echo $_GET["name"]; ?&gt;&lt;br&gt;</strong><br><strong>Your email address is: &lt;?php echo $_GET["email"]; ?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>The code above is quite simple. However, the most important thing is missing. You need to validate form data to protect your script from malicious code.</p><div class="w3-panel w3-note"><p><strong>Think SECURITY when processing PHP forms!</strong></p><p>This page does not contain any form validation, it just shows how you can send and retrieve form data.</p><p>However, the next pages will show how to process PHP forms with security in mind! Proper validation of form data is important to protect your form from hackers and spammers!</p></div><h2 id="mcetoc_1bmgv8ncc5h">GET vs. POST</h2><p>Both GET and POST create an array (e.g. array( key =&gt; value, key2 =&gt; value2, key3 =&gt; value3, ...)). This array holds key/value pairs, where keys are the names of the form controls and values are the input data from the user.</p><p>Both GET and POST are treated as $_GET and $_POST. These are superglobals, which means that they are always accessible, regardless of scope - and you can access them from any function, class or file without having to do anything special.</p><p>$_GET is an array of variables passed to the current script via the URL parameters.</p><p>$_POST is an array of variables passed to the current script via the HTTP POST method.</p><h2 id="mcetoc_1bmgv8ncc5i">When to use GET?</h2><p>Information sent from a form with the GET method is&nbsp;<strong>visible to everyone</strong>&nbsp;(all variable names and values are displayed in the URL). GET also has limits on the amount of information to send. The limitation is about 2000 characters. However, because the variables are displayed in the URL, it is possible to bookmark the page. This can be useful in some cases.</p><p>GET may be used for sending non-sensitive data.</p><p><strong>Note:</strong>&nbsp;GET should NEVER be used for sending passwords or other sensitive information!</p><h2 id="mcetoc_1bmgv8ncc5j">When to use POST?</h2><p>Information sent from a form with the POST method is&nbsp;<strong>invisible to others</strong>&nbsp;(all names/values are embedded within the body of the HTTP request) and has&nbsp;<strong>no limits</strong>&nbsp;on the amount of information to send.</p><p>Moreover POST supports advanced functionality such as support for multi-part binary input while uploading files to server.</p><p>However, because the variables are not displayed in the URL, it is not possible to bookmark the page.</p><div class="w3-panel w3-note"><p><strong>Developers prefer POST for sending form data.</strong></p></div><p>Next, lets see how we can process PHP forms the secure way!</p></div></li></ul></div></div></div></div></header></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-4v" data-rv-view="499" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="oqlSY4Gl0VRUNFgV5g9jNbA+HUpWp0u3K7DUvrhhov0NpJj2DOeKJKjRMRtd7rNsZDbI2XyKLZz1fi6+bVXv5kvYFyDsaIcp/pv0wKLxWJSRX76+PeoWMvB2wP66H0DA" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-4v-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-4v-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-4v-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-4v-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-4v-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-4v-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
+</html>

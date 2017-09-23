@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="The PHP Date() Function
+The PHP date() function formats a timestamp to a more readable date and time.
+
+Syntax
+date(format,timestamp)
+Parameter	Description
+format	Required. Specifies the format of the timestamp
+timestamp	Optional. Specifies a timestamp. Default is the current date and time
+ 
+
+A timestamp is a sequence of characters, denoting the date and/or time at which a certain event occurred.
+
+Get a Simple Date
+The required format parameter of the date() function specifies how to format the date (or time).
+
+Here are some characters that are commonly used for dates:
+
+d - Represents the day of the month (01 to 31)
+m - Represents a month (01 to 12)
+Y - Represents a year (in four digits)
+l (lowercase 'L') - Represents the day of the week
+Other characters, like"/", ".", or "-" can also be inserted between the characters to add additional formatting.
+
+The example below formats today's date in three different ways:
+
+Example
+<?php
+echo "Today is " . date("Y/m/d") . "<br>";
+echo "Today is " . date("Y.m.d") . "<br>";
+echo "Today is " . date("Y-m-d") . "<br>";
+echo "Today is " . date("l");
+?>
+PHP Tip - Automatic Copyright Year
+Use the date() function to automatically update the copyright year on your website:
+
+Example
+&copy; 2010-<?php echo date("Y");?>
+Get a Simple Time
+Here are some characters that are commonly used for times:
+
+h - 12-hour format of an hour with leading zeros (01 to 12)
+i - Minutes with leading zeros (00 to 59)
+s - Seconds with leading zeros (00 to 59)
+a - Lowercase Ante meridiem and Post meridiem (am or pm)
+The example below outputs the current time in the specified format:
+
+Example
+<?php
+echo "The time is " . date("h:i:sa");
+?>
+Note that the PHP date() function will return the current date/time of the server!
+
+Get Your Time Zone
+If the time you got back from the code is not the right time, it's probably because your server is in another country or set up for a different timezone.
+
+So, if you need the time to be correct according to a specific location, you can set a timezone to use.
+
+The example below sets the timezone to "America/New_York", then outputs the current time in the specified format:
+
+Example
+<?php
+date_default_timezone_set("America/New_York");
+echo "The time is " . date("h:i:sa");
+?>
+Create a Date With PHP mktime()
+The optional timestamp parameter in the date() function specifies a timestamp. If you do not specify a timestamp, the current date and time will be used (as shown in the examples above).
+
+The mktime() function returns the Unix timestamp for a date. The Unix timestamp contains the number of seconds between the Unix Epoch (January 1 1970 00:00:00 GMT) and the time specified.
+
+Syntax
+mktime(hour,minute,second,month,day,year)
+The example below creates a date and time from a number of parameters in the mktime() function:
+
+Example
+<?php
+$d=mktime(11, 14, 54, 8, 12, 2014);
+echo "Created date is " . date("Y-m-d h:i:sa", $d);
+?>
+Create a Date From a String With PHP strtotime()
+The PHP strtotime() function is used to convert a human readable string to a Unix time.
+
+Syntax
+strtotime(time,now)
+The example below creates a date and time from the strtotime() function:
+
+Example
+<?php
+$d=strtotime("10:30pm April 15 2014");
+echo "Created date is " . date("Y-m-d h:i:sa", $d);
+?>
+PHP is quite clever about converting a string to a date, so you can put in various values:
+
+Example
+<?php
+$d=strtotime("tomorrow");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+$d=strtotime("next Saturday");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+$d=strtotime("+3 Months");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+?>
+However, strtotime() is not perfect, so remember to check the strings you put in there.
+
+More Date Examples
+The example below outputs the dates for the next six Saturdays:
+
+Example
+<?php
+$startdate = strtotime("Saturday");
+$enddate = strtotime("+6 weeks", $startdate);
+
+while ($startdate < $enddate) {
+  echo date("M d", $startdate) . "<br>";
+  $startdate = strtotime("+1 week", $startdate);
+}
+?>
+The example below outputs the number of days until 4th of July:
+
+Example
+<?php
+$d1=strtotime("July 04");
+$d2=ceil(($d1-time())/60/60/24);
+echo "There are " . $d2 ." days until 4th of July.";
+?>
+Complete PHP Date Reference
+For a complete reference of all date functions, go to our complete PHP Date Reference.
+
+The reference contains a brief description, and examples of use, for each function!">
+  <title>Php Date and Time</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-5g" data-rv-view="577">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/l">free bootstrap themes</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-66" data-rv-view="572" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Date and Time</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-67" data-rv-view="575" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>The PHP Date() Function</h2><p>The PHP date() function formats a timestamp to a more readable date and time.</p><h3>Syntax</h3><div class="w3-code w3-border notranslate"><div>date(<em>format</em>,<em>timestamp</em>)</div></div><table class="w3-table-all notranslate mce-item-table" style="width: 585px;" data-mce-style="width: 585px;"><tbody><tr><th style="width: 106px;" data-mce-style="width: 106px;">Parameter</th><th style="width: 465px;" data-mce-style="width: 465px;">Description</th></tr><tr><td style="width: 106px;" data-mce-style="width: 106px;">format</td><td style="width: 465px;" data-mce-style="width: 465px;">Required. Specifies the format of the timestamp</td></tr><tr><td style="width: 106px;" data-mce-style="width: 106px;">timestamp</td><td style="width: 465px;" data-mce-style="width: 465px;">Optional. Specifies a timestamp. Default is the current date and time</td></tr></tbody></table><div class="w3-panel w3-note"><p>&nbsp;</p><p>A timestamp is a sequence of characters, denoting the date and/or time at which a certain event occurred.</p></div><h2>Get a Simple Date</h2><p>The required&nbsp;<em>format</em>&nbsp;parameter of the date() function specifies how to format the date (or time).</p><p>Here are some characters that are commonly used for dates:</p><ul><li>d - Represents the day of the month (01 to 31)</li><li>m - Represents a month (01 to 12)</li><li>Y - Represents a year (in four digits)</li><li>l (lowercase 'L') - Represents the day of the week</li></ul><p>Other characters, like"/", ".", or "-" can also be inserted between the characters to add additional formatting.</p><p>The example below formats today's date in three different ways:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>echo&nbsp;"Today is "&nbsp;. date("Y/m/d") .&nbsp;"&lt;br&gt;";</strong><br><strong>echo&nbsp;"Today is "&nbsp;. date("Y.m.d") .&nbsp;"&lt;br&gt;";</strong><br><strong>echo&nbsp;"Today is "&nbsp;. date("Y-m-d") .&nbsp;"&lt;br&gt;";</strong><br><strong>echo&nbsp;"Today is "&nbsp;. date("l");</strong><br><strong>?&gt;</strong></div></div><h2>PHP Tip - Automatic Copyright Year</h2><p>Use the date() function to automatically update the copyright year on your website:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&amp;copy; 2010-&lt;?php&nbsp;echo&nbsp;date("Y");?&gt;</strong></div></div><h2>Get a Simple Time</h2><p>Here are some characters that are commonly used for times:</p><ul><li>h - 12-hour format of an hour with leading zeros (01 to 12)</li><li>i - Minutes with leading zeros (00 to 59)</li><li>s - Seconds with leading zeros (00 to 59)</li><li>a - Lowercase Ante meridiem and Post meridiem (am or pm)</li></ul><p>The example below outputs the current time in the specified format:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>echo&nbsp;"The time is "&nbsp;. date("h:i:sa");</strong><br><strong>?&gt;</strong></div></div><div class="w3-panel w3-note"><p>Note that the PHP date() function will return the current date/time of the server!</p></div><h2>Get Your Time Zone</h2><p>If the time you got back from the code is not the right time, it's probably because your server is in another country or set up for a different timezone.</p><p>So, if you need the time to be correct according to a specific location, you can set a timezone to use.</p><p>The example below sets the timezone to "America/New_York", then outputs the current time in the specified format:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>date_default_timezone_set("America/New_York");</strong><br><strong>echo&nbsp;"The time is "&nbsp;. date("h:i:sa");</strong><br><strong>?&gt;</strong></div></div><h2>Create a Date With PHP mktime()</h2><p>The optional&nbsp;<em>timestamp</em>&nbsp;parameter in the date() function specifies a timestamp. If you do not specify a timestamp, the current date and time will be used (as shown in the examples above).</p><p>The mktime() function returns the Unix timestamp for a date. The Unix timestamp contains the number of seconds between the Unix Epoch (January 1 1970 00:00:00 GMT) and the time specified.</p><h3>Syntax</h3><div class="w3-code w3-border notranslate"><div>mktime(<em>hour,minute,second,month,day,year</em>)</div></div><p>The example below creates a date and time from a number of parameters in the mktime() function:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$d=mktime(11,&nbsp;14,&nbsp;54,&nbsp;8,&nbsp;12,&nbsp;2014);</strong><br><strong>echo&nbsp;"Created date is "&nbsp;. date("Y-m-d h:i:sa", $d);</strong><br><strong>?&gt;</strong></div></div><h2>Create a Date From a String With PHP strtotime()</h2><p>The PHP strtotime() function is used to convert a human readable string to a Unix time.</p><h3>Syntax</h3><div class="w3-code w3-border notranslate"><div>strtotime(<em>time,now</em>)</div></div><p>The example below creates a date and time from the strtotime() function:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$d=strtotime("10:30pm April 15 2014");</strong><br><strong>echo&nbsp;"Created date is "&nbsp;. date("Y-m-d h:i:sa", $d);</strong><br><strong>?&gt;</strong></div></div><p>PHP is quite clever about converting a string to a date, so you can put in various values:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$d=strtotime("tomorrow");</strong><br><strong>echo&nbsp;date("Y-m-d h:i:sa", $d) .&nbsp;"&lt;br&gt;";</strong><br><br><strong>$d=strtotime("next Saturday");</strong><br><strong>echo&nbsp;date("Y-m-d h:i:sa", $d) .&nbsp;"&lt;br&gt;";</strong><br><br><strong>$d=strtotime("+3 Months");</strong><br><strong>echo&nbsp;date("Y-m-d h:i:sa", $d) .&nbsp;"&lt;br&gt;";</strong><br><strong>?&gt;</strong></div></div><p>However, strtotime() is not perfect, so remember to check the strings you put in there.</p><h2>More Date Examples</h2><p>The example below outputs the dates for the next six Saturdays:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$startdate = strtotime("Saturday");</strong><br><strong>$enddate = strtotime("+6 weeks", $startdate);</strong><br><br><strong>while&nbsp;($startdate &lt; $enddate) {</strong><br><strong>&nbsp;&nbsp;echo&nbsp;date("M d", $startdate) .&nbsp;"&lt;br&gt;";</strong><br><strong>&nbsp; $startdate = strtotime("+1 week", $startdate);</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><p>The example below outputs the number of days until 4th of July:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$d1=strtotime("July 04");</strong><br><strong>$d2=ceil(($d1-time())/60/60/24);</strong><br><strong>echo&nbsp;"There are "&nbsp;. $d2 ." days until 4th of July.";</strong><br><strong>?&gt;</strong></div></div><h2>Complete PHP Date Reference</h2><p>For a complete reference of all date functions, go to our complete&nbsp;<a href="https://www.w3schools.com/php/php_ref_date.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/php_ref_date.asp">PHP Date Reference</a>.</p><p>The reference contains a brief description, and examples of use, for each function!</p></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-5h" data-rv-view="579" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="XqCCm0Obt05M380+Nn+JhLgxbjK0itV8E6rxnfcgBnpyzPr93p+LlFwHgXY1nAWOXnaj0KDKsOWO3WpsIogdXy/sP7F9ZKSqVC2J2uLMOOYARebCODlGK87jK4mYz2Te" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5h-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-5h-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5h-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-5h-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5h-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-5h-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

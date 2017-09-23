@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="PHP Calendar Introduction
+The calendar extension contains functions that simplifies converting between different calendar formats.
+
+It is based on the Julian Day Count, which is a count of days starting from January 1st, 4713 B.C.
+
+Note: To convert between calendar formats, you must first convert to Julian Day Count, then to the calendar of your choice.
+
+Note: The Julian Day Count is not the same as the Julian Calendar!
+
+Installation
+For these functions to work, you have to compile PHP with --enable-calendar.
+
+The Windows version of PHP has built-in support for this extension.
+
+PHP 5 Calendar Functions
+Function	Description
+cal_days_in_month()	Returns the number of days in a month for a specified year and calendar
+cal_from_jd()	Converts a Julian Day Count into a date of a specified calendar
+cal_info()	Returns information about a specified calendar
+cal_to_jd()	Converts a date in a specified calendar to Julian Day Count
+easter_date()	Returns the Unix timestamp for midnight on Easter of a specified year
+easter_days()	Returns the number of days after March 21, that the Easter Day is in a specified year
+frenchtojd()	Converts a French Republican date to a Julian Day Count
+gregoriantojd()	Converts a Gregorian date to a Julian Day Count
+jddayofweek()	Returns the day of the week
+jdmonthname()	Returns a month name
+jdtofrench()	Converts a Julian Day Count to a French Republican date
+jdtogregorian()	Converts a Julian Day Count to a Gregorian date
+jdtojewish()	Converts a Julian Day Count to a Jewish date
+jdtojulian()	Converts a Julian Day Count to a Julian date
+jdtounix()	Converts Julian Day Count to Unix timestamp
+jewishtojd()	Converts a Jewish date to a Julian Day Count
+juliantojd()	Converts a Julian date to a Julian Day Count
+unixtojd()	Converts Unix timestamp to Julian Day Count
+PHP 5 Predefined Calendar Constants
+Constant	Type	PHP Version
+CAL_GREGORIAN	Integer	PHP 4
+CAL_JULIAN	Integer	PHP 4
+CAL_JEWISH	Integer	PHP 4
+CAL_FRENCH	Integer	PHP 4
+CAL_NUM_CALS	Integer	PHP 4
+CAL_DOW_DAYNO	Integer	PHP 4
+CAL_DOW_SHORT	Integer	PHP 4
+CAL_DOW_LONG	Integer	PHP 4
+CAL_MONTH_GREGORIAN_SHORT	Integer	PHP 4
+CAL_MONTH_GREGORIAN_LONG	Integer	PHP 4
+CAL_MONTH_JULIAN_SHORT	Integer	PHP 4
+CAL_MONTH_JULIAN_LONG	Integer	PHP 4
+CAL_MONTH_JEWISH	Integer	PHP 4
+CAL_MONTH_FRENCH	Integer	PHP 4
+CAL_EASTER_DEFAULT	Integer	PHP 4.3
+CAL_EASTER_ROMAN	Integer	PHP 4.3
+CAL_EASTER_ALWAYS_GREGORIAN	Integer	PHP 4.3
+CAL_EASTER_ALWAYS_JULIAN	Integer	PHP 4.3
+CAL_JEWISH_ADD_ALAFIM_GERESH	Integer	PHP 5.0
+CAL_JEWISH_ADD_ALAFIM	Integer	PHP 5.0
+CAL_JEWISH_ADD_GERESHAYIM	Integer	PHP 5.0
+
+">
+  <title>Php Calendar Functions</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-9q" data-rv-view="1184">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/j">design a website</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-bp" data-rv-view="1186" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Calendar Functions</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-bq" data-rv-view="1189" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>PHP Calendar Introduction</h2><p>The calendar extension contains functions that simplifies converting between different calendar formats.</p><p><strong>It is based on the Julian Day Count, which is a count of days starting from January 1st, 4713 B.C.</strong></p><p><strong>Note:</strong>&nbsp;To convert between calendar formats, you must first convert to Julian Day Count, then to the calendar of your choice.</p><p><strong>Note:</strong>&nbsp;The Julian Day Count is not the same as the Julian Calendar!</p><h2>Installation</h2><p>For these functions to work, you have to compile PHP with --enable-calendar.</p><p>The Windows version of PHP has built-in support for this extension.</p><h2>PHP 5 Calendar Functions</h2><table class="w3-table-all notranslate mce-item-table"><tbody><tr><th>Function</th><th>Description</th></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_cal_days_in_month.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_cal_days_in_month.asp">cal_days_in_month()</a></td><td>Returns the number of days in a month for a specified year and calendar</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_cal_from_jd.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_cal_from_jd.asp">cal_from_jd()</a></td><td>Converts a Julian Day Count into a date of a specified calendar</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_cal_info.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_cal_info.asp">cal_info()</a></td><td>Returns information about a specified calendar</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_cal_to_jd.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_cal_to_jd.asp">cal_to_jd()</a></td><td>Converts a date in a specified calendar to Julian Day Count</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_easter_date.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_easter_date.asp">easter_date()</a></td><td>Returns the Unix timestamp for midnight on Easter of a specified year</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_easter_days.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_easter_days.asp">easter_days()</a></td><td>Returns the number of days after March 21, that the Easter Day is in a specified year</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_frenchtojd.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_frenchtojd.asp">frenchtojd()</a></td><td>Converts a French Republican date to a Julian Day Count</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_gregoriantojd.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_gregoriantojd.asp">gregoriantojd()</a></td><td>Converts a Gregorian date to a Julian Day Count</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_jddayofweek.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_jddayofweek.asp">jddayofweek()</a></td><td>Returns the day of the week</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_jdmonthname.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_jdmonthname.asp">jdmonthname()</a></td><td>Returns a month name</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_jdtofrench.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_jdtofrench.asp">jdtofrench()</a></td><td>Converts a Julian Day Count to a French Republican date</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_jdtogregorian.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_jdtogregorian.asp">jdtogregorian()</a></td><td>Converts a Julian Day Count to a Gregorian date</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_jdtojewish.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_jdtojewish.asp">jdtojewish()</a></td><td>Converts a Julian Day Count to a Jewish date</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_jdtojulian.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_jdtojulian.asp">jdtojulian()</a></td><td>Converts a Julian Day Count to a Julian date</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_jdtounix.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_jdtounix.asp">jdtounix()</a></td><td>Converts Julian Day Count to Unix timestamp</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_jewishtojd.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_jewishtojd.asp">jewishtojd()</a></td><td>Converts a Jewish date to a Julian Day Count</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_juliantojd.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_juliantojd.asp">juliantojd()</a></td><td>Converts a Julian date to a Julian Day Count</td></tr><tr><td><a href="https://www.w3schools.com/php/func_cal_unixtojd.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_cal_unixtojd.asp">unixtojd()</a></td><td>Converts Unix timestamp to Julian Day Count</td></tr></tbody></table><h2>PHP 5 Predefined Calendar Constants</h2><div class="w3-responsive"><table class="w3-table-all notranslate mce-item-table" style="width: 427px;" data-mce-style="width: 427px;"><tbody><tr><th style="width: 260px;" data-mce-style="width: 260px;">Constant</th><th style="width: 106px;" data-mce-style="width: 106px;">Type</th><th style="width: 43px;" data-mce-style="width: 43px;">PHP Version</th></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_GREGORIAN</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_JULIAN</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_JEWISH</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_FRENCH</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_NUM_CALS</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_DOW_DAYNO</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_DOW_SHORT</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_DOW_LONG</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_MONTH_GREGORIAN_SHORT</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_MONTH_GREGORIAN_LONG</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_MONTH_JULIAN_SHORT</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_MONTH_JULIAN_LONG</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_MONTH_JEWISH</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_MONTH_FRENCH</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_EASTER_DEFAULT</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4.3</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_EASTER_ROMAN</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4.3</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_EASTER_ALWAYS_GREGORIAN</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4.3</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_EASTER_ALWAYS_JULIAN</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 4.3</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_JEWISH_ADD_ALAFIM_GERESH</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 5.0</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_JEWISH_ADD_ALAFIM</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 5.0</td></tr><tr><td style="width: 260px;" data-mce-style="width: 260px;">CAL_JEWISH_ADD_GERESHAYIM</td><td style="width: 106px;" data-mce-style="width: 106px;">Integer</td><td style="width: 43px;" data-mce-style="width: 43px;">PHP 5.0</td></tr></tbody></table></div><h2><br><br></h2></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-9r" data-rv-view="1191" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="aV+zrEEXb7YXMy4+YO6iAM7H0zmdc1Ub11lzM3NFUYaMfNKI/ZOb7Y0WsB1hswksjVLU5K8rgxrvcOFHAE2FP4lmzVSWoP85xZWHKLbtrx3+SncykYpukI4+vmljI6zb" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-9r-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-9r-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-9r-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-9r-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-9r-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-9r-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

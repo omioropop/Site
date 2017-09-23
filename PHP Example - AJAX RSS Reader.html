@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="AJAX RSS Reader
+The following example will demonstrate an RSS reader, where the RSS-feed is loaded into a webpage without reloading:
+
+
+ 
+RSS-feed will be listed here...
+Example Explained - The HTML Page
+When a user selects an RSS-feed in the dropdown list above, a function called "showRSS()" is executed. The function is triggered by the "onchange" event:
+
+<html>
+<head>
+<script>
+function showRSS(str) {
+  if (str.length==0) { 
+    document.getElementById("rssOutput").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("rssOutput").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","getrss.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+
+<form>
+<select onchange="showRSS(this.value)">
+<option value="">Select an RSS-feed:</option>
+<option value="Google">Google News</option>
+<option value="NBC">NBC News</option>
+</select>
+</form>
+<br>
+<div id="rssOutput">RSS-feed will be listed here...</div>
+  <input name="animation" type="hidden">
+  </body>
+</html>
+The showRSS() function does the following:
+
+Check if an RSS-feed is selected
+Create an XMLHttpRequest object
+Create the function to be executed when the server response is ready
+Send the request off to a file on the server
+Notice that a parameter (q) is added to the URL (with the content of the dropdown list)
+The PHP File
+The page on the server called by the JavaScript above is a PHP file called "getrss.php":
+
+<?php
+//get the q parameter from URL
+$q=$_GET["q"];
+
+//find out which feed was selected
+if($q=="Google") {
+  $xml=("http://news.google.com/news?ned=us&topic=h&output=rss");
+} elseif($q=="NBC") {
+  $xml=("http://rss.msnbc.msn.com/id/3032091/device/rss/rss.xml");
+}
+
+$xmlDoc = new DOMDocument();
+$xmlDoc->load($xml);
+
+//get elements from "<channel>"
+$channel=$xmlDoc->getElementsByTagName('channel')->item(0);
+$channel_title = $channel->getElementsByTagName('title')
+->item(0)->childNodes->item(0)->nodeValue;
+$channel_link = $channel->getElementsByTagName('link')
+->item(0)->childNodes->item(0)->nodeValue;
+$channel_desc = $channel->getElementsByTagName('description')
+->item(0)->childNodes->item(0)->nodeValue;
+
+//output elements from "<channel>"
+echo("<p><a href='" . $channel_link
+  . "'>" . $channel_title . "</a>");
+echo("<br>");
+echo($channel_desc . "</p>");
+
+//get and output "<item>" elements
+$x=$xmlDoc->getElementsByTagName('item');
+for ($i=0; $i<=2; $i++) {
+  $item_title=$x->item($i)->getElementsByTagName('title')
+  ->item(0)->childNodes->item(0)->nodeValue;
+  $item_link=$x->item($i)->getElementsByTagName('link')
+  ->item(0)->childNodes->item(0)->nodeValue;
+  $item_desc=$x->item($i)->getElementsByTagName('description')
+  ->item(0)->childNodes->item(0)->nodeValue;
+  echo ("<p><a href='" . $item_link
+  . "'>" . $item_title . "</a>");
+  echo ("<br>");
+  echo ($item_desc . "</p>");
+}
+?>
+When a request for an RSS feed is sent from the JavaScript, the following happens:
+
+Check which feed was selected
+Create a new XML DOM object
+Load the RSS document in the xml variable
+Extract and output elements from the channel element
+Extract and output elements from the item elements">
+  <title>PHP Example - AJAX RSS Reader</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+<section id="ext_menu-96" data-rv-view="1136">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co">Mobirise</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-9k" data-rv-view="1138" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 40px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">PHP Example - AJAX RSS Reader</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-9l" data-rv-view="1141" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2 id="mcetoc_1bmmv0trgv">AJAX RSS Reader</h2><p>The following example will demonstrate an RSS reader, where the RSS-feed is loaded into a webpage without reloading:</p><form><select onchange="showRSS(this.value)">&nbsp;<option value="">Select an RSS-feed:</option>&nbsp;<option value="Google">Google News</option>&nbsp;<option value="NBC">NBC News</option>&nbsp;</select></form><h2 id="mcetoc_1bmmv0trg10">&nbsp;</h2><div id="rssOutput">RSS-feed will be listed here...</div><h2 id="mcetoc_1bmmv0trg11">Example Explained - The HTML Page</h2><p>When a user selects an RSS-feed in the dropdown list above, a function called "showRSS()" is executed. The function is triggered by the "onchange" event:</p><div class="w3-code w3-border notranslate"><div><strong>&lt;html&gt;</strong><br><strong>&lt;head&gt;</strong><br><strong>&lt;script&gt;</strong><br><strong>function showRSS(str) {</strong><br><strong>&nbsp; if (str.length==0) {&nbsp;</strong><br><strong>&nbsp; &nbsp;&nbsp;document.getElementById("rssOutput").innerHTML="";</strong><br><strong>&nbsp;&nbsp;&nbsp; return;</strong><br><strong>&nbsp; }</strong><br><strong>&nbsp; if (window.XMLHttpRequest) {</strong><br><strong>&nbsp;&nbsp;&nbsp; // code for IE7+, Firefox, Chrome, Opera, Safari</strong><br><strong>&nbsp; &nbsp; xmlhttp=new XMLHttpRequest();</strong><br><strong>&nbsp; } else {&nbsp; // code for IE6, IE5</strong><br><strong>&nbsp; &nbsp; xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");</strong><br><strong>&nbsp; }</strong><br><strong>&nbsp; xmlhttp.onreadystatechange=function() {</strong><br><strong>&nbsp; &nbsp; if (this.readyState==4 &amp;&amp; this.status==200) {</strong><br><strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("rssOutput").innerHTML=this.responseText;</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp; }</strong><br><strong>&nbsp; xmlhttp.open("GET","getrss.php?q="+str,true);</strong><br><strong>&nbsp; xmlhttp.send();</strong><br><strong>}</strong><br><strong>&lt;/script&gt;</strong><br><strong>&lt;/head&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;form&gt;</strong><br><strong>&lt;select onchange="showRSS(this.value)"&gt;</strong><br><strong>&lt;option value=""&gt;Select an RSS-feed:&lt;/option&gt;</strong><br><strong>&lt;option value="Google"&gt;Google News&lt;/option&gt;</strong><br><strong>&lt;option value="NBC"&gt;NBC News&lt;/option&gt;</strong><br><strong>&lt;/select&gt;</strong><br><strong>&lt;/form&gt;</strong><br><strong>&lt;br&gt;</strong><br><strong>&lt;div id="rssOutput"&gt;RSS-feed will be listed here...&lt;/div&gt;</strong><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>The showRSS() function does the following:</p><ul><li>Check if an RSS-feed is selected</li><li>Create an XMLHttpRequest object</li><li>Create the function to be executed when the server response is ready</li><li>Send the request off to a file on the server</li><li>Notice that a parameter (q) is added to the URL (with the content of the dropdown list)</li></ul><h2 id="mcetoc_1bmmv0trg12">The PHP File</h2><p>The page on the server called by the JavaScript above is a PHP file called "getrss.php":</p><div class="w3-code w3-border notranslate"><div><strong>&lt;?php</strong><br><strong>//get the q parameter from URL</strong><br><strong>$q=$_GET["q"];</strong><br><br><strong>//find out which feed was selected</strong><br><strong>if($q=="Google") {</strong><br><strong>&nbsp;&nbsp;$xml=("http://news.google.com/news?ned=us&amp;topic=h&amp;output=rss");</strong><br><strong>} elseif($q=="NBC") {</strong><br><strong>&nbsp;&nbsp;$xml=("http://rss.msnbc.msn.com/id/3032091/device/rss/rss.xml");</strong><br><strong>}</strong><br><br><strong>$xmlDoc = new DOMDocument();</strong><br><strong>$xmlDoc-&gt;load($xml);</strong><br><br><strong>//get elements from "&lt;channel&gt;"</strong><br><strong>$channel=$xmlDoc-&gt;getElementsByTagName('channel')-&gt;item(0);</strong><br><strong>$channel_title = $channel-&gt;getElementsByTagName('title')</strong><br><strong>-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;</strong><br><strong>$channel_link = $channel-&gt;getElementsByTagName('link')</strong><br><strong>-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;</strong><br><strong>$channel_desc = $channel-&gt;getElementsByTagName('description')</strong><br><strong>-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;</strong><br><br><strong>//output elements from "&lt;channel&gt;"</strong><br><strong>echo("&lt;p&gt;&lt;a href='" . $channel_link</strong><br><strong>&nbsp;&nbsp;. "'&gt;" . $channel_title . "&lt;/a&gt;");</strong><br><strong>echo("&lt;br&gt;");</strong><br><strong>echo($channel_desc . "&lt;/p&gt;");</strong><br><br><strong>//get and output "&lt;item&gt;" elements</strong><br><strong>$x=$xmlDoc-&gt;getElementsByTagName('item');</strong><br><strong>for ($i=0; $i&lt;=2; $i++)&nbsp;{</strong><br><strong>&nbsp;&nbsp;$item_title=$x-&gt;item($i)-&gt;getElementsByTagName('title')</strong><br><strong>&nbsp;&nbsp;-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;</strong><br><strong>&nbsp;&nbsp;$item_link=$x-&gt;item($i)-&gt;getElementsByTagName('link')</strong><br><strong>&nbsp;&nbsp;-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;</strong><br><strong>&nbsp;&nbsp;$item_desc=$x-&gt;item($i)-&gt;getElementsByTagName('description')</strong><br><strong>&nbsp;&nbsp;-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue;</strong><br><strong>&nbsp;&nbsp;echo ("&lt;p&gt;&lt;a href='" . $item_link</strong><br><strong>&nbsp;&nbsp;. "'&gt;" . $item_title . "&lt;/a&gt;");</strong><br><strong>&nbsp;&nbsp;echo ("&lt;br&gt;");</strong><br><strong>&nbsp;&nbsp;echo ($item_desc . "&lt;/p&gt;");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><p>When a request for an RSS feed is sent from the JavaScript, the following happens:</p><ul><li>Check which feed was selected</li><li>Create a new XML DOM object</li><li>Load the RSS document in the xml variable</li><li>Extract and output elements from the channel element</li><li>Extract and output elements from the item elements</li></ul></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div>
+		<script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+		<script>tinymce.init({selector:'.tiny', inline: true, plugins: ['advlist autolink lists link image media charmap print preview anchor','searchreplace visualblocks code fullscreen','insertdatetime table contextmenu paste code textcolor colorpicker textpattern'],  toolbar1: 'insertfile undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | code',});</script>
+	</div>
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-97" data-rv-view="1143" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="rkV9deMpnu+0wD3lqoyTnU7ZMt786PJEfmw8DPMVcMV7l7NPwSsJYIi/dV1F8O9S7WAfT1hzqNnvHylrxiEUEDtfRDkiQRFfjVeAXYJ7OnkTqMIwlMG22DYRT/yDkS7r" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-97-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-97-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-97-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-97-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-97-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-97-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
+</html>

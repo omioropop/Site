@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="Earlier in this tutorial, we have described arrays that are a single list of key/value pairs.
+
+However, sometimes you want to store values with more than one key.
+
+This can be stored in multidimensional arrays.
+
+PHP - Multidimensional Arrays
+A multidimensional array is an array containing one or more arrays.
+
+PHP understands multidimensional arrays that are two, three, four, five, or more levels deep. However, arrays more than three levels deep are hard to manage for most people.
+
+The dimension of an array indicates the number of indices you need to select an element.
+
+For a two-dimensional array you need two indices to select an element
+For a three-dimensional array you need three indices to select an element
+PHP - Two-dimensional Arrays
+A two-dimensional array is an array of arrays (a three-dimensional array is an array of arrays of arrays).
+
+First, take a look at the following table:
+
+Name	Stock	Sold
+Volvo	22	18
+BMW	15	13
+Saab	5	2
+Land Rover	17	15
+We can store the data from the table above in a two-dimensional array, like this:
+
+$cars = array
+  (
+  array("Volvo",22,18),
+  array("BMW",15,13),
+  array("Saab",5,2),
+  array("Land Rover",17,15)
+  );
+Now the two-dimensional $cars array contains four arrays, and it has two indices: row and column.
+
+To get access to the elements of the $cars array we must point to the two indices (row and column):
+
+Example
+<?php
+echo $cars[0][0].": In stock: ".$cars[0][1].", sold: ".$cars[0][2].".<br>";
+echo $cars[1][0].": In stock: ".$cars[1][1].", sold: ".$cars[1][2].".<br>";
+echo $cars[2][0].": In stock: ".$cars[2][1].", sold: ".$cars[2][2].".<br>";
+echo $cars[3][0].": In stock: ".$cars[3][1].", sold: ".$cars[3][2].".<br>";
+?>
+We can also put a For loop inside another For loop to get the elements of the $cars array (we still have to point to the two indices):
+
+Example
+<?php
+for ($row = 0; $row < 4; $row++) {
+  echo "<p><b>Row number $row</b></p>";
+  echo "<ul>";
+  for ($col = 0; $col < 3; $col++) {
+    echo "<li>".$cars[$row][$col]."</li>";
+  }
+  echo "</ul>";
+}
+?>">
+  <title>Php Multidimensional Arrays</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-5e" data-rv-view="593">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/e">web page building software</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-64" data-rv-view="588" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Multidimensional Arrays</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-65" data-rv-view="591" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><p class="intro">Earlier in this tutorial, we have described arrays that are a single list of key/value pairs.</p><p class="intro">However, sometimes you want to store values with more than one key.</p><p class="intro">This can be stored in multidimensional arrays.</p><h2>PHP - Multidimensional Arrays</h2><p>A multidimensional array is an array containing one or more arrays.</p><p>PHP understands multidimensional arrays that are two, three, four, five, or more levels deep. However, arrays more than three levels deep are hard to manage for most people.</p><div class="w3-panel w3-note"><p><strong>The dimension of an array indicates the number of indices you need to select an element.</strong></p><ul><li>For a two-dimensional array you need two indices to select an element</li><li>For a three-dimensional array you need three indices to select an element</li></ul></div><h2>PHP - Two-dimensional Arrays</h2><p>A two-dimensional array is an array of arrays (a three-dimensional array is an array of arrays of arrays).</p><p>First, take a look at the following table:</p><table class="w3-table-all notranslate mce-item-table" style="width: 174px;" data-mce-style="width: 174px;"><tbody><tr><th style="width: 99px;" data-mce-style="width: 99px;">Name</th><th style="width: 68px;" data-mce-style="width: 68px;">Stock</th><th style="width: 10px;" data-mce-style="width: 10px;">Sold</th></tr><tr><td style="width: 99px;" data-mce-style="width: 99px;">Volvo</td><td style="width: 68px;" data-mce-style="width: 68px;">22</td><td style="width: 10px;" data-mce-style="width: 10px;">18</td></tr><tr><td style="width: 99px;" data-mce-style="width: 99px;">BMW</td><td style="width: 68px;" data-mce-style="width: 68px;">15</td><td style="width: 10px;" data-mce-style="width: 10px;">13</td></tr><tr><td style="width: 99px;" data-mce-style="width: 99px;">Saab</td><td style="width: 68px;" data-mce-style="width: 68px;">5</td><td style="width: 10px;" data-mce-style="width: 10px;">2</td></tr><tr><td style="width: 99px;" data-mce-style="width: 99px;">Land Rover</td><td style="width: 68px;" data-mce-style="width: 68px;">17</td><td style="width: 10px;" data-mce-style="width: 10px;">15</td></tr></tbody></table><p>We can store the data from the table above in a two-dimensional array, like this:</p><div class="w3-code w3-border notranslate"><div><strong>$cars = array</strong><br><strong>&nbsp; (</strong><br><strong>&nbsp; array("Volvo",22,18),</strong><br><strong>&nbsp; array("BMW",15,13),</strong><br><strong>&nbsp; array("Saab",5,2),</strong><br><strong>&nbsp; array("Land Rover",17,15)</strong><br><strong>&nbsp; );</strong></div></div><p>Now the two-dimensional $cars array contains four arrays, and it has two indices: row and column.</p><p>To get access to the elements of the $cars array we must point to the two indices (row and column):</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>echo&nbsp;$cars[0][0].": In stock: ".$cars[0][1].", sold: ".$cars[0][2].".&lt;br&gt;";</strong><br><strong>echo&nbsp;$cars[1][0].": In stock: ".$cars[1][1].", sold: ".$cars[1][2].".&lt;br&gt;";</strong><br><strong>echo&nbsp;$cars[2][0].": In stock: ".$cars[2][1].", sold: ".$cars[2][2].".&lt;br&gt;";</strong><br><strong>echo&nbsp;$cars[3][0].": In stock: ".$cars[3][1].", sold: ".$cars[3][2].".&lt;br&gt;";</strong><br><strong>?&gt;</strong></div></div><p>We can also put a For loop inside another For loop to get the elements of the $cars array (we still have to point to the two indices):</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>for&nbsp;($row =&nbsp;0; $row &lt;&nbsp;4; $row++) {</strong><br><strong>&nbsp;&nbsp;echo&nbsp;"&lt;p&gt;&lt;b&gt;Row number $row&lt;/b&gt;&lt;/p&gt;";</strong><br><strong>&nbsp;&nbsp;echo&nbsp;"&lt;ul&gt;";</strong><br><strong>&nbsp;&nbsp;for&nbsp;($col =&nbsp;0; $col &lt;&nbsp;3; $col++) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"&lt;li&gt;".$cars[$row][$col]."&lt;/li&gt;";</strong><br><strong>&nbsp; }</strong><br><strong>&nbsp;&nbsp;echo&nbsp;"&lt;/ul&gt;";</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-5f" data-rv-view="595" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="IwEv54nH9YCwGvD1KuYZxJiTt1+CKuF7ipp2VgK8e8+O1rObgVC4zHmZVMVsjh1f/jew7NTE1SbkLclgOXeO2wt0Vq2k/uP3AyNXyFd3qwf6G3eL6kqpSv5u5A7RqLfx" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5f-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-5f-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5f-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-5f-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5f-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-5f-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

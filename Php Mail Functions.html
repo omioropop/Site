@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="PHP Mail Introduction
+The mail() function allows you to send emails directly from a script.
+
+Requirements
+For the mail functions to be available, PHP requires an installed and working email system. The program to be used is defined by the configuration settings in the php.ini file.
+
+Installation
+The mail functions are part of the PHP core. There is no installation needed to use these functions.
+
+Runtime Configuration
+The behavior of the mail functions is affected by settings in php.ini:
+
+Name	Default	Description	Changeable
+mail.add_x_header	"0"	Add X-PHP-Originating-Script that will include UID of the script followed by the filename. For PHP 5.3.0 and above	PHP_INI_PERDIR
+mail.log	NULL	The path to a log file that will log all mail() calls. Log  include full path of script, line number, To address and headers. For PHP 5.3.0 and above	PHP_INI_PERDIR
+SMTP	"localhost"	Windows only: The DNS name or IP address of the SMTP server	PHP_INI_ALL
+smtp_port	"25"	Windows only: The SMTP port number. For PHP 4.3.0 and above	PHP_INI_ALL
+sendmail_from	NULL	Windows only: Specifies the "from" address to be used when sending mail from mail()	PHP_INI_ALL
+sendmail_path	"/usr/sbin/sendmail -t -i"	Specifies where the sendmail program can be found. This directive works also under Windows. If set, SMTP, smtp_port and sendmail_from are ignored	PHP_INI_SYSTEM
+PHP 5 Mail Functions
+Function	Description
+ezmlm_hash()	Calculates the hash value needed by EZMLM
+mail()	Allows you to send emails directly from a script
+
+">
+  <title>Php Mail Functions</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-a8" data-rv-view="1328">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/m">bootstrap table</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-b7" data-rv-view="1330" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Mail Functions</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-b8" data-rv-view="1333" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>PHP Mail Introduction</h2><p>The mail() function allows you to send emails directly from a script.</p><h2>Requirements</h2><p>For the mail functions to be available, PHP requires an installed and working email system. The program to be used is defined by the configuration settings in the php.ini file.</p><h2>Installation</h2><p>The mail functions are part of the PHP core. There is no installation needed to use these functions.</p><h2>Runtime Configuration</h2><p>The behavior of the mail functions is affected by settings in php.ini:</p><div class="w3-responsive"><table class="w3-table-all notranslate mce-item-table"><tbody><tr><th>Name</th><th>Default</th><th>Description</th><th>Changeable</th></tr><tr><td>mail.add_x_header</td><td>"0"</td><td>Add X-PHP-Originating-Script that will include UID of the script followed by the filename. For PHP 5.3.0 and above</td><td>PHP_INI_PERDIR</td></tr><tr><td>mail.log</td><td>NULL</td><td>The path to a log file that will log all mail() calls. Log&nbsp; include full path of script, line number, To address and headers. For PHP 5.3.0 and above</td><td>PHP_INI_PERDIR</td></tr><tr><td>SMTP</td><td>"localhost"</td><td>Windows only: The DNS name or IP address of the SMTP server</td><td>PHP_INI_ALL</td></tr><tr><td>smtp_port</td><td>"25"</td><td>Windows only: The SMTP port number. For PHP 4.3.0 and above</td><td>PHP_INI_ALL</td></tr><tr><td>sendmail_from</td><td>NULL</td><td>Windows only: Specifies the "from" address to be used when sending mail from mail()</td><td>PHP_INI_ALL</td></tr><tr><td>sendmail_path</td><td>"/usr/sbin/sendmail -t -i"</td><td>Specifies where the sendmail program can be found. This directive works also under Windows. If set, SMTP, smtp_port and sendmail_from are ignored</td><td>PHP_INI_SYSTEM</td></tr></tbody></table></div><h2>PHP 5 Mail Functions</h2><table class="w3-table-all notranslate mce-item-table" style="width: 450px;" data-mce-style="width: 450px;"><tbody><tr><th style="width: 138px;" data-mce-style="width: 138px;">Function</th><th style="width: 298px;" data-mce-style="width: 298px;">Description</th></tr><tr><td style="width: 138px;" data-mce-style="width: 138px;"><a href="func_mail_ezmlm_hash.html" class="text-info" data-mce-href="func_mail_ezmlm_hash.html">ezmlm_hash()</a></td><td style="width: 298px;" data-mce-style="width: 298px;">Calculates the hash value needed by EZMLM</td></tr><tr><td style="width: 138px;" data-mce-style="width: 138px;"><a href="func_mail_mail.html" class="text-info" data-mce-href="func_mail_mail.html">mail()</a></td><td style="width: 298px;" data-mce-style="width: 298px;">Allows you to send emails directly from a script</td></tr></tbody></table><h2><br><br></h2></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-a9" data-rv-view="1335" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="T13OSIUotKHDmuN08uuBB5SB6YBU9b1jxLtNj6B9PFsDtPxzR9zA9BolAIzdmIqxIQBYJaJPaYEkhusRcpdJH0ZNkje9moCO2VoUt/BsMMSQwCKR3zkk7PTHQK+laTQ8" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-a9-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-a9-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-a9-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-a9-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-a9-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-a9-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

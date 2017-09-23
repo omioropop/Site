@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="An array stores multiple values in one single variable:
+
+EXAMPLE
+<?php
+$cars = array(“Volvo”, “BMW”, “Toyota”);
+echo “I like ” . $cars[0] . “, ” . $cars[1] . ” and ” . $cars[2] . “.”;
+?>
+WHAT IS AN ARRAY?
+An array is a special variable, which can hold more than one value at a time.
+
+If you have a list of items (a list of car names, for example), storing the cars in single variables could look like this:
+
+$cars1 = “Volvo”;
+$cars2 = “BMW”;
+$cars3 = “Toyota”;
+However, what if you want to loop through the cars and find a specific one? And what if you had not 3 cars, but 300?
+
+The solution is to create an array!
+
+An array can hold many values under a single name, and you can access the values by referring to an index number.
+
+CREATE AN ARRAY IN PHP
+In PHP, the array() function is used to create an array:
+
+array();
+In PHP, there are three types of arrays:
+
+Indexed arrays – Arrays with a numeric index
+Associative arrays – Arrays with named keys
+Multidimensional arrays – Arrays containing one or more arrays
+PHP INDEXED ARRAYS
+There are two ways to create indexed arrays:
+
+The index can be assigned automatically (index always starts at 0), like this:
+
+$cars = array(“Volvo”, “BMW”, “Toyota”);
+or the index can be assigned manually:
+
+$cars[0] = “Volvo”;
+$cars[1] = “BMW”;
+$cars[2] = “Toyota”;
+The following example creates an indexed array named $cars, assigns three elements to it, and then prints a text containing the array values:
+
+EXAMPLE
+<?php
+$cars = array(“Volvo”, “BMW”, “Toyota”);
+echo “I like ” . $cars[0] . “, ” . $cars[1] . ” and ” . $cars[2] . “.”;
+?>
+GET THE LENGTH OF AN ARRAY – THE COUNT() FUNCTION
+The count() function is used to return the length (the number of elements) of an array:
+
+EXAMPLE
+<?php
+$cars = array(“Volvo”, “BMW”, “Toyota”);
+echo count($cars);
+?>
+ 
+Loop Through an Indexed Array
+
+To loop through and print all the values of an indexed array, you could use a for loop, like this:
+
+EXAMPLE
+<?php
+$cars = array(“Volvo”, “BMW”, “Toyota”);
+$arrlength = count($cars);for($x = 0; $x < $arrlength; $x++) {
+    echo $cars[$x];
+    echo “<br>”;
+}
+?>
+PHP ASSOCIATIVE ARRAYS
+Associative arrays are arrays that use named keys that you assign to them.
+
+There are two ways to create an associative array: 
+
+$age = array(“Peter”=>”35”, “Ben”=>”37”, “Joe”=>”43”);
+or:
+
+$age[‘Peter’] = “35”;
+$age[‘Ben’] = “37”;
+$age[‘Joe’] = “43”;
+The named keys can then be used in a script:
+
+EXAMPLE
+<?php
+$age = array(“Peter”=>”35”, “Ben”=>”37”, “Joe”=>”43”);
+echo “Peter is ” . $age[‘Peter’] . ” years old.”;
+?>
+LOOP THROUGH AN ASSOCIATIVE ARRAY
+To loop through and print all the values of an associative array, you could use a foreach loop, like this:
+
+EXAMPLE
+<?php
+$age = array(“Peter”=>”35”, “Ben”=>”37”, “Joe”=>”43”);foreach($age as $x => $x_value) {
+    echo “Key=” . $x . “, Value=” . $x_value;
+    echo “<br>”;
+}
+?>
+MULTIDIMENSIONAL ARRAYS
+Multidimensional arrays will be explained in the PHP advanced section.
+
+COMPLETE PHP ARRAY REFERENCE
+For a complete reference of all array functions, go to our complete PHP Array Reference.
+
+The reference contains a brief description, and examples of use, for each function!">
+  <title>Arrays</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-35" data-rv-view="428">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/l">free bootstrap themes</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-44" data-rv-view="430" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Arrays</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-48" data-rv-view="433" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><header class="header left-right"><div id="main-header-wrapper"><div id="main-header" data-fixed-height="80"><div class="container"><div id="et-navigation" class=""><ul id="et-menu" class="nav"><li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-page-ancestor menu-item-202"><p class="intro">An array stores multiple values in one single variable:</p><div class="w3-example"><h3 id="mcetoc_1bmgt8g2q3n">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$cars = array(“Volvo”, “BMW”, “Toyota”);<br>echo “I like ” . $cars[0] . “, ” . $cars[1] . ” and ” . $cars[2] . “.”;<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgt8g2q3o">WHAT IS AN ARRAY?</h2><p>An array is a special variable, which can hold more than one value at a time.</p><p>If you have a list of items (a list of car names, for example), storing the cars in single variables could look like this:</p><div class="w3-code w3-border notranslate"><div>$cars1 = “Volvo”;<br>$cars2 = “BMW”;<br>$cars3 = “Toyota”;</div></div><p>However, what if you want to loop through the cars and find a specific one? And what if you had not 3 cars, but 300?</p><p>The solution is to create an array!</p><p>An array can hold many values under a single name, and you can access the values by referring to an index number.</p><h2 id="mcetoc_1bmgt8g2q3p">CREATE AN ARRAY IN PHP</h2><p>In PHP, the array() function is used to create an array:</p><div class="w3-code w3-border notranslate"><div>array();</div></div><p>In PHP, there are three types of arrays:</p><ul><li><strong>Indexed arrays</strong>&nbsp;– Arrays with a numeric index</li><li><strong>Associative arrays</strong>&nbsp;– Arrays with named keys</li><li><strong>Multidimensional arrays</strong>&nbsp;– Arrays containing one or more arrays</li></ul><h2 id="mcetoc_1bmgt8g2q3q">PHP INDEXED ARRAYS</h2><p>There are two ways to create indexed arrays:</p><p>The index can be assigned automatically (index always starts at 0), like this:</p><div class="w3-code w3-border notranslate"><div>$cars = array(“Volvo”, “BMW”, “Toyota”);</div></div><p>or the index can be assigned manually:</p><div class="w3-code w3-border notranslate"><div>$cars[0] = “Volvo”;<br>$cars[1] = “BMW”;<br>$cars[2] = “Toyota”;</div></div><p>The following example creates an indexed array named $cars, assigns three elements to it, and then prints a text containing the array values:</p><div class="w3-example"><h3 id="mcetoc_1bmgt8g2q3r">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$cars = array(“Volvo”, “BMW”, “Toyota”);<br>echo “I like ” . $cars[0] . “, ” . $cars[1] . ” and ” . $cars[2] . “.”;<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgt8g2q3s">GET THE LENGTH OF AN ARRAY – THE COUNT() FUNCTION</h2><p>The count() function is used to return the length (the number of elements) of an array:</p><div class="w3-example"><h3 id="mcetoc_1bmgt8g2q3t">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$cars = array(“Volvo”, “BMW”, “Toyota”);<br>echo count($cars);<br>?&gt;</strong></div></blockquote><div>&nbsp;</div><p>Loop Through an Indexed Array</p></div><p>To loop through and print all the values of an indexed array, you could use a for loop, like this:</p><div class="w3-example"><h3 id="mcetoc_1bmgt8g2q3u">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$cars = array(“Volvo”, “BMW”, “Toyota”);<br>$arrlength = count($cars);for($x = 0; $x &lt; $arrlength; $x++) {<br>&nbsp; &nbsp; echo $cars[$x];<br>&nbsp;&nbsp;&nbsp; echo “&lt;br&gt;”;<br>}<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgt8g2q3v">PHP ASSOCIATIVE ARRAYS</h2><p>Associative arrays are arrays that use named keys that you assign to them.</p><p>There are two ways to create an associative array:&nbsp;</p><div class="w3-code w3-border notranslate"><div>$age = array(“Peter”=&gt;”35”, “Ben”=&gt;”37”, “Joe”=&gt;”43”);</div></div><p>or:</p><div class="w3-code w3-border notranslate"><div>$age[‘Peter’] = “35”;<br>$age[‘Ben’] = “37”;<br>$age[‘Joe’] = “43”;</div></div><p>The named keys can then be used in a script:</p><div class="w3-example"><h3 id="mcetoc_1bmgt8g2q40">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$age = array(“Peter”=&gt;”35”, “Ben”=&gt;”37”, “Joe”=&gt;”43”);<br>echo “Peter is ” . $age[‘Peter’] . ” years old.”;<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgt8g2q41">LOOP THROUGH AN ASSOCIATIVE ARRAY</h2><p>To loop through and print all the values of an associative array, you could use a foreach loop, like this:</p><div class="w3-example"><h3 id="mcetoc_1bmgt8g2q42">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$age = array(“Peter”=&gt;”35”, “Ben”=&gt;”37”, “Joe”=&gt;”43”);foreach($age as $x =&gt; $x_value) {<br>&nbsp; &nbsp; echo “Key=” . $x . “, Value=” . $x_value;<br>&nbsp;&nbsp;&nbsp; echo “&lt;br&gt;”;<br>}<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgt8g2q43">MULTIDIMENSIONAL ARRAYS</h2><p>Multidimensional arrays will be explained in the PHP advanced section.</p><h2 id="mcetoc_1bmgt8g2q44">COMPLETE PHP ARRAY REFERENCE</h2><p>For a complete reference of all array functions, go to our complete PHP Array Reference.</p><p>The reference contains a brief description, and examples of use, for each function!</p></li></ul></div></div></div></div></header></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-36" data-rv-view="435" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="2aqz5k37NxSIeP3zwwqjt5/ATAfBq53fq2WuvLZlY6tW3k5x+RgPX/eszBwgf1t2KltNswMeIRd1y4hcA/hjUKb2MT2hXzJsMnIKmcBYINkvkXdZb2cIxYE1AoUSyV43" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-36-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-36-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-36-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-36-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-36-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-36-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

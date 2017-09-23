@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="The include (or require) statement takes all the text/code/markup that exists in the specified file and copies it into the file that uses the include statement.
+
+Including files is very useful when you want to include the same PHP, HTML, or text on multiple pages of a website.
+
+PHP include and require Statements
+It is possible to insert the content of one PHP file into another PHP file (before the server executes it), with the include or require statement.
+
+The include and require statements are identical, except upon failure:
+
+require will produce a fatal error (E_COMPILE_ERROR) and stop the script
+include will only produce a warning (E_WARNING) and the script will continue
+So, if you want the execution to go on and show users the output, even if the include file is missing, use the include statement. Otherwise, in case of FrameWork, CMS, or a complex PHP application coding, always use the require statement to include a key file to the flow of execution. This will help avoid compromising your application's security and integrity, just in-case one key file is accidentally missing.
+
+Including files saves a lot of work. This means that you can create a standard header, footer, or menu file for all your web pages. Then, when the header needs to be updated, you can only update the header include file.
+
+Syntax
+include 'filename';
+
+or
+
+require 'filename';
+PHP include Examples
+Example 1
+Assume we have a standard footer file called "footer.php", that looks like this:
+
+<?php
+echo "<p>Copyright &copy; 1999-" . date("Y") . " W3Schools.com</p>";
+?>
+To include the footer file in a page, use the include statement:
+
+Example
+<html>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+
+<h1>Welcome to my home page!</h1>
+<p>Some text.</p>
+<p>Some more text.</p>
+<?php include 'footer.php';?>
+
+  <input name="animation" type="hidden">
+  </body>
+</html>
+Example 2
+Assume we have a standard menu file called "menu.php":
+
+<?php
+echo '<a href="/default.asp">Home</a> -
+<a href="/html/default.asp">HTML Tutorial</a> -
+<a href="/css/default.asp">CSS Tutorial</a> -
+<a href="/js/default.asp">JavaScript Tutorial</a> -
+<a href="default.asp">PHP Tutorial</a>';
+?>
+All pages in the Web site should use this menu file. Here is how it can be done (we are using a <div> element so that the menu easily can be styled with CSS later):
+
+Example
+<html>
+<body>
+
+<div class="menu">
+<?php include 'menu.php';?>
+</div>
+
+<h1>Welcome to my home page!</h1>
+<p>Some text.</p>
+<p>Some more text.</p>
+
+</body>
+</html>
+Example 3
+Assume we have a file called "vars.php", with some variables defined:
+
+<?php
+$color='red';
+$car='BMW';
+?>
+Then, if we include the "vars.php" file, the variables can be used in the calling file:
+
+Example
+<html>
+<body>
+
+<h1>Welcome to my home page!</h1>
+<?php include 'vars.php';
+echo "I have a $color $car.";
+?>
+
+</body>
+</html>
+PHP include vs. require
+The require statement is also used to include a file into the PHP code.
+
+However, there is one big difference between include and require; when a file is included with the include statement and PHP cannot find it, the script will continue to execute:
+
+Example
+<html>
+<body>
+
+<h1>Welcome to my home page!</h1>
+<?php include 'noFileExists.php';
+echo "I have a $color $car.";
+?>
+
+</body>
+</html>
+If we do the same example using the require statement, the echo statement will not be executed because the script execution dies after the require statement returned a fatal error:
+
+Example
+<html>
+<body>
+
+<h1>Welcome to my home page!</h1>
+<?php require 'noFileExists.php';
+echo "I have a $color $car.";
+?>
+
+</body>
+</html>
+Use require when the file is required by the application.
+
+Use include when the file is not required and application should continue when file is not found.">
+  <title>Php Include Files</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+<section id="ext_menu-5i" data-rv-view="609">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/q">bootstrap slideshow</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-69" data-rv-view="604" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Include Files</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-6a" data-rv-view="607" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><p class="intro">The include (or require) statement takes all the text/code/markup that exists in the specified file and copies it into the file that uses the include statement.</p><p class="intro">Including files is very useful when you want to include the same PHP, HTML, or text on multiple pages of a website.</p><h2>PHP include and require Statements</h2><p>It is possible to insert the content of one PHP file into another PHP file (before the server executes it), with the include or require statement.</p><p><strong>The include and require statements are identical, except upon failure:</strong></p><ul><li>require will produce a fatal error (E_COMPILE_ERROR) and stop the script</li><li>include will only produce a warning (E_WARNING) and the script will continue</li></ul><p>So, if you want the execution to go on and show users the output, even if the include file is missing, use the include statement. Otherwise, in case of FrameWork, CMS, or a complex PHP application coding, always use the require statement to include a key file to the flow of execution. This will help avoid compromising your application's security and integrity, just in-case one key file is accidentally missing.</p><p>Including files saves a lot of work. This means that you can create a standard header, footer, or menu file for all your web pages. Then, when the header needs to be updated, you can only update the header include file.</p><h3>Syntax</h3><div class="w3-code w3-border notranslate"><div><strong>include '<em>filename</em>';</strong><br><br><strong>or</strong><br><br><strong>require '<em>filename</em>';</strong></div></div><h2>PHP include Examples</h2><h3>Example 1</h3><p>Assume we have a standard footer file called "footer.php", that looks like this:</p><div class="w3-code w3-border notranslate"><div><strong>&lt;?php</strong><br><strong>echo "&lt;p&gt;Copyright &amp;copy; 1999-" . date("Y") . " W3Schools.com&lt;/p&gt;";</strong><br><strong>?&gt;</strong></div></div><p>To include the footer file in a page, use the include statement:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</strong><br><strong>&lt;p&gt;Some text.&lt;/p&gt;</strong><br><strong>&lt;p&gt;Some more text.&lt;/p&gt;</strong><br><strong>&lt;?php&nbsp;include&nbsp;'footer.php';?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><h3>Example 2</h3><p>Assume we have a standard menu file called "menu.php":</p><div class="w3-code w3-border notranslate"><div><strong>&lt;?php</strong><br><strong>echo '&lt;a href="/default.asp"&gt;Home&lt;/a&gt; -</strong><br><strong>&lt;a href="/html/default.asp"&gt;HTML Tutorial&lt;/a&gt; -</strong><br><strong>&lt;a href="/css/default.asp"&gt;CSS Tutorial&lt;/a&gt; -</strong><br><strong>&lt;a href="/js/default.asp"&gt;JavaScript Tutorial&lt;/a&gt; -</strong><br><strong>&lt;a href="default.asp"&gt;PHP Tutorial&lt;/a&gt;';</strong><br><strong>?&gt;</strong></div></div><p>All pages in the Web site should use this menu file. Here is how it can be done (we are using a &lt;div&gt; element so that the menu easily can be styled with CSS later):</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;div&nbsp;class="menu"&gt;</strong><br><strong>&lt;?php&nbsp;include&nbsp;'menu.php';?&gt;</strong><br><strong>&lt;/div&gt;</strong><br><br><strong>&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</strong><br><strong>&lt;p&gt;Some text.&lt;/p&gt;</strong><br><strong>&lt;p&gt;Some more text.&lt;/p&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><h3>Example 3</h3><p>Assume we have a file called "vars.php", with some variables defined:</p><div class="w3-code w3-border notranslate"><div><strong>&lt;?php</strong><br><strong>$color='red';</strong><br><strong>$car='BMW';</strong><br><strong>?&gt;</strong></div></div><p>Then, if we include the "vars.php" file, the variables can be used in the calling file:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</strong><br><strong>&lt;?php&nbsp;include&nbsp;'vars.php';</strong><br><strong>echo&nbsp;"I have a $color $car.";</strong><br><strong>?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><h2>PHP include vs. require</h2><p>The require statement is also used to include a file into the PHP code.</p><p>However, there is one big difference between include and require; when a file is included with the&nbsp;<strong>include</strong>&nbsp;statement and PHP cannot find it, the script will continue to execute:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</strong><br><strong>&lt;?php&nbsp;include&nbsp;'noFileExists.php';</strong><br><strong>echo&nbsp;"I have a $color $car.";</strong><br><strong>?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>If we do the same example using the&nbsp;<strong>require</strong>&nbsp;statement, the echo statement will not be executed because the script execution dies after the require statement returned a fatal error:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</strong><br><strong>&lt;?php&nbsp;require&nbsp;'noFileExists.php';</strong><br><strong>echo&nbsp;"I have a $color $car.";</strong><br><strong>?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><div class="w3-panel w3-note"><p>Use&nbsp;<strong>require</strong>&nbsp;when the file is required by the application.</p><p>Use&nbsp;<strong>include</strong>&nbsp;when the file is not required and application should continue when file is not found.</p></div></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-5j" data-rv-view="611" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="V+7RsbARo6lHcU/dXDJ2IOcNuqZBtc5Xf+DZkvvGPQrjd9HT/0RUhSMMmFXctbFB+Rb3wSXHPtgLx7yR8e9hJoWF1yeCCKNguXHoDfkMvKB034KRg5RdrlcLi3/qImdW" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5j-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-5j-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5j-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-5j-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5j-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-5j-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="Validating data = Determine if the data is in proper form.
+
+Sanitizing data = Remove any illegal character from the data.
+
+The PHP Filter Extension
+PHP filters are used to validate and sanitize external input.
+
+The PHP filter extension has many of the functions needed for checking user input, and is designed to make data validation easier and quicker.
+
+The filter_list() function can be used to list what the PHP filter extension offers:
+
+Example
+<table>
+  <tr>
+    <td>Filter Name</td>
+    <td>Filter ID</td>
+  </tr>
+  <?php
+  foreach (filter_list() as $id =>$filter) {
+      echo '<tr><td>' . $filter . '</td><td>' . filter_id($filter) . '</td></tr>';
+  }
+  ?>
+</table>
+Why Use Filters?
+Many web applications receive external input. External input/data can be:
+
+User input from a form
+Cookies
+Web services data
+Server variables
+Database query results
+ 
+
+You should always validate external data!
+Invalid submitted data can lead to security problems and break your webpage!
+By using PHP filters you can be sure your application gets the correct input!
+
+PHP filter_var() Function
+The filter_var() function both validate and sanitize data.
+
+The filter_var() function filters a single variable with a specified filter. It takes two pieces of data:
+
+The variable you want to check
+The type of check to use
+Sanitize a String
+The following example uses the filter_var() function to remove all HTML tags from a string:
+
+Example
+<?php
+$str = "<h1>Hello World!</h1>";
+$newstr = filter_var($str, FILTER_SANITIZE_STRING);
+echo $newstr;
+?>
+Validate an Integer
+The following example uses the filter_var() function to check if the variable $int is an integer. If $int is an integer, the output of the code below will be: "Integer is valid". If $int is not an integer, the output will be: "Integer is not valid":
+
+Example
+<?php
+$int = 100;
+
+if (!filter_var($int, FILTER_VALIDATE_INT) === false) {
+    echo("Integer is valid");
+} else {
+    echo("Integer is not valid");
+}
+?>
+Tip: filter_var() and Problem With 0
+In the example above, if $int was set to 0, the function above will return "Integer is not valid". To solve this problem, use the code below:
+
+Example
+<?php
+$int = 0;
+
+if (filter_var($int, FILTER_VALIDATE_INT) === 0 || !filter_var($int, FILTER_VALIDATE_INT) === false) {
+    echo("Integer is valid");
+} else {
+    echo("Integer is not valid");
+}
+?>
+Validate an IP Address
+The following example uses the filter_var() function to check if the variable $ip is a valid IP address:
+
+Example
+<?php
+$ip = "127.0.0.1";
+
+if (!filter_var($ip, FILTER_VALIDATE_IP) === false) {
+    echo("$ip is a valid IP address");
+} else {
+    echo("$ip is not a valid IP address");
+}
+?>
+Sanitize and Validate an Email Address
+The following example uses the filter_var() function to first remove all illegal characters from the $email variable, then check if it is a valid email address:
+
+<?php
+$email = "john.doe@example.com";
+
+// Remove all illegal characters from email
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+// Validate e-mail
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    echo("$email is a valid email address");
+} else {
+    echo("$email is not a valid email address");
+}
+?>
+Example
+Sanitize and Validate a URL
+The following example uses the filter_var() function to first remove all illegal characters from a URL, then check if $url is a valid URL:
+
+Example
+<?php
+$url = "https://www.w3schools.com";
+
+// Remove all illegal characters from a url
+$url = filter_var($url, FILTER_SANITIZE_URL);
+
+// Validate url
+if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
+    echo("$url is a valid URL");
+} else {
+    echo("$url is not a valid URL");
+}
+?>
+Complete PHP Filter Reference
+For a complete reference of all filter functions, go to our complete PHP Filter Reference. Check each filter to see what options and flags are available.
+
+The reference contains a brief description, and examples of use, for each function!">
+  <title>Php Filters</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-5w" data-rv-view="716">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/a">free web page builder</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-6n" data-rv-view="718" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Filters</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-6o" data-rv-view="721" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><p class="intro">Validating data = Determine if the data is in proper form.</p><p class="intro">Sanitizing data = Remove any illegal character from the data.</p><h2>The PHP Filter Extension</h2><p>PHP filters are used to validate and sanitize external input.</p><p>The PHP filter extension has many of the functions needed for checking user input, and is designed to make data validation easier and quicker.</p><p>The filter_list() function can be used to list what the PHP filter extension offers:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;table&gt;</strong><br><strong>&nbsp;&nbsp;&lt;tr&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Filter Name&lt;/td&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Filter ID&lt;/td&gt;</strong><br><strong>&nbsp;&nbsp;&lt;/tr&gt;</strong><br><strong>&nbsp;&nbsp;&lt;?php</strong><br><strong>&nbsp;&nbsp;foreach&nbsp;(filter_list()&nbsp;as&nbsp;$id =&gt;$filter) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;'&lt;tr&gt;&lt;td&gt;'&nbsp;. $filter .&nbsp;'&lt;/td&gt;&lt;td&gt;'&nbsp;. filter_id($filter) .&nbsp;'&lt;/td&gt;&lt;/tr&gt;';</strong><br><strong>&nbsp; }</strong><br><strong>&nbsp;&nbsp;?&gt;</strong><br><strong>&lt;/table&gt;</strong></div></div><h2>Why Use Filters?</h2><p>Many web applications receive external input. External input/data can be:</p><ul><li>User input from a form</li><li>Cookies</li><li>Web services data</li><li>Server variables</li><li>Database query results</li></ul><div class="w3-panel w3-note"><p>&nbsp;</p><p><strong>You should always validate external data!<br></strong>Invalid submitted data can lead to security problems and break your webpage!<br>By using PHP filters you can be sure your application gets the correct input!</p></div><h2>PHP filter_var() Function</h2><p>The filter_var() function both validate and sanitize data.</p><p>The filter_var() function filters a single variable with a specified filter. It takes two pieces of data:</p><ul><li>The variable you want to check</li><li>The type of check to use</li></ul><h2>Sanitize a String</h2><p>The following example uses the filter_var() function to remove all HTML tags from a string:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$str =&nbsp;"&lt;h1&gt;Hello World!&lt;/h1&gt;";</strong><br><strong>$newstr = filter_var($str, FILTER_SANITIZE_STRING);</strong><br><strong>echo&nbsp;$newstr;</strong><br><strong>?&gt;</strong></div></div><h2>Validate an Integer</h2><p>The following example uses the filter_var() function to check if the variable $int is an integer. If $int is an integer, the output of the code below will be: "Integer is valid". If $int is not an integer, the output will be: "Integer is not valid":</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$int =&nbsp;100;</strong><br><br><strong>if&nbsp;(!filter_var($int, FILTER_VALIDATE_INT) === false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("Integer is valid");</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("Integer is not valid");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><h3>Tip: filter_var() and Problem With 0</h3><p>In the example above, if $int was set to 0, the function above will return "Integer is not valid". To solve this problem, use the code below:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$int =&nbsp;0;</strong><br><br><strong>if&nbsp;(filter_var($int, FILTER_VALIDATE_INT) ===&nbsp;0&nbsp;|| !filter_var($int, FILTER_VALIDATE_INT) === false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("Integer is valid");</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("Integer is not valid");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><h2>Validate an IP Address</h2><p>The following example uses the filter_var() function to check if the variable $ip is a valid IP address:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$ip =&nbsp;"127.0.0.1";</strong><br><br><strong>if&nbsp;(!filter_var($ip, FILTER_VALIDATE_IP) === false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$ip is a valid IP address");</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$ip is not a valid IP address");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><h2>Sanitize and Validate an Email Address</h2><p>The following example uses the filter_var() function to first remove all illegal characters from the $email variable, then check if it is a valid email address:</p><div class="w3-example"><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$email =&nbsp;"john.doe@example.com";</strong><br><br><strong>// Remove all illegal characters from email</strong><br><strong>$email = filter_var($email, FILTER_SANITIZE_EMAIL);</strong><br><br><strong>// Validate e-mail</strong><br><strong>if&nbsp;(!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$email is a valid email address");</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$email is not a valid email address");</strong><br><strong>}</strong><br><strong>?&gt;</strong><h3>Example</h3></div></div><h2>Sanitize and Validate a URL</h2><p>The following example uses the filter_var() function to first remove all illegal characters from a URL, then check if $url is a valid URL:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$url =&nbsp;"https://www.w3schools.com";</strong><br><br><strong>// Remove all illegal characters from a url</strong><br><strong>$url = filter_var($url, FILTER_SANITIZE_URL);</strong><br><br><strong>// Validate url</strong><br><strong>if&nbsp;(!filter_var($url, FILTER_VALIDATE_URL) === false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$url is a valid URL");</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo("$url is not a valid URL");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><h2>Complete PHP Filter Reference</h2><p>For a complete reference of all filter functions, go to our complete&nbsp;<a href="https://www.w3schools.com/php/php_ref_filter.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/php_ref_filter.asp">PHP Filter Reference.</a>&nbsp;Check each filter to see what options and flags are available.</p><p>The reference contains a brief description, and examples of use, for each function!</p></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-5x" data-rv-view="723" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="5tZOs3Bieo3C6DO93+mQeSR5TrhQe5cmcPXv6yUrJB56lZZA2zsOXQD5Bbr7IBgr8KboV1fGehNKPcDApTzlsIkbn9gYPdnRo+zoum6DUEd2ONpFlGhP8IPPCMu9HHcp" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5x-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-5x-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5x-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-5x-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5x-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-5x-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

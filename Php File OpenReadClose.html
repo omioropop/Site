@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="PHP Open File - fopen()
+A better method to open files is with the fopen() function. This function gives you more options than the readfile() function.
+
+We will use the text file, "webdictionary.txt", during the lessons:
+
+AJAX = Asynchronous JavaScript and XML
+CSS = Cascading Style Sheets
+HTML = Hyper Text Markup Language
+PHP = PHP Hypertext Preprocessor
+SQL = Structured Query Language
+SVG = Scalable Vector Graphics
+XML = EXtensible Markup Language
+The first parameter of fopen() contains the name of the file to be opened and the second parameter specifies in which mode the file should be opened. The following example also generates a message if the fopen() function is unable to open the specified file:
+
+Example
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+echo fread($myfile,filesize("webdictionary.txt"));
+fclose($myfile);
+?>
+Tip: The fread() and the fclose() functions will be explained below.
+
+The file may be opened in one of the following modes:
+
+Modes	Description
+r	Open a file for read only. File pointer starts at the beginning of the file
+w	Open a file for write only. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file
+a	Open a file for write only. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist
+x	Creates a new file for write only. Returns FALSE and an error if file already exists
+r+	Open a file for read/write. File pointer starts at the beginning of the file
+w+	Open a file for read/write. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file
+a+	Open a file for read/write. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist
+x+	Creates a new file for read/write. Returns FALSE and an error if file already exists
+ 
+PHP Read File - fread()
+The fread() function reads from an open file.
+
+The first parameter of fread() contains the name of the file to read from and the second parameter specifies the maximum number of bytes to read.
+
+The following PHP code reads the "webdictionary.txt" file to the end:
+
+fread($myfile,filesize("webdictionary.txt"));
+PHP Close File - fclose()
+The fclose() function is used to close an open file.
+
+It's a good programming practice to close all files after you have finished with them. You don't want an open file running around on your server taking up resources!
+
+The fclose() requires the name of the file (or a variable that holds the filename) we want to close:
+
+<?php
+$myfile = fopen("webdictionary.txt", "r");
+// some code to be executed....
+fclose($myfile);
+?>
+PHP Read Single Line - fgets()
+The fgets() function is used to read a single line from a file.
+
+The example below outputs the first line of the "webdictionary.txt" file:
+
+Example
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+echo fgets($myfile);
+fclose($myfile);
+?>
+Note: After a call to the fgets() function, the file pointer has moved to the next line.
+
+PHP Check End-Of-File - feof()
+The feof() function checks if the "end-of-file" (EOF) has been reached.
+
+The feof() function is useful for looping through data of unknown length.
+
+The example below reads the "webdictionary.txt" file line by line, until end-of-file is reached:
+
+Example
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+// Output one line until end-of-file
+while(!feof($myfile)) {
+  echo fgets($myfile) . "<br>";
+}
+fclose($myfile);
+?>
+PHP Read Single Character - fgetc()
+The fgetc() function is used to read a single character from a file.
+
+The example below reads the "webdictionary.txt" file character by character, until end-of-file is reached:
+
+Example
+<?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+// Output one character until end-of-file
+while(!feof($myfile)) {
+  echo fgetc($myfile);
+}
+fclose($myfile);
+?>
+Note: After a call to the fgetc() function, the file pointer moves to the next character.
+
+Complete PHP Filesystem Reference
+For a complete reference of filesystem functions, go to our complete PHP Filesystem Reference.">
+  <title>Php File OpenReadClose</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-5m" data-rv-view="641">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/c">web page maker</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-6d" data-rv-view="636" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php File Open/Read/Close</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-6e" data-rv-view="639" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>PHP Open File - fopen()</h2><p>A better method to open files is with the fopen() function. This function gives you more options than the readfile() function.</p><p>We will use the text file, "webdictionary.txt", during the lessons:</p><div class="w3-code w3-border notranslate"><div><strong>AJAX = Asynchronous JavaScript and XML</strong><br><strong>CSS = Cascading Style Sheets</strong><br><strong>HTML = Hyper Text Markup Language</strong><br><strong>PHP = PHP Hypertext Preprocessor</strong><br><strong>SQL = Structured Query Language</strong><br><strong>SVG = Scalable Vector Graphics</strong><br><strong>XML = EXtensible Markup Language</strong></div></div><p>The first parameter of fopen() contains the name of the file to be opened and the second parameter specifies in which mode the file should be opened. The following example also generates a message if the fopen() function is unable to open the specified file:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$myfile = fopen("webdictionary.txt",&nbsp;"r")&nbsp;or&nbsp;die("Unable to open file!");</strong><br><strong>echo&nbsp;fread($myfile,filesize("webdictionary.txt"));</strong><br><strong>fclose($myfile);</strong><br><strong>?&gt;</strong></div></div><p><strong>Tip:</strong>&nbsp;The fread() and the fclose() functions will be explained below.</p><p>The file may be opened in one of the following modes:</p><table class="w3-table-all notranslate mce-item-table"><tbody><tr><th>Modes</th><th>Description</th></tr><tr><td>r</td><td><strong>Open a file for read only</strong>. File pointer starts at the beginning of the file</td></tr><tr><td>w</td><td><strong>Open a file for write only</strong>. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file</td></tr><tr><td>a</td><td><strong>Open a file for write only</strong>. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist</td></tr><tr><td>x</td><td><strong>Creates a new file for write only</strong>. Returns FALSE and an error if file already exists</td></tr><tr><td>r+</td><td><strong>Open a file for read/write</strong>. File pointer starts at the beginning of the file</td></tr><tr><td>w+</td><td><strong>Open a file for read/write</strong>. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file</td></tr><tr><td>a+</td><td><strong>Open a file for read/write</strong>. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist</td></tr><tr><td>x+</td><td><strong>Creates a new file for read/write</strong>. Returns FALSE and an error if file already exists</td></tr></tbody></table><div>&nbsp;</div><h2>PHP Read File - fread()</h2><p>The fread() function reads from an open file.</p><p>The first parameter of fread() contains the name of the file to read from and the second parameter specifies the maximum number of bytes to read.</p><p>The following PHP code reads the "webdictionary.txt" file to the end:</p><div class="w3-code w3-border notranslate"><div><strong>fread($myfile,filesize("webdictionary.txt"));</strong></div></div><h2>PHP Close File - fclose()</h2><p>The fclose() function is used to close an open file.</p><div class="w3-panel w3-note"><p>It's a good programming practice to close all files after you have finished with them. You don't want an open file running around on your server taking up resources!</p></div><p>The fclose() requires the name of the file (or a variable that holds the filename) we want to close:</p><div class="w3-code w3-border notranslate htmlHigh"><div><strong>&lt;?php</strong><br><strong>$myfile = fopen("webdictionary.txt",&nbsp;"r");</strong><br><strong>// some code to be executed....</strong><br><strong>fclose($myfile);</strong><br><strong>?&gt;</strong></div></div><h2>PHP Read Single Line - fgets()</h2><p>The fgets() function is used to read a single line from a file.</p><p>The example below outputs the first line of the "webdictionary.txt" file:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$myfile = fopen("webdictionary.txt",&nbsp;"r")&nbsp;or&nbsp;die("Unable to open file!");</strong><br><strong>echo&nbsp;fgets($myfile);</strong><br><strong>fclose($myfile);</strong><br><strong>?&gt;</strong></div></div><p><strong>Note:</strong>&nbsp;After a call to the fgets() function, the file pointer has moved to the next line.</p><h2>PHP Check End-Of-File - feof()</h2><p>The feof() function checks if the "end-of-file" (EOF) has been reached.</p><p>The feof() function is useful for looping through data of unknown length.</p><p>The example below reads the "webdictionary.txt" file line by line, until end-of-file is reached:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$myfile = fopen("webdictionary.txt",&nbsp;"r")&nbsp;or&nbsp;die("Unable to open file!");</strong><br><strong>// Output one line until end-of-file</strong><br><strong>while(!feof($myfile)) {</strong><br><strong>&nbsp;&nbsp;echo&nbsp;fgets($myfile) .&nbsp;"&lt;br&gt;";</strong><br><strong>}</strong><br><strong>fclose($myfile);</strong><br><strong>?&gt;</strong></div></div><h2>PHP Read Single Character - fgetc()</h2><p>The fgetc() function is used to read a single character from a file.</p><p>The example below reads the "webdictionary.txt" file character by character, until end-of-file is reached:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$myfile = fopen("webdictionary.txt",&nbsp;"r")&nbsp;or&nbsp;die("Unable to open file!");</strong><br><strong>// Output one character until end-of-file</strong><br><strong>while(!feof($myfile)) {</strong><br><strong>&nbsp;&nbsp;echo&nbsp;fgetc($myfile);</strong><br><strong>}</strong><br><strong>fclose($myfile);</strong><br><strong>?&gt;</strong></div></div><p><strong>Note:</strong>&nbsp;After a call to the fgetc() function, the file pointer moves to the next character.</p><h2>Complete PHP Filesystem Reference</h2><p>For a complete reference of filesystem functions, go to our complete&nbsp;<a href="https://www.w3schools.com/php/php_ref_filesystem.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/php_ref_filesystem.asp">PHP Filesystem Reference</a>.</p></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-5n" data-rv-view="643" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="Qo9AY6PtploLvkneB3Ixxj1Lmzb4svKUsPcADLQKZgyNEJ8jzSCdwwx0KcrCUNDGd89taP83w4jcA1rR9C9mwnRaDIxOuJOligqzs1op4oZtGvIl482Azo9qSOGoFinE" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5n-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-5n-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5n-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-5n-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5n-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-5n-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

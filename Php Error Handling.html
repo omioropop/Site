@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="When creating scripts and web applications, error handling is an important part. If your code lacks error checking code, your program may look very unprofessional and you may be open to security risks.
+
+This tutorial contains some of the most common error checking methods in PHP.
+
+We will show different error handling methods:
+
+Simple "die()" statements
+Custom errors and error triggers
+Error reporting
+Basic Error Handling: Using the die() function
+The first example shows a simple script that opens a text file:
+
+<?php
+$file=fopen("welcome.txt","r");
+?>
+If the file does not exist you might get an error like this:
+
+Warning: fopen(welcome.txt) [function.fopen]: failed to open stream:
+No such file or directory in C:\webfolder\test.php on line 2
+To prevent the user from getting an error message like the one above, we test whether the file exist before we try to access it:
+
+<?php
+if(!file_exists("welcome.txt")) {
+  die("File not found");
+} else {
+  $file=fopen("welcome.txt","r");
+}
+?>
+Now if the file does not exist you get an error like this:
+
+File not found
+The code above is more efficient than the earlier code, because it uses a simple error handling mechanism to stop the script after the error.
+
+However, simply stopping the script is not always the right way to go. Let's take a look at alternative PHP functions for handling errors.
+
+Creating a Custom Error Handler
+Creating a custom error handler is quite simple. We simply create a special function that can be called when an error occurs in PHP.
+
+This function must be able to handle a minimum of two parameters (error level and error message) but can accept up to five parameters (optionally: file, line-number, and the error context):
+
+Syntax
+error_function(error_level,error_message,
+error_file,error_line,error_context)
+Parameter	Description
+error_level	Required. Specifies the error report level for the user-defined error. Must be a value number. See table below for possible error report levels
+error_message	Required. Specifies the error message for the user-defined error
+error_file	Optional. Specifies the filename in which the error occurred
+error_line	Optional. Specifies the line number in which the error occurred
+error_context	Optional. Specifies an array containing every variable, and their values, in use when the error occurred
+Error Report levels
+These error report levels are the different types of error the user-defined error handler can be used for:
+
+Value	Constant	Description
+2	E_WARNING	Non-fatal run-time errors. Execution of the script is not halted
+8	E_NOTICE	Run-time notices. The script found something that might be an error, but could also happen when running a script normally
+256	E_USER_ERROR	Fatal user-generated error. This is like an E_ERROR set by the programmer using the PHP function trigger_error()
+512	E_USER_WARNING	Non-fatal user-generated warning. This is like an E_WARNING set by the programmer using the PHP function trigger_error()
+1024	E_USER_NOTICE	User-generated notice. This is like an E_NOTICE set by the programmer using the PHP function trigger_error()
+4096	E_RECOVERABLE_ERROR	Catchable fatal error. This is like an E_ERROR but can be caught by a user defined handle (see also set_error_handler())
+8191	E_ALL	All errors and warnings (E_STRICT became a part of E_ALL in PHP 5.4)
+Now lets create a function to handle errors:
+
+function customError($errno, $errstr) {
+  echo "<b>Error:</b> [$errno] $errstr<br>";
+  echo "Ending Script";
+  die();
+}
+The code above is a simple error handling function. When it is triggered, it gets the error level and an error message. It then outputs the error level and message and terminates the script.
+
+Now that we have created an error handling function we need to decide when it should be triggered.
+
+Set Error Handler
+The default error handler for PHP is the built in error handler. We are going to make the function above the default error handler for the duration of the script.
+
+It is possible to change the error handler to apply for only some errors, that way the script can handle different errors in different ways. However, in this example we are going to use our custom error handler for all errors:
+
+set_error_handler("customError");
+Since we want our custom function to handle all errors, the set_error_handler() only needed one parameter, a second parameter could be added to specify an error level.
+
+Example
+Testing the error handler by trying to output variable that does not exist:
+
+<?php
+//error handler function
+function customError($errno, $errstr) {
+  echo "<b>Error:</b> [$errno] $errstr";
+}
+
+//set error handler
+set_error_handler("customError");
+
+//trigger error
+echo($test);
+?>
+The output of the code above should be something like this:
+
+Error: [8] Undefined variable: test
+Trigger an Error
+In a script where users can input data it is useful to trigger errors when an illegal input occurs. In PHP, this is done by the trigger_error() function.
+
+Example
+In this example an error occurs if the "test" variable is bigger than "1":
+
+<?php
+$test=2;
+if ($test>=1) {
+  trigger_error("Value must be 1 or below");
+}
+?>
+The output of the code above should be something like this:
+
+Notice: Value must be 1 or below
+in C:\webfolder\test.php on line 6
+An error can be triggered anywhere you wish in a script, and by adding a second parameter, you can specify what error level is triggered.
+
+Possible error types:
+
+E_USER_ERROR - Fatal user-generated run-time error. Errors that can not be recovered from. Execution of the script is halted
+E_USER_WARNING - Non-fatal user-generated run-time warning. Execution of the script is not halted
+E_USER_NOTICE - Default. User-generated run-time notice. The script found something that might be an error, but could also happen when running a script normally
+Example
+In this example an E_USER_WARNING occurs if the "test" variable is bigger than "1". If an E_USER_WARNING occurs we will use our custom error handler and end the script:
+
+<?php
+//error handler function
+function customError($errno, $errstr) {
+  echo "<b>Error:</b> [$errno] $errstr<br>";
+  echo "Ending Script";
+  die();
+}
+
+//set error handler
+set_error_handler("customError",E_USER_WARNING);
+
+//trigger error
+$test=2;
+if ($test>=1) {
+  trigger_error("Value must be 1 or below",E_USER_WARNING);
+}
+?>
+The output of the code above should be something like this:
+
+Error: [512] Value must be 1 or below
+Ending Script
+Now that we have learned to create our own errors and how to trigger them, lets take a look at error logging.
+
+Error Logging
+By default, PHP sends an error log to the server's logging system or a file, depending on how the error_log configuration is set in the php.ini file. By using the error_log() function you can send error logs to a specified file or a remote destination.
+
+Sending error messages to yourself by e-mail can be a good way of getting notified of specific errors.
+
+Send an Error Message by E-Mail
+In the example below we will send an e-mail with an error message and end the script, if a specific error occurs:
+
+<?php
+//error handler function
+function customError($errno, $errstr) {
+  echo "<b>Error:</b> [$errno] $errstr<br>";
+  echo "Webmaster has been notified";
+  error_log("Error: [$errno] $errstr",1,
+  "someone@example.com","From: webmaster@example.com");
+}
+
+//set error handler
+set_error_handler("customError",E_USER_WARNING);
+
+//trigger error
+$test=2;
+if ($test>=1) {
+  trigger_error("Value must be 1 or below",E_USER_WARNING);
+}
+?>
+The output of the code above should be something like this:
+
+Error: [512] Value must be 1 or below
+Webmaster has been notified
+And the mail received from the code above looks like this:
+
+Error: [512] Value must be 1 or below
+This should not be used with all errors. Regular errors should be logged on the server using the default PHP logging system.">
+  <title>Php Error Handling</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-60" data-rv-view="1440">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co">Mobirise</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-6r" data-rv-view="1442" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Error Handling</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-6s" data-rv-view="1445" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><p>When creating scripts and web applications, error handling is an important part. If your code lacks error checking code, your program may look very unprofessional and you may be open to security risks.</p>
+<p>This tutorial contains some of the most common error checking methods in PHP.</p>
+<p>We will show different error handling methods:</p>
+<ul>
+<li>Simple "die()" statements</li>
+<li>Custom errors and error triggers</li>
+<li>Error reporting</li>
+</ul>
+<h2>Basic Error Handling: Using the die() function</h2>
+<p>The first example shows a simple script that opens a text file:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>&lt;?php</strong><br><strong>$file=fopen("welcome.txt","r");</strong><br><strong>?&gt;</strong></div>
+</div>
+<p>If the file does not exist you might get an error like this:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>Warning</strong>: fopen(welcome.txt) [function.fopen]: failed to open stream:<br>No such file or directory in&nbsp;<strong>C:\webfolder\test.php</strong>&nbsp;on line&nbsp;<strong>2</strong></div>
+</div>
+<p>To prevent the user from getting an error message like the one above, we test whether the file exist before we try to access it:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>&lt;?php</strong><br><strong>if(!file_exists("welcome.txt"))&nbsp;{</strong><br><strong>&nbsp;&nbsp;die("File not found");</strong><br><strong>} else {</strong><br><strong>&nbsp;&nbsp;$file=fopen("welcome.txt","r");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div>
+</div>
+<p>Now if the file does not exist you get an error like this:</p>
+<div class="w3-code w3-border notranslate">
+<div>File not found</div>
+</div>
+<p>The code above is more efficient than the earlier code, because it uses a simple error handling mechanism to stop the script after the error.</p>
+<p>However, simply stopping the script is not always the right way to go. Let's take a look at alternative PHP functions for handling errors.</p>
+<h2>Creating a Custom Error Handler</h2>
+<p>Creating a custom error handler is quite simple. We simply create a special function that can be called when an error occurs in PHP.</p>
+<p>This function must be able to handle a minimum of two parameters (error level and error message) but can accept up to five parameters (optionally: file, line-number, and the error context):</p>
+<h2>Syntax</h2>
+<div class="w3-code w3-border notranslate">
+<div>error_function(error_level,error_message,<br>error_file,error_line,error_context)</div>
+</div>
+<table class="w3-table-all notranslate" style="width: 597px;">
+<tbody>
+<tr>
+<th style="width: 118px;">Parameter</th>
+<th style="width: 465px;">Description</th>
+</tr>
+<tr>
+<td style="width: 118px;">error_level</td>
+<td style="width: 465px;">Required. Specifies the error report level for the user-defined error. Must be a value number. See table below for possible error report levels</td>
+</tr>
+<tr>
+<td style="width: 118px;">error_message</td>
+<td style="width: 465px;">Required. Specifies the error message for the user-defined error</td>
+</tr>
+<tr>
+<td style="width: 118px;">error_file</td>
+<td style="width: 465px;">Optional. Specifies the filename in which the error occurred</td>
+</tr>
+<tr>
+<td style="width: 118px;">error_line</td>
+<td style="width: 465px;">Optional. Specifies the line number in which the error occurred</td>
+</tr>
+<tr>
+<td style="width: 118px;">error_context</td>
+<td style="width: 465px;">Optional. Specifies an array containing every variable, and their values, in use when the error occurred</td>
+</tr>
+</tbody>
+</table>
+<h2>Error Report levels</h2>
+<p>These error report levels are the different types of error the user-defined error handler can be used for:</p>
+<div class="w3-responsive">
+<table class="w3-table-all notranslate" style="width: 597px;">
+<tbody>
+<tr>
+<th style="width: 45px;">Value</th>
+<th style="width: 194px;">Constant</th>
+<th style="width: 338px;">Description</th>
+</tr>
+<tr>
+<td style="width: 45px;">2</td>
+<td style="width: 194px;">E_WARNING</td>
+<td style="width: 338px;">Non-fatal run-time errors. Execution of the script is not halted</td>
+</tr>
+<tr>
+<td style="width: 45px;">8</td>
+<td style="width: 194px;">E_NOTICE</td>
+<td style="width: 338px;">Run-time notices. The script found something that might be an error, but could also happen when running a script normally</td>
+</tr>
+<tr>
+<td style="width: 45px;">256</td>
+<td style="width: 194px;">E_USER_ERROR</td>
+<td style="width: 338px;">Fatal user-generated error. This is like an E_ERROR set by the programmer using the PHP function trigger_error()</td>
+</tr>
+<tr>
+<td style="width: 45px;">512</td>
+<td style="width: 194px;">E_USER_WARNING</td>
+<td style="width: 338px;">Non-fatal user-generated warning. This is like an E_WARNING set by the programmer using the PHP function trigger_error()</td>
+</tr>
+<tr>
+<td style="width: 45px;">1024</td>
+<td style="width: 194px;">E_USER_NOTICE</td>
+<td style="width: 338px;">User-generated notice. This is like an E_NOTICE set by the programmer using the PHP function trigger_error()</td>
+</tr>
+<tr>
+<td style="width: 45px;">4096</td>
+<td style="width: 194px;">E_RECOVERABLE_ERROR</td>
+<td style="width: 338px;">Catchable fatal error. This is like an E_ERROR but can be caught by a user defined handle (see also set_error_handler())</td>
+</tr>
+<tr>
+<td style="width: 45px;">8191</td>
+<td style="width: 194px;">E_ALL</td>
+<td style="width: 338px;">All errors and warnings (E_STRICT became a part of E_ALL in PHP 5.4)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now lets create a function to handle errors:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>function customError($errno, $errstr) {</strong><br><strong>&nbsp;&nbsp;echo "&lt;b&gt;Error:&lt;/b&gt; [$errno] $errstr&lt;br&gt;";</strong><br><strong>&nbsp;&nbsp;echo "Ending Script";</strong><br><strong>&nbsp;&nbsp;die();</strong><br><strong>}</strong></div>
+</div>
+<p>The code above is a simple error handling function. When it is triggered, it gets the error level and an error message. It then outputs the error level and message and terminates the script.</p>
+<p>Now that we have created an error handling function we need to decide when it should be triggered.</p>
+<h2>Set Error Handler</h2>
+<p>The default error handler for PHP is the built in error handler. We are going to make the function above the default error handler for the duration of the script.</p>
+<p>It is possible to change the error handler to apply for only some errors, that way the script can handle different errors in different ways. However, in this example we are going to use our custom error handler for all errors:</p>
+<div class="w3-code w3-border notranslate">
+<div>set_error_handler("customError");</div>
+</div>
+<p>Since we want our custom function to handle all errors, the set_error_handler() only needed one parameter, a second parameter could be added to specify an error level.</p>
+<h2>Example</h2>
+<p>Testing the error handler by trying to output variable that does not exist:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>&lt;?php</strong><br><strong>//error handler function</strong><br><strong>function customError($errno, $errstr) {</strong><br><strong>&nbsp;&nbsp;echo "&lt;b&gt;Error:&lt;/b&gt; [$errno] $errstr";</strong><br><strong>}</strong><br><br><strong>//set error handler</strong><br><strong>set_error_handler("customError");</strong><br><br><strong>//trigger error</strong><br><strong>echo($test);</strong><br><strong>?&gt;</strong></div>
+</div>
+<p>The output of the code above should be something like this:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>Error:</strong>&nbsp;[8] Undefined variable: test</div>
+</div>
+<h2>Trigger an Error</h2>
+<p>In a script where users can input data it is useful to trigger errors when an illegal input occurs. In PHP, this is done by the trigger_error() function.</p>
+<h2>Example</h2>
+<p>In this example an error occurs if the "test" variable is bigger than "1":</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>&lt;?php</strong><br><strong>$test=2;</strong><br><strong>if ($test&gt;=1) {</strong><br><strong>&nbsp; trigger_error("Value must be 1 or below");</strong><br><strong>}</strong><br><strong>?&gt;</strong></div>
+</div>
+<p>The output of the code above should be something like this:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>Notice</strong>: Value must be 1 or below<br>in&nbsp;<strong>C:\webfolder\test.php</strong>&nbsp;on line&nbsp;<strong>6</strong></div>
+</div>
+<p>An error can be triggered anywhere you wish in a script, and by adding a second parameter, you can specify what error level is triggered.</p>
+<p>Possible error types:</p>
+<ul>
+<li>E_USER_ERROR - Fatal user-generated run-time error. Errors that can not be recovered from. Execution of the script is halted</li>
+<li>E_USER_WARNING - Non-fatal user-generated run-time warning. Execution of the script is not halted</li>
+<li>E_USER_NOTICE - Default. User-generated run-time notice. The script found something that might be an error, but could also happen when running a script normally</li>
+</ul>
+<h2>Example</h2>
+<p>In this example an E_USER_WARNING occurs if the "test" variable is bigger than "1". If an E_USER_WARNING occurs we will use our custom error handler and end the script:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>&lt;?php</strong><br><strong>//error handler function</strong><br><strong>function customError($errno, $errstr)&nbsp;{</strong><br><strong>&nbsp;&nbsp;echo "&lt;b&gt;Error:&lt;/b&gt; [$errno] $errstr&lt;br&gt;";</strong><br><strong>&nbsp;&nbsp;echo "Ending Script";</strong><br><strong>&nbsp;&nbsp;die();</strong><br><strong>}</strong><br><br><strong>//set error handler</strong><br><strong>set_error_handler("customError",E_USER_WARNING);</strong><br><br><strong>//trigger error</strong><br><strong>$test=2;</strong><br><strong>if ($test&gt;=1)&nbsp;{</strong><br><strong>&nbsp;&nbsp;trigger_error("Value must be 1 or below",E_USER_WARNING);</strong><br><strong>}</strong><br><strong>?&gt;</strong></div>
+</div>
+<p>The output of the code above should be something like this:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>Error:</strong>&nbsp;[512] Value must be 1 or below<br>Ending Script</div>
+</div>
+<p>Now that we have learned to create our own errors and how to trigger them, lets take a look at error logging.</p>
+<h2>Error Logging</h2>
+<p>By default, PHP sends an error log to the server's logging system or a file, depending on how the error_log configuration is set in the php.ini file. By using the error_log() function you can send error logs to a specified file or a remote destination.</p>
+<p>Sending error messages to yourself by e-mail can be a good way of getting notified of specific errors.</p>
+<h2>Send an Error Message by E-Mail</h2>
+<p>In the example below we will send an e-mail with an error message and end the script, if a specific error occurs:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>&lt;?php</strong><br><strong>//error handler function</strong><br><strong>function customError($errno, $errstr) {</strong><br><strong>&nbsp;&nbsp;echo "&lt;b&gt;Error:&lt;/b&gt; [$errno] $errstr&lt;br&gt;";</strong><br><strong>&nbsp;&nbsp;echo "Webmaster has been notified";</strong><br><strong>&nbsp;&nbsp;error_log("Error: [$errno] $errstr",1,</strong><br><strong>&nbsp;&nbsp;"someone@example.com","From: webmaster@example.com");</strong><br><strong>}</strong><br><br><strong>//set error handler</strong><br><strong>set_error_handler("customError",E_USER_WARNING);</strong><br><br><strong>//trigger error</strong><br><strong>$test=2;</strong><br><strong>if ($test&gt;=1)&nbsp;{</strong><br><strong>&nbsp;&nbsp;trigger_error("Value must be 1 or below",E_USER_WARNING);</strong><br><strong>}</strong><br><strong>?&gt;</strong></div>
+</div>
+<p>The output of the code above should be something like this:</p>
+<div class="w3-code w3-border notranslate">
+<div><strong>Error:</strong>&nbsp;[512] Value must be 1 or below<br>Webmaster has been notified</div>
+</div>
+<p>And the mail received from the code above looks like this:</p>
+<div class="w3-code w3-border notranslate">
+<div>Error: [512] Value must be 1 or below</div>
+</div>
+<p>This should not be used with all errors. Regular errors should be logged on the server using the default PHP logging system.</p></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-61" data-rv-view="1447" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="NgSQNsI/ukNUpXta0jqbJA38ybRxDATRXcFBnxHMonMaJdqjLacHgvh7lWEwCvD0e5mUOPxAtSEEw1kizNQg0cXtCDq5VVpVARReMI9sLFccX8sgeW1mA4lQVHYFSyw3" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-61-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-61-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-61-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-61-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-61-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-61-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

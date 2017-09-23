@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="PHP 5 and later can work with a MySQL database using:
+
+MySQLi extension (the "i" stands for improved)
+PDO (PHP Data Objects)
+Earlier versions of PHP used the MySQL extension. However, this extension was deprecated in 2012.
+
+Should I Use MySQLi or PDO?
+If you need a short answer, it would be "Whatever you like".
+
+Both MySQLi and PDO have their advantages:
+
+PDO will work on 12 different database systems, where as MySQLi will only work with MySQL databases.
+
+So, if you have to switch your project to use another database, PDO makes the process easy. You only have to change the connection string and a few queries. With MySQLi, you will need to rewrite the entire code - queries included.
+
+Both are object-oriented, but MySQLi also offers a procedural API.
+
+Both support Prepared Statements. Prepared Statements protect from SQL injection, and are very important for web application security.
+
+MySQL Examples in Both MySQLi and PDO Syntax
+In this, and in the following chapters we demonstrate three ways of working with PHP and MySQL:
+
+MySQLi (object-oriented)
+MySQLi (procedural)
+PDO
+MySQLi Installation
+For Linux and Windows: The MySQLi extension is automatically installed in most cases, when php5 mysql package is installed.
+
+For installation details, go to: http://php.net/manual/en/mysqli.installation.php
+
+PDO Installation
+For installation details, go to: http://php.net/manual/en/pdo.installation.php
+
+Open a Connection to MySQL
+Before we can access data in the MySQL database, we need to be able to connect to the server:
+
+Example (MySQLi Object-Oriented)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully";
+?>
+PHP is an amazing and popular language!
+
+Note on the object-oriented example above: $connect_error was broken until PHP 5.2.9 and 5.3.0. If you need to ensure compatibility with PHP versions prior to 5.2.9 and 5.3.0, use the following code instead:
+
+// Check connection
+if (mysqli_connect_error()) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+
+Example (MySQLi Procedural)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+?>
+Example (PDO)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+?>
+Notice that in the PDO example above we have also specified a database (myDB). PDO require  a valid database to connect to. If no database is specified, an exception is thrown.
+
+Tip: A great benefit of PDO is that it has an exception class to handle any problems that may occur in our database queries. If an exception is thrown within the try{ } block, the script stops executing and flows directly to the first catch(){ } block.
+
+Close the Connection
+The connection will be closed automatically when the script ends. To close the connection before, use the following:
+
+Example (MySQLi Object-Oriented)
+$conn->close();
+Example (MySQLi Procedural)
+mysqli_close($conn);
+Example (PDO)
+$conn = null;">
+  <title>PHP Connect to MySQL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-72" data-rv-view="800">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/i">build a website</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-88" data-rv-view="802" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">PHP Connect to MySQL</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-89" data-rv-view="805" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><p class="intro">PHP 5 and later can work with a MySQL database using:</p><ul><li><strong>MySQLi extension</strong>&nbsp;(the "i" stands for improved)</li><li><strong>PDO (PHP Data Objects)</strong></li></ul><p class="intro">Earlier versions of PHP used the MySQL extension. However, this extension was deprecated in 2012.</p><h2>Should I Use MySQLi or PDO?</h2><p>If you need a short answer, it would be "Whatever you like".</p><p>Both MySQLi and PDO have their advantages:</p><p>PDO will work on 12 different database systems, where as MySQLi will only work with MySQL databases.</p><p>So, if you have to switch your project to use another database, PDO makes the process easy. You only have to change the connection string and a few queries. With MySQLi, you will need to rewrite the entire code - queries included.</p><p>Both are object-oriented, but MySQLi also offers a procedural API.</p><p>Both support Prepared Statements. Prepared Statements protect from SQL injection, and are very important for web application security.</p><h2>MySQL Examples in Both MySQLi and PDO Syntax</h2><p>In this, and in the following chapters we demonstrate three ways of working with PHP and MySQL:</p><ul><li>MySQLi (object-oriented)</li><li>MySQLi (procedural)</li><li>PDO</li></ul><h2>MySQLi Installation</h2><p>For Linux and Windows: The MySQLi extension is automatically installed in most cases, when php5 mysql package is installed.</p><p>For installation details, go to:&nbsp;<a href="http://php.net/manual/en/mysqli.installation.php" target="_blank" class="text-info" rel="noopener" data-mce-href="http://php.net/manual/en/mysqli.installation.php">http://php.net/manual/en/mysqli.installation.php</a></p><h2>PDO Installation</h2><p>For installation details, go to:&nbsp;<a href="http://php.net/manual/en/pdo.installation.php" target="_blank" class="text-info" rel="noopener" data-mce-href="http://php.net/manual/en/pdo.installation.php">http://php.net/manual/en/pdo.installation.php</a></p><h2>Open a Connection to MySQL</h2><p>Before we can access data in the MySQL database, we need to be able to connect to the server:</p><div class="w3-example"><h3>Example (MySQLi Object-Oriented)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><br><strong>// Create connection</strong><br><strong>$conn =&nbsp;new&nbsp;mysqli($servername, $username, $password);</strong><br><br><strong>// Check connection</strong><br><strong>if&nbsp;($conn-&gt;connect_error)&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: "&nbsp;. $conn-&gt;connect_error);</strong><br><strong>}&nbsp;</strong><br><strong>echo&nbsp;"Connected successfully";</strong><br><strong>?&gt;</strong></div></div><div class="w3-panel w3-note"><p><strong>PHP is an amazing and popular language!</strong></p><p>Note on the object-oriented example above: $connect_error was broken until PHP 5.2.9 and 5.3.0. If you need to ensure compatibility with PHP versions prior to 5.2.9 and 5.3.0, use the following code instead:<br><br><strong>// Check connection</strong><br><strong>if (mysqli_connect_error()) {</strong><br><strong>&nbsp;&nbsp;&nbsp; die("Database connection failed: " . mysqli_connect_error());</strong><br><strong>}</strong></p></div><div class="w3-example"><h3>Example (MySQLi Procedural)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><br><strong>// Create connection</strong><br><strong>$conn = mysqli_connect($servername, $username, $password);</strong><br><br><strong>// Check connection</strong><br><strong>if&nbsp;(!$conn)&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: "&nbsp;. mysqli_connect_error());</strong><br><strong>}</strong><br><strong>echo&nbsp;"Connected successfully";</strong><br><strong>?&gt;</strong></div></div><div class="w3-example"><h3>Example (PDO)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><br><strong>try&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; $conn =&nbsp;new&nbsp;PDO("mysql:host=$servername;dbname=myDB", $username, $password);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// set the PDO error mode to exception</strong><br><strong>&nbsp;&nbsp;&nbsp; $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Connected successfully";&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>catch(PDOException $e)</strong><br><strong>&nbsp;&nbsp;&nbsp; {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Connection failed: "&nbsp;. $e-&gt;getMessage();</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>?&gt;</strong></div></div><div class="w3-panel w3-note"><p>Notice that in the PDO example above we have also specified a database (myDB). PDO require&nbsp; a valid database to connect to. If no database is specified, an exception is thrown.</p></div><p><strong>Tip:</strong>&nbsp;A great benefit of PDO is that it has an exception class to handle any problems that may occur in our database queries. If an exception is thrown within the try{ } block, the script stops executing and flows directly to the first catch(){ } block.</p><h2>Close the Connection</h2><p>The connection will be closed automatically when the script ends. To close the connection before, use the following:</p><div class="w3-example"><h3>Example (MySQLi Object-Oriented)</h3><div class="w3-code htmlHigh notranslate"><strong>$conn-&gt;close();</strong></div></div><div class="w3-example"><h3>Example (MySQLi Procedural)</h3><div class="w3-code notranslate"><strong>mysqli_close($conn);</strong></div></div><div class="w3-example"><h3>Example (PDO)</h3><div class="w3-code notranslate"><strong>$conn = null;</strong></div></div></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-73" data-rv-view="807" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="Yv9CFaTGLI1dAZryZ0FUm0pAUiIWkchU1gdmetEVuv4tW1uP/R88D5NVvkVSHRy9K3JepEr5KeJRnqBzIjNYcxHpu4xwjYKLorCt+1P5ewgP5/kHDpk1YU2NNqwjv9OI" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-73-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-73-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-73-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-73-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-73-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-73-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

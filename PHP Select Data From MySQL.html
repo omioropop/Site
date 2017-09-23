@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="Select Data From a MySQL Database
+The SELECT statement is used to select data from one or more tables:
+
+SELECT column_name(s) FROM table_name
+or we can use the * character to select ALL columns from a table:
+
+SELECT * FROM table_name
+To learn more about SQL, please visit our SQL tutorial.
+
+Select Data With MySQLi
+The following example selects the id, firstname and lastname columns from the MyGuests table and displays it on the page:
+
+Example (MySQLi Object-oriented)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
+Code lines to explain from the example above:
+
+First, we set up an SQL query that selects the id, firstname and lastname columns from the MyGuests table. The next line of code runs the query and puts the resulting data into a variable called $result.
+
+Then, the function num_rows() checks if there are more than zero rows returned.
+
+If there are more than zero rows returned, the function fetch_assoc() puts all the results into an associative array that we can loop through. The while() loop loops through the result set and outputs the data from the id, firstname and lastname columns.
+
+The following example shows the same as the example above, in the MySQLi procedural way:
+
+Example (MySQLi Procedural)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+mysqli_close($conn);
+?>
+You can also put the result in an HTML table:
+
+Example (MySQLi Object-oriented)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table><tr><th>ID</th><th>Name</th></tr>";
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>".$row["id"]."</td><td>".$row["firstname"]." ".$row["lastname"]."</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
+Select Data With PDO (+ Prepared Statements)
+The following example uses prepared statements.
+
+It selects the id, firstname and lastname columns from the MyGuests table and displays it in an HTML table:
+
+Example (PDO)
+<?php
+echo "<table style='border: solid 1px black;'>";
+echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
+
+class TableRows extends RecursiveIteratorIterator { 
+    function __construct($it) { 
+        parent::__construct($it, self::LEAVES_ONLY); 
+    }
+
+    function current() {
+        return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
+    }
+
+    function beginChildren() { 
+        echo "<tr>"; 
+    } 
+
+    function endChildren() { 
+        echo "</tr>" . "\n";
+    } 
+} 
+
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDBPDO";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $conn->prepare("SELECT id, firstname, lastname FROM MyGuests"); 
+    $stmt->execute();
+
+    // set the resulting array to associative
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
+    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
+        echo $v;
+    }
+}
+catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+$conn = null;
+echo "</table>";
+?>">
+  <title>PHP Select Data From MySQL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-7g" data-rv-view="912">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/d">website software</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-7u" data-rv-view="914" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">PHP Select Data From MySQL</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-7v" data-rv-view="917" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>Select Data From a MySQL Database</h2><p>The SELECT statement is used to select data from one or more tables:</p><div class="w3-code w3-border notranslate"><div><strong>SELECT column_name(s) FROM table_name</strong></div></div><p>or we can use the * character to select ALL columns from a table:</p><div class="w3-code w3-border notranslate"><div><strong>SELECT * FROM table_name</strong></div></div><p>To learn more about SQL, please visit our&nbsp;<a href="sql/default.html" data-mce-href="sql/default.html">SQL tutorial</a>.</p><h2>Select Data With MySQLi</h2><p>The following example selects the id, firstname and lastname columns from the MyGuests table and displays it on the page:</p><div class="w3-example"><h3>Example (MySQLi Object-oriented)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><strong>$dbname =&nbsp;"myDB";</strong><br><br><strong>// Create connection</strong><br><strong>$conn =&nbsp;new&nbsp;mysqli($servername, $username, $password, $dbname);</strong><br><strong>// Check connection</strong><br><strong>if&nbsp;($conn-&gt;connect_error) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: "&nbsp;. $conn-&gt;connect_error);</strong><br><strong>}&nbsp;</strong><br><br><strong>$sql =&nbsp;"SELECT id, firstname, lastname FROM MyGuests";</strong><br><strong>$result = $conn-&gt;query($sql);</strong><br><br><strong>if&nbsp;($result-&gt;num_rows &gt;&nbsp;0) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// output data of each row</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;while($row = $result-&gt;fetch_assoc()) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"id: "&nbsp;. $row["id"].&nbsp;" - Name: "&nbsp;. $row["firstname"].&nbsp;" "&nbsp;. $row["lastname"].&nbsp;"&lt;br&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"0 results";</strong><br><strong>}</strong><br><strong>$conn-&gt;close();</strong><br><strong>?&gt;</strong></div></div><p>Code lines to explain from the example above:</p><p>First, we set up an SQL query that selects the id, firstname and lastname columns from the MyGuests table. The next line of code runs the query and puts the resulting data into a variable called $result.</p><p>Then, the function num_rows() checks if there are more than zero rows returned.</p><p>If there are more than zero rows returned, the function fetch_assoc() puts all the results into an associative array that we can loop through. The while() loop loops through the result set and outputs the data from the id, firstname and lastname columns.</p><p>The following example shows the same as the example above, in the MySQLi procedural way:</p><div class="w3-example"><h3>Example (MySQLi Procedural)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><strong>$dbname =&nbsp;"myDB";</strong><br><br><strong>// Create connection</strong><br><strong>$conn = mysqli_connect($servername, $username, $password, $dbname);</strong><br><strong>// Check connection</strong><br><strong>if&nbsp;(!$conn)&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: "&nbsp;. mysqli_connect_error());</strong><br><strong>}</strong><br><br><strong>$sql =&nbsp;"SELECT id, firstname, lastname FROM MyGuests";</strong><br><strong>$result = mysqli_query($conn, $sql);</strong><br><br><strong>if&nbsp;(mysqli_num_rows($result) &gt;&nbsp;0) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// output data of each row</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;while($row = mysqli_fetch_assoc($result)) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"id: "&nbsp;. $row["id"].&nbsp;" - Name: "&nbsp;. $row["firstname"].&nbsp;" "&nbsp;. $row["lastname"].&nbsp;"&lt;br&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"0 results";</strong><br><strong>}</strong><br><br><strong>mysqli_close($conn);</strong><br><strong>?&gt;</strong></div></div><p>You can also put the result in an HTML table:</p><div class="w3-example"><h3>Example (MySQLi Object-oriented)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><strong>$dbname =&nbsp;"myDB";</strong><br><br><strong>// Create connection</strong><br><strong>$conn =&nbsp;new&nbsp;mysqli($servername, $username, $password, $dbname);</strong><br><strong>// Check connection</strong><br><strong>if&nbsp;($conn-&gt;connect_error) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: "&nbsp;. $conn-&gt;connect_error);</strong><br><strong>}&nbsp;</strong><br><br><strong>$sql =&nbsp;"SELECT id, firstname, lastname FROM MyGuests";</strong><br><strong>$result = $conn-&gt;query($sql);</strong><br><br><strong>if&nbsp;($result-&gt;num_rows &gt;&nbsp;0) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"&lt;table&gt;&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// output data of each row</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;while($row = $result-&gt;fetch_assoc()) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"&lt;tr&gt;&lt;td&gt;".$row["id"]."&lt;/td&gt;&lt;td&gt;".$row["firstname"]." ".$row["lastname"]."&lt;/td&gt;&lt;/tr&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"&lt;/table&gt;";</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"0 results";</strong><br><strong>}</strong><br><strong>$conn-&gt;close();</strong><br><strong>?&gt;</strong></div></div><h2>Select Data With PDO (+ Prepared Statements)</h2><p>The following example uses prepared statements.</p><p>It selects the id, firstname and lastname columns from the MyGuests table and displays it in an HTML table:</p><div class="w3-example"><h3>Example (PDO)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>echo&nbsp;"&lt;table style='border: solid 1px black;'&gt;";</strong><br><strong>echo&nbsp;"&lt;tr&gt;&lt;th&gt;Id&lt;/th&gt;&lt;th&gt;Firstname&lt;/th&gt;&lt;th&gt;Lastname&lt;/th&gt;&lt;/tr&gt;";</strong><br><br><strong>class&nbsp;TableRows&nbsp;extends&nbsp;RecursiveIteratorIterator {&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;__construct($it) {&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parent::__construct($it, self::LEAVES_ONLY);&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;current() {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;"&lt;td style='width:150px;border:1px solid black;'&gt;"&nbsp;. parent::current().&nbsp;"&lt;/td&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;beginChildren() {&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"&lt;tr&gt;";&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp; }&nbsp;</strong><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;endChildren() {&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"&lt;/tr&gt;"&nbsp;.&nbsp;"\n";</strong><br><strong>&nbsp;&nbsp;&nbsp; }&nbsp;</strong><br><strong>}&nbsp;</strong><br><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><strong>$dbname =&nbsp;"myDBPDO";</strong><br><br><strong>try&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; $conn =&nbsp;new&nbsp;PDO("mysql:host=$servername;dbname=$dbname", $username, $password);</strong><br><strong>&nbsp;&nbsp;&nbsp; $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</strong><br><strong>&nbsp;&nbsp;&nbsp; $stmt = $conn-&gt;prepare("SELECT id, firstname, lastname FROM MyGuests");&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp; $stmt-&gt;execute();</strong><br><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// set the resulting array to associative</strong><br><strong>&nbsp;&nbsp;&nbsp; $result = $stmt-&gt;setFetchMode(PDO::FETCH_ASSOC);&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;foreach(new&nbsp;TableRows(new&nbsp;RecursiveArrayIterator($stmt-&gt;fetchAll()))&nbsp;as&nbsp;$k=&gt;$v) {&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;$v;</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>}</strong><br><strong>catch(PDOException $e) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Error: "&nbsp;. $e-&gt;getMessage();</strong><br><strong>}</strong><br><strong>$conn = null;</strong><br><strong>echo&nbsp;"&lt;/table&gt;";</strong><br><strong>?&gt;</strong></div></div></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-7h" data-rv-view="919" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="MyYk2ahoaQ06pRPKPwIYSOrn4nog/A5SbaMW/2yQThm8GTXRtmgyprE5UhNIi96wJD8QTXAH+wB5fdzkhfL/u8C5Ws8LHfB5IgCL69rOkZcg3jjD+0gvp9lE0qnhHHNf" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-7h-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-7h-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-7h-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-7h-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-7h-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-7h-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="Insert Data Into MySQL Using MySQLi and PDO
+After a database and a table have been created, we can start adding data in them.
+
+Here are some syntax rules to follow:
+
+The SQL query must be quoted in PHP
+String values inside the SQL query must be quoted
+Numeric values must not be quoted
+The word NULL must not be quoted
+The INSERT INTO statement is used to add new records to a MySQL table:
+
+INSERT INTO table_name (column1, column2, column3,...)
+VALUES (value1, value2, value3,...)
+To learn more about SQL, please visit our SQL tutorial.
+
+In the previous chapter we created an empty table named "MyGuests" with five columns: "id", "firstname", "lastname", "email" and "reg_date". Now, let us fill the table with data.
+
+Note: If a column is AUTO_INCREMENT (like the "id" column) or TIMESTAMP (like the "reg_date" column), it is no need to be specified in the SQL query; MySQL will automatically add the value.
+
+The following examples add a new record to the "MyGuests" table:
+
+Example (MySQLi Object-oriented)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
+Example (MySQLi Procedural)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
+Example (PDO)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDBPDO";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+    VALUES ('John', 'Doe', 'john@example.com')";
+    // use exec() because no results are returned
+    $conn->exec($sql);
+    echo "New record created successfully";
+    }
+catch(PDOException $e)
+    {
+    echo $sql . "<br>" . $e->getMessage();
+    }
+
+$conn = null;
+?>">
+  <title>PHP Insert Data Into MySQL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-78" data-rv-view="848">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/a">free site builder</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-82" data-rv-view="850" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">PHP Insert Data Into MySQL</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-83" data-rv-view="853" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>Insert Data Into MySQL Using MySQLi and PDO</h2><p>After a database and a table have been created, we can start adding data in them.</p><p>Here are some syntax rules to follow:</p><ul><li>The SQL query must be quoted in PHP</li><li>String values inside the SQL query must be quoted</li><li>Numeric values must not be quoted</li><li>The word NULL must not be quoted</li></ul><p>The INSERT INTO statement is used to add new records to a MySQL table:</p><div class="w3-code w3-border notranslate"><div>INSERT INTO table_name (column1, column2, column3,...)<br>VALUES (value1, value2, value3,...)</div></div><p>To learn more about SQL, please visit our&nbsp;<a href="sql/default.html" class="text-info" data-mce-href="sql/default.html">SQL tutorial</a>.</p><p>In the previous chapter we created an empty table named "MyGuests" with five columns: "id", "firstname", "lastname", "email" and "reg_date". Now, let us fill the table with data.</p><div class="w3-panel w3-note"><p><strong>Note:</strong>&nbsp;If a column is AUTO_INCREMENT (like the "id" column) or TIMESTAMP (like the "reg_date" column), it is no need to be specified in the SQL query; MySQL will automatically add the value.</p></div><p>The following examples add a new record to the "MyGuests" table:</p><div class="w3-example"><h3>Example (MySQLi Object-oriented)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><strong>$dbname =&nbsp;"myDB";</strong><br><br><strong>// Create connection</strong><br><strong>$conn =&nbsp;new&nbsp;mysqli($servername, $username, $password, $dbname);</strong><br><strong>// Check connection</strong><br><strong>if&nbsp;($conn-&gt;connect_error)&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: "&nbsp;. $conn-&gt;connect_error);</strong><br><strong>}&nbsp;</strong><br><br><strong>$sql =&nbsp;"INSERT INTO MyGuests (firstname, lastname, email)</strong><br><strong>VALUES ('John', 'Doe', 'john@example.com')";</strong><br><br><strong>if&nbsp;($conn-&gt;query($sql) === TRUE) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"New record created successfully";</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Error: "&nbsp;. $sql .&nbsp;"&lt;br&gt;"&nbsp;. $conn-&gt;error;</strong><br><strong>}</strong><br><br><strong>$conn-&gt;close();</strong><br><strong>?&gt;</strong></div></div><div class="w3-example"><h3>Example (MySQLi Procedural)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><strong>$dbname =&nbsp;"myDB";</strong><br><br><strong>// Create connection</strong><br><strong>$conn = mysqli_connect($servername, $username, $password, $dbname);</strong><br><strong>// Check connection</strong><br><strong>if&nbsp;(!$conn)&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: "&nbsp;. mysqli_connect_error());</strong><br><strong>}</strong><br><br><strong>$sql =&nbsp;"INSERT INTO MyGuests (firstname, lastname, email)</strong><br><strong>VALUES ('John', 'Doe', 'john@example.com')";</strong><br><br><strong>if&nbsp;(mysqli_query($conn, $sql)) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"New record created successfully";</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp; &nbsp;&nbsp;echo&nbsp;"Error: "&nbsp;. $sql .&nbsp;"&lt;br&gt;"&nbsp;. mysqli_error($conn);</strong><br><strong>}</strong><br><br><strong>mysqli_close($conn);</strong><br><strong>?&gt;</strong></div></div><div class="w3-example"><h3>Example (PDO)</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$servername =&nbsp;"localhost";</strong><br><strong>$username =&nbsp;"username";</strong><br><strong>$password =&nbsp;"password";</strong><br><strong>$dbname =&nbsp;"myDBPDO";</strong><br><br><strong>try&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; $conn =&nbsp;new&nbsp;PDO("mysql:host=$servername;dbname=$dbname", $username, $password);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// set the PDO error mode to exception</strong><br><strong>&nbsp;&nbsp;&nbsp; $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</strong><br><strong>&nbsp;&nbsp;&nbsp; $sql =&nbsp;"INSERT INTO MyGuests (firstname, lastname, email)</strong><br><strong>&nbsp;&nbsp;&nbsp; VALUES ('John', 'Doe', 'john@example.com')";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;// use exec() because no results are returned</strong><br><strong>&nbsp;&nbsp;&nbsp; $conn-&gt;exec($sql);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"New record created successfully";</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>catch(PDOException $e)</strong><br><strong>&nbsp;&nbsp;&nbsp; {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;$sql .&nbsp;"&lt;br&gt;"&nbsp;. $e-&gt;getMessage();</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><br><strong>$conn = null;</strong><br><strong>?&gt;</strong></div></div></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-79" data-rv-view="855" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="bRJxB359y8OHrJOIdu5zTYITTyOz7P3ECRhpbw+lHVYZKT0W4EPmacPPdl5rwFPYcSkifzeoBFHDy8zxzgW5yTLsMqhOJV7LOnmIbqUWpIn7r1DIUftU0t0FKtwVRWEL" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-79-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-79-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-79-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-79-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-79-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-79-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

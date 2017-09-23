@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="With PHP, it is easy to upload files to the server.
+
+However, with ease comes danger, so always be careful when allowing file uploads!
+
+Configure The "php.ini" File
+First, ensure that PHP is configured to allow file uploads.
+
+In your "php.ini" file, search for the file_uploads directive, and set it to On:
+
+file_uploads = On
+Create The HTML Form
+Next, create an HTML form that allow users to choose the image file they want to upload:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+
+  <input name="animation" type="hidden">
+  </body>
+</html>
+Some rules to follow for the HTML form above:
+
+Make sure that the form uses method="post"
+The form also needs the following attribute: enctype="multipart/form-data". It specifies which content-type to use when submitting the form
+Without the requirements above, the file upload will not work.
+
+Other things to notice:
+
+The type="file" attribute of the <input> tag shows the input field as a file-select control, with a "Browse" button next to the input control
+The form above sends data to a file called "upload.php", which we will create next.
+
+ 
+Create The Upload File PHP Script
+The "upload.php" file contains the code for uploading a file:
+
+<?php
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
+?>
+PHP script explained:
+
+$target_dir = "uploads/" - specifies the directory where the file is going to be placed
+$target_file specifies the path of the file to be uploaded
+$uploadOk=1 is not used yet (will be used later)
+$imageFileType holds the file extension of the file
+Next, check if the image file is an actual image or a fake image
+ 
+
+Note: You will need to create a new directory called "uploads" in the directory where "upload.php" file resides. The uploaded files will be saved there.
+
+Check if File Already Exists
+Now we can add some restrictions.
+
+First, we will check if the file already exists in the "uploads" folder. If it does, an error message is displayed, and $uploadOk is set to 0:
+
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+Limit File Size
+The file input field in our HTML form above is named "fileToUpload".
+
+Now, we want to check the size of the file. If the file is larger than 500KB, an error message is displayed, and $uploadOk is set to 0:
+
+ // Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+Limit File Type
+The code below only allows users to upload JPG, JPEG, PNG, and GIF files. All other file types gives an error message before setting $uploadOk to 0:
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+Complete Upload File PHP Script
+The complete "upload.php" file now looks like this:
+
+<?php
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+?>
+Complete PHP Filesystem Reference
+For a complete reference of filesystem functions, go to our complete PHP Filesystem Reference.">
+  <title>Php File Upload</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+<section id="ext_menu-5q" data-rv-view="668">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/d">website software</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-6h" data-rv-view="670" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php File Upload</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-6i" data-rv-view="673" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><p class="intro">With PHP, it is easy to upload files to the server.</p><p class="intro">However, with ease comes danger, so always be careful when allowing file uploads!</p><h2>Configure The "php.ini" File</h2><p>First, ensure that PHP is configured to allow file uploads.</p><p>In your "php.ini" file, search for the file_uploads directive, and set it to On:</p><div class="w3-example"><div class="w3-code htmlHigh notranslate"><strong>file_uploads = On</strong></div></div><h2>Create The HTML Form</h2><p>Next, create an HTML form that allow users to choose the image file they want to upload:</p><div class="w3-example"><div class="w3-code htmlHigh notranslate"><strong>&lt;!DOCTYPE&nbsp;html&gt;</strong><br><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;form&nbsp;action="upload.php"&nbsp;method="post"&nbsp;enctype="multipart/form-data"&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; Select image to upload:</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="file"&nbsp;name="fileToUpload"&nbsp;id="fileToUpload"&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type="submit"&nbsp;value="Upload Image"&nbsp;name="submit"&gt;</strong><br><strong>&lt;/form&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>Some rules to follow for the HTML form above:</p><ul><li>Make sure that the form uses method="post"</li><li>The form also needs the following attribute: enctype="multipart/form-data". It specifies which content-type to use when submitting the form</li></ul><p>Without the requirements above, the file upload will not work.</p><p>Other things to notice:</p><ul><li>The type="file" attribute of the &lt;input&gt; tag shows the input field as a file-select control, with a "Browse" button next to the input control</li></ul><p>The form above sends data to a file called "upload.php", which we will create next.</p><div>&nbsp;</div><h2>Create The Upload File PHP Script</h2><p>The "upload.php" file contains the code for uploading a file:</p><div class="w3-example"><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$target_dir =&nbsp;"uploads/";</strong><br><strong>$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);</strong><br><strong>$uploadOk =&nbsp;1;</strong><br><strong>$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);</strong><br><strong>// Check if image file is a actual image or fake image</strong><br><strong>if(isset($_POST["submit"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;if($check !== false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"File is an image - "&nbsp;. $check["mime"] .&nbsp;".";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $uploadOk =&nbsp;1;</strong><br><strong>&nbsp;&nbsp;&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"File is not an image.";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $uploadOk =&nbsp;0;</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><p>PHP script explained:</p><ul><li>$target_dir = "uploads/" - specifies the directory where the file is going to be placed</li><li>$target_file specifies the path of the file to be uploaded</li><li>$uploadOk=1 is not used yet (will be used later)</li><li>$imageFileType holds the file extension of the file</li><li>Next, check if the image file is an actual image or a fake image</li></ul><div class="w3-panel w3-note"><p>&nbsp;</p><p><strong>Note:</strong>&nbsp;You will need to create a new directory called "uploads" in the directory where "upload.php" file resides. The uploaded files will be saved there.</p></div><h2>Check if File Already Exists</h2><p>Now we can add some restrictions.</p><p>First, we will check if the file already exists in the "uploads" folder. If it does, an error message is displayed, and $uploadOk is set to 0:</p><div class="w3-example"><div class="w3-code htmlHigh notranslate"><strong>// Check if file already exists</strong><br><strong>if (file_exists($target_file)) {</strong><br><strong>&nbsp;&nbsp;&nbsp; echo "Sorry, file already exists.";</strong><br><strong>&nbsp;&nbsp;&nbsp; $uploadOk = 0;</strong><br><strong>}</strong></div></div><h2>Limit File Size</h2><p>The file input field in our HTML form above is named "fileToUpload".</p><p>Now, we want to check the size of the file. If the file is larger than 500KB, an error message is displayed, and $uploadOk is set to 0:</p><div class="w3-example"><div class="w3-code htmlHigh notranslate"><strong>&nbsp;// Check file size</strong><br><strong>if ($_FILES["fileToUpload"]["size"] &gt; 500000) {</strong><br><strong>&nbsp;&nbsp;&nbsp; echo "Sorry, your file is too large.";</strong><br><strong>&nbsp;&nbsp;&nbsp; $uploadOk = 0;</strong><br><strong>}</strong></div></div><h2>Limit File Type</h2><p>The code below only allows users to upload JPG, JPEG, PNG, and GIF files. All other file types gives an error message before setting $uploadOk to 0:</p><div class="w3-example"><div class="w3-code notranslate"><strong>// Allow certain file formats</strong><br><strong>if($imageFileType != "jpg" &amp;&amp; $imageFileType != "png" &amp;&amp; $imageFileType != "jpeg"</strong><br><strong>&amp;&amp; $imageFileType != "gif" ) {</strong><br><strong>&nbsp;&nbsp;&nbsp; echo "Sorry, only JPG, JPEG, PNG &amp; GIF files are allowed.";</strong><br><strong>&nbsp;&nbsp;&nbsp; $uploadOk = 0;</strong><br><strong>}</strong></div></div><h2>Complete Upload File PHP Script</h2><p>The complete "upload.php" file now looks like this:</p><div class="w3-example"><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$target_dir =&nbsp;"uploads/";</strong><br><strong>$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);</strong><br><strong>$uploadOk =&nbsp;1;</strong><br><strong>$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);</strong><br><strong>// Check if image file is a actual image or fake image</strong><br><strong>if(isset($_POST["submit"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;if($check !== false) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"File is an image - "&nbsp;. $check["mime"] .&nbsp;".";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $uploadOk =&nbsp;1;</strong><br><strong>&nbsp;&nbsp;&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"File is not an image.";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $uploadOk =&nbsp;0;</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>}</strong><br><strong>// Check if file already exists</strong><br><strong>if&nbsp;(file_exists($target_file)) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Sorry, file already exists.";</strong><br><strong>&nbsp;&nbsp;&nbsp; $uploadOk =&nbsp;0;</strong><br><strong>}</strong><br><strong>// Check file size</strong><br><strong>if&nbsp;($_FILES["fileToUpload"]["size"] &gt;&nbsp;500000) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Sorry, your file is too large.";</strong><br><strong>&nbsp;&nbsp;&nbsp; $uploadOk =&nbsp;0;</strong><br><strong>}</strong><br><strong>// Allow certain file formats</strong><br><strong>if($imageFileType !=&nbsp;"jpg"&nbsp;&amp;&amp; $imageFileType !=&nbsp;"png"&nbsp;&amp;&amp; $imageFileType !=&nbsp;"jpeg"</strong><br><strong>&amp;&amp; $imageFileType !=&nbsp;"gif"&nbsp;) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Sorry, only JPG, JPEG, PNG &amp; GIF files are allowed.";</strong><br><strong>&nbsp;&nbsp;&nbsp; $uploadOk =&nbsp;0;</strong><br><strong>}</strong><br><strong>// Check if $uploadOk is set to 0 by an error</strong><br><strong>if&nbsp;($uploadOk ==&nbsp;0) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Sorry, your file was not uploaded.";</strong><br><strong>// if everything is ok, try to upload file</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"The file ". basename(&nbsp;$_FILES["fileToUpload"]["name"]).&nbsp;" has been uploaded.";</strong><br><strong>&nbsp;&nbsp;&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Sorry, there was an error uploading your file.";</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><h2>Complete PHP Filesystem Reference</h2><p>For a complete reference of filesystem functions, go to our complete&nbsp;<a href="https://www.w3schools.com/php/php_ref_filesystem.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/php_ref_filesystem.asp">PHP Filesystem Reference</a>.</p></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-5r" data-rv-view="675" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="eL4J8tL/xeJ5E37AkOq7X4x37z7YBo2qHGE3VzHBdPY561XMf4AXH+M149qah0zF6BFgUpwVArbnaLerV4lKRy8xeJw47+yLZm1i+aKTf7t9A5YExv+RqwebdXCtNzrl" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5r-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-5r-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5r-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-5r-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5r-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-5r-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
+</html>

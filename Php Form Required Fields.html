@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="From the validation rules table on the previous page, we see that the "Name", "E-mail", and "Gender" fields are required. These fields cannot be empty and must be filled out in the HTML form.
+
+Field	Validation Rules
+Name	Required. + Must only contain letters and whitespace
+E-mail	Required. + Must contain a valid email address (with @ and .)
+Website	Optional. If present, it must contain a valid URL
+Comment	Optional. Multi-line input field (textarea)
+Gender	Required. Must select one
+In the previous chapter, all input fields were optional.
+
+In the following code we have added some new variables: $nameErr, $emailErr, $genderErr, and $websiteErr. These error variables will hold error messages for the required fields. We have also added an if else statement for each $_POST variable. This checks if the $_POST variable is empty (with the PHP empty() function). If it is empty, an error message is stored in the different error variables, and if it is not empty, it sends the user input data through the test_input() function:
+
+<?php
+// define variables and set to empty values
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+  } else {
+    $name = test_input($_POST["name"]);
+  }
+
+  if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email = test_input($_POST["email"]);
+  }
+
+  if (empty($_POST["website"])) {
+    $website = "";
+  } else {
+    $website = test_input($_POST["website"]);
+  }
+
+  if (empty($_POST["comment"])) {
+    $comment = "";
+  } else {
+    $comment = test_input($_POST["comment"]);
+  }
+
+  if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+  } else {
+    $gender = test_input($_POST["gender"]);
+  }
+}
+?>
+ 
+PHP - Display The Error Messages
+Then in the HTML form, we add a little script after each required field, which generates the correct error message if needed (that is if the user tries to submit the form without filling out the required fields):
+
+Example
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
+Name: <input type="text" name="name">
+<span class="error">* <?php echo $nameErr;?></span>
+<br><br>
+E-mail:
+<input type="text" name="email">
+<span class="error">* <?php echo $emailErr;?></span>
+<br><br>
+Website:
+<input type="text" name="website">
+<span class="error"><?php echo $websiteErr;?></span>
+<br><br>
+Comment: <textarea name="comment" rows="5" cols="40"></textarea>
+<br><br>
+Gender:
+<input type="radio" name="gender" value="female">Female
+<input type="radio" name="gender" value="male">Male
+<span class="error">* <?php echo $genderErr;?></span>
+<br><br>
+<input type="submit" name="submit" value="Submit"> 
+
+</form>
+
+
+
+The next step is to validate the input data, that is "Does the Name field contain only letters and whitespace?", and "Does the E-mail field contain a valid e-mail address syntax?", and if filled out, "Does the Website field contain a valid URL?"">
+  <title>Php Form Required Fields</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-4y" data-rv-view="529">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/m">bootstrap table</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-58" data-rv-view="524" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Form Required Fields</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-59" data-rv-view="527" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><header class="header left-right"><div id="main-header-wrapper"><div id="main-header" data-fixed-height="80"><div class="container"><div id="et-navigation" class=""><ul id="et-menu" class="nav"><li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-page-ancestor menu-item-202"><p>From the validation rules table on the previous page, we see that the "Name", "E-mail", and "Gender" fields are required. These fields cannot be empty and must be filled out in the HTML form.</p><table class="w3-table-all notranslate mce-item-table" style="width: 523px;" data-mce-style="width: 523px;"><tbody><tr><th style="width: 99px;" data-mce-style="width: 99px;">Field</th><th style="width: 410px;" data-mce-style="width: 410px;">Validation Rules</th></tr><tr><td style="width: 99px;" data-mce-style="width: 99px;">Name</td><td style="width: 410px;" data-mce-style="width: 410px;">Required. + Must only contain letters and whitespace</td></tr><tr><td style="width: 99px;" data-mce-style="width: 99px;">E-mail</td><td style="width: 410px;" data-mce-style="width: 410px;">Required. + Must contain a valid email address (with @ and .)</td></tr><tr><td style="width: 99px;" data-mce-style="width: 99px;">Website</td><td style="width: 410px;" data-mce-style="width: 410px;">Optional. If present, it must contain a valid URL</td></tr><tr><td style="width: 99px;" data-mce-style="width: 99px;">Comment</td><td style="width: 410px;" data-mce-style="width: 410px;">Optional. Multi-line input field (textarea)</td></tr><tr><td style="width: 99px;" data-mce-style="width: 99px;">Gender</td><td style="width: 410px;" data-mce-style="width: 410px;">Required. Must select one</td></tr></tbody></table><p>In the previous chapter, all input fields were optional.</p><p>In the following code we have added some new variables: $nameErr, $emailErr, $genderErr, and $websiteErr. These error variables will hold error messages for the required fields. We have also added an if else statement for each $_POST variable. This checks if the $_POST variable is empty (with the PHP empty() function). If it is empty, an error message is stored in the different error variables, and if it is not empty, it sends the user input data through the test_input() function:</p><div class="w3-code w3-border notranslate"><div><strong>&lt;?php</strong><br><strong>// define variables and set to empty values</strong><br><strong>$nameErr = $emailErr = $genderErr = $websiteErr = "";</strong><br><strong>$name = $email = $gender = $comment = $website = "";</strong><br><br><strong>if ($_SERVER["REQUEST_METHOD"] == "POST") {</strong><br><strong>&nbsp; if (empty($_POST["name"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $nameErr = "Name is required";</strong><br><strong>&nbsp; } else {</strong><br><strong>&nbsp;&nbsp;&nbsp; $name = test_input($_POST["name"]);</strong><br><strong>&nbsp; }</strong><br><br><strong>&nbsp; if (empty($_POST["email"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $emailErr = "Email is required";</strong><br><strong>&nbsp; } else {</strong><br><strong>&nbsp;&nbsp;&nbsp; $email = test_input($_POST["email"]);</strong><br><strong>&nbsp; }</strong><br><br><strong>&nbsp; if (empty($_POST["website"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $website = "";</strong><br><strong>&nbsp; } else {</strong><br><strong>&nbsp;&nbsp;&nbsp; $website = test_input($_POST["website"]);</strong><br><strong>&nbsp; }</strong><br><br><strong>&nbsp; if (empty($_POST["comment"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $comment = "";</strong><br><strong>&nbsp; } else {</strong><br><strong>&nbsp;&nbsp;&nbsp; $comment = test_input($_POST["comment"]);</strong><br><strong>&nbsp; }</strong><br><br><strong>&nbsp; if (empty($_POST["gender"])) {</strong><br><strong>&nbsp;&nbsp;&nbsp; $genderErr = "Gender is required";</strong><br><strong>&nbsp; } else {</strong><br><strong>&nbsp;&nbsp;&nbsp; $gender = test_input($_POST["gender"]);</strong><br><strong>&nbsp; }</strong><br><strong>}</strong><br><strong>?&gt;</strong></div></div><div>&nbsp;</div><h2 id="mcetoc_1bmgurdpu56">PHP - Display The Error Messages</h2><p>Then in the HTML form, we add a little script after each required field, which generates the correct error message if needed (that is if the user tries to submit the form without filling out the required fields):</p><div class="w3-example"><h3 id="mcetoc_1bmgurdpu57">Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;form&nbsp;method="post"&nbsp;action="&lt;?php&nbsp;echo&nbsp;htmlspecialchars($_SERVER["PHP_SELF"]);?&gt;"&gt;</strong><br><br><strong>Name:&nbsp;&lt;input&nbsp;type="text"&nbsp;name="name"&gt;</strong><br><strong>&lt;span&nbsp;class="error"&gt;*&nbsp;&lt;?php&nbsp;echo&nbsp;$nameErr;?&gt;&lt;/span&gt;</strong><br><strong>&lt;br&gt;&lt;br&gt;</strong><br><strong>E-mail:</strong><br><strong>&lt;input&nbsp;type="text"&nbsp;name="email"&gt;</strong><br><strong>&lt;span&nbsp;class="error"&gt;*&nbsp;&lt;?php&nbsp;echo&nbsp;$emailErr;?&gt;&lt;/span&gt;</strong><br><strong>&lt;br&gt;&lt;br&gt;</strong><br><strong>Website:</strong><br><strong>&lt;input&nbsp;type="text"&nbsp;name="website"&gt;</strong><br><strong>&lt;span&nbsp;class="error"&gt;&lt;?php&nbsp;echo&nbsp;$websiteErr;?&gt;&lt;/span&gt;</strong><br><strong>&lt;br&gt;&lt;br&gt;</strong><br><strong>Comment:&nbsp;&lt;textarea&nbsp;name="comment"&nbsp;rows="5"&nbsp;cols="40"&gt;&lt;/textarea&gt;</strong><br><strong>&lt;br&gt;&lt;br&gt;</strong><br><strong>Gender:</strong><br><strong>&lt;input&nbsp;type="radio"&nbsp;name="gender"&nbsp;value="female"&gt;Female</strong><br><strong>&lt;input&nbsp;type="radio"&nbsp;name="gender"&nbsp;value="male"&gt;Male</strong><br><strong>&lt;span&nbsp;class="error"&gt;*&nbsp;&lt;?php&nbsp;echo&nbsp;$genderErr;?&gt;&lt;/span&gt;</strong><br><strong>&lt;br&gt;&lt;br&gt;</strong><br><strong>&lt;input&nbsp;type="submit"&nbsp;name="submit"&nbsp;value="Submit"&gt;&nbsp;</strong><br><br><strong>&lt;/form&gt;</strong></div></div></li></ul></div></div></div></div></header><p><br></p><header class="header left-right"><div id="main-header-wrapper"><div id="main-header" data-fixed-height="80"><div class="container"><div id="et-navigation" class=""><ul id="et-menu" class="nav"><li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-page-ancestor menu-item-202"><div class="w3-example"><div class="w3-code htmlHigh notranslate"><strong><br></strong></div></div><p>The next step is to validate the input data, that is "Does the Name field contain only letters and whitespace?", and "Does the E-mail field contain a valid e-mail address syntax?", and if filled out, "Does the Website field contain a valid URL?"</p></li></ul></div></div></div></div></header></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-4z" data-rv-view="531" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="TQtCXFRUi3l+5V/VhwJ8oHtIuudWmCd3IOyLd02t5Dp7J+AxiAYNzB4awImxDVQokHwDHTWWf5tVJXk+5mphg2vxLu0HistePRGZ3d+NtsuifeJ3/RIMl+RtqiKsBFqV" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-4z-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-4z-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-4z-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-4z-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-4z-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-4z-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

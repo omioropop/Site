@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="PHP SimpleXML - Get Node Values
+Get the node values from the "note.xml" file:
+
+Example
+<?php
+$xml=simplexml_load_file("note.xml") or die("Error: Cannot create object");
+echo $xml->to . "<br>";
+echo $xml->from . "<br>";
+echo $xml->heading . "<br>";
+echo $xml->body;
+?>
+The output of the code above will be:
+
+Tove
+Jani
+Reminder
+Don't forget me this weekend!
+Another XML File
+Assume we have an XML file called "books.xml", that looks like this: 
+
+<?xml version="1.0" encoding="utf-8"?>
+<bookstore>
+  <book category="COOKING">
+    <title lang="en">Everyday Italian</title>
+    <author>Giada De Laurentiis</author>
+    <year>2005</year>
+    <price>30.00</price>
+  </book>
+  <book category="CHILDREN">
+    <title lang="en">Harry Potter</title>
+    <author>J K. Rowling</author>
+    <year>2005</year>
+    <price>29.99</price>
+  </book>
+  <book category="WEB">
+    <title lang="en-us">XQuery Kick Start</title>
+    <author>James McGovern</author>
+    <year>2003</year>
+    <price>49.99</price>
+  </book>
+  <book category="WEB">
+    <title lang="en-us">Learning XML</title>
+    <author>Erik T. Ray</author>
+    <year>2003</year>
+    <price>39.95</price>
+  </book>
+</bookstore>
+PHP SimpleXML - Get Node Values of Specific Elements
+The following example gets the node value of the <title> element in the first and second <book> elements in the "books.xml" file: 
+
+Example
+<?php
+$xml=simplexml_load_file("books.xml") or die("Error: Cannot create object");
+echo $xml->book[0]->title . "<br>";
+echo $xml->book[1]->title; 
+?>
+The output of the code above will be:
+
+Everyday Italian
+Harry Potter
+PHP SimpleXML - Get Node Values - Loop
+The following example loops through all the <book> elements in the "books.xml" file, and gets the node values of the <title>, <author>, <year>, and <price> elements:
+
+Example
+<?php
+$xml=simplexml_load_file("books.xml") or die("Error: Cannot create object");
+foreach($xml->children() as $books) { 
+    echo $books->title . ", "; 
+    echo $books->author . ", "; 
+    echo $books->year . ", ";
+    echo $books->price . "<br>"; 
+} 
+?>
+The output of the code above will be:
+
+Everyday Italian, Giada De Laurentiis, 2005, 30.00
+Harry Potter, J K. Rowling, 2005, 29.99
+XQuery Kick Start, James McGovern, 2003, 49.99
+Learning XML, Erik T. Ray, 2003, 39.95
+PHP SimpleXML - Get Attribute Values
+The following example gets the attribute value of the "category" attribute of the first <book> element and the attribute value of the "lang" attribute of the <title> element in the second <book> element:
+
+Example
+<?php
+$xml=simplexml_load_file("books.xml") or die("Error: Cannot create object");
+echo $xml->book[0]['category'] . "<br>";
+echo $xml->book[1]->title['lang']; 
+?>
+The output of the code above will be:
+
+COOKING
+en
+PHP SimpleXML - Get Attribute Values - Loop
+The following example gets the attribute values of the <title> elements in the "books.xml" file:
+
+Example
+<?php
+$xml=simplexml_load_file("books.xml") or die("Error: Cannot create object");
+foreach($xml->children() as $books) { 
+    echo $books->title['lang'];
+    echo "<br>"; 
+} 
+?>
+The output of the code above will be:
+
+en
+en
+en-us
+en-us
+More PHP SimpleXML
+For more information about the PHP SimpleXML functions, visit our PHP SimpleXML Reference.">
+  <title>PHP SimpleXML - Get NodeAttribute Values</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-8g" data-rv-view="1008">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/m">bootstrap table</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-8q" data-rv-view="1010" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">PHP SimpleXML - Get Node/Attribute Values</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-8r" data-rv-view="1013" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>PHP SimpleXML - Get Node Values</h2><p>Get the node values from the "<a href="note.xml" target="_blank" class="text-info" rel="noopener" data-mce-href="note.xml">note.xml</a>" file:</p><div class="w3-example"><h3>Example</h3><div class="w3-code notranslate htmlHigh"><strong>&lt;?php</strong><br><strong>$xml=simplexml_load_file("note.xml")&nbsp;or&nbsp;die("Error: Cannot create object");</strong><br><strong>echo&nbsp;$xml-&gt;to .&nbsp;"&lt;br&gt;";</strong><br><strong>echo&nbsp;$xml-&gt;from .&nbsp;"&lt;br&gt;";</strong><br><strong>echo&nbsp;$xml-&gt;heading .&nbsp;"&lt;br&gt;";</strong><br><strong>echo&nbsp;$xml-&gt;body;</strong><br><strong>?&gt;</strong></div></div><p>The output of the code above will be:</p><div class="w3-code w3-border notranslate"><div><strong>Tove</strong><br><strong>Jani</strong><br><strong>Reminder</strong><br><strong>Don't forget me this weekend!</strong></div></div><h2>Another XML File</h2><p>Assume we have an XML file called "<a href="books.xml" target="_blank" class="text-info" rel="noopener" data-mce-href="books.xml">books.xml</a>", that looks like this:&nbsp;</p><div class="w3-code w3-border notranslate"><div><strong>&lt;?xml version="1.0" encoding="utf-8"?&gt;</strong><br><strong>&lt;bookstore&gt;</strong><br><strong>&nbsp; &lt;book category="COOKING"&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;title lang="en"&gt;Everyday Italian&lt;/title&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;author&gt;Giada De Laurentiis&lt;/author&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;year&gt;2005&lt;/year&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;price&gt;30.00&lt;/price&gt;</strong><br><strong>&nbsp; &lt;/book&gt;</strong><br><strong>&nbsp; &lt;book category="CHILDREN"&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;title lang="en"&gt;Harry Potter&lt;/title&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;author&gt;J K. Rowling&lt;/author&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;year&gt;2005&lt;/year&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;price&gt;29.99&lt;/price&gt;</strong><br><strong>&nbsp; &lt;/book&gt;</strong><br><strong>&nbsp; &lt;book category="WEB"&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;title lang="en-us"&gt;XQuery Kick Start&lt;/title&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;author&gt;James McGovern&lt;/author&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;year&gt;2003&lt;/year&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;price&gt;49.99&lt;/price&gt;</strong><br><strong>&nbsp; &lt;/book&gt;</strong><br><strong>&nbsp; &lt;book category="WEB"&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;title lang="en-us"&gt;Learning XML&lt;/title&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;author&gt;Erik T. Ray&lt;/author&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;year&gt;2003&lt;/year&gt;</strong><br><strong>&nbsp;&nbsp;&nbsp; &lt;price&gt;39.95&lt;/price&gt;</strong><br><strong>&nbsp; &lt;/book&gt;</strong><br><strong>&lt;/bookstore&gt;</strong></div></div><h2>PHP SimpleXML - Get Node Values of Specific Elements</h2><p>The following example gets the node value of the &lt;title&gt; element in the first and second &lt;book&gt; elements in the "books.xml" file:&nbsp;</p><div class="w3-example"><h3>Example</h3><div class="w3-code notranslate htmlHigh"><strong>&lt;?php</strong><br><strong>$xml=simplexml_load_file("books.xml")&nbsp;or&nbsp;die("Error: Cannot create object");</strong><br><strong>echo&nbsp;$xml-&gt;book[0]-&gt;title .&nbsp;"&lt;br&gt;";</strong><br><strong>echo&nbsp;$xml-&gt;book[1]-&gt;title;&nbsp;</strong><br><strong>?&gt;</strong></div></div><p>The output of the code above will be:</p><div class="w3-code w3-border notranslate"><div><strong>Everyday Italian</strong><br><strong>Harry Potter</strong></div></div><h2>PHP SimpleXML - Get Node Values - Loop</h2><p>The following example loops through all the &lt;book&gt; elements in the "books.xml" file, and gets the node values of the &lt;title&gt;, &lt;author&gt;, &lt;year&gt;, and &lt;price&gt; elements:</p><div class="w3-example"><h3>Example</h3><div class="w3-code notranslate htmlHigh"><strong>&lt;?php</strong><br><strong>$xml=simplexml_load_file("books.xml")&nbsp;or&nbsp;die("Error: Cannot create object");</strong><br><strong>foreach($xml-&gt;children()&nbsp;as&nbsp;$books) {&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;$books-&gt;title .&nbsp;", ";&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;$books-&gt;author .&nbsp;", ";&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;$books-&gt;year .&nbsp;", ";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;$books-&gt;price .&nbsp;"&lt;br&gt;";&nbsp;</strong><br><strong>}&nbsp;</strong><br><strong>?&gt;</strong></div></div><p>The output of the code above will be:</p><div class="w3-code w3-border notranslate"><div><strong>Everyday Italian, Giada De Laurentiis, 2005, 30.00</strong><br><strong>Harry Potter, J K. Rowling, 2005, 29.99</strong><br><strong>XQuery Kick Start, James McGovern, 2003, 49.99</strong><br><strong>Learning XML, Erik T. Ray, 2003, 39.95</strong></div></div><h2>PHP SimpleXML - Get Attribute Values</h2><p>The following example gets the attribute value of the "category" attribute of the first &lt;book&gt; element and the attribute value of the "lang" attribute of the &lt;title&gt; element in the second &lt;book&gt; element:</p><div class="w3-example"><h3>Example</h3><div class="w3-code notranslate htmlHigh"><strong>&lt;?php</strong><br><strong>$xml=simplexml_load_file("books.xml")&nbsp;or&nbsp;die("Error: Cannot create object");</strong><br><strong>echo&nbsp;$xml-&gt;book[0]['category'] .&nbsp;"&lt;br&gt;";</strong><br><strong>echo&nbsp;$xml-&gt;book[1]-&gt;title['lang'];&nbsp;</strong><br><strong>?&gt;</strong></div></div><p>The output of the code above will be:</p><div class="w3-code w3-border notranslate"><div><strong>COOKING</strong><br><strong>en</strong></div></div><h2>PHP SimpleXML - Get Attribute Values - Loop</h2><p>The following example gets the attribute values of the &lt;title&gt; elements in the "books.xml" file:</p><div class="w3-example"><h3>Example</h3><div class="w3-code notranslate htmlHigh"><strong>&lt;?php</strong><br><strong>$xml=simplexml_load_file("books.xml")&nbsp;or&nbsp;die("Error: Cannot create object");</strong><br><strong>foreach($xml-&gt;children()&nbsp;as&nbsp;$books) {&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;$books-&gt;title['lang'];</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"&lt;br&gt;";&nbsp;</strong><br><strong>}&nbsp;</strong><br><strong>?&gt;</strong></div></div><p>The output of the code above will be:</p><div class="w3-code w3-border notranslate"><div><strong>en</strong><br><strong>en</strong><br><strong>en-us</strong><br><strong>en-us</strong></div></div><h2>More PHP SimpleXML</h2><p>For more information about the PHP SimpleXML functions, visit our&nbsp;<a href="php_ref_simplexml.html" class="text-info" data-mce-href="php_ref_simplexml.html">PHP SimpleXML Reference.</a></p></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-8h" data-rv-view="1015" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="IAJKE9YEc0wa0vWkmld5GbZ6aLBFPvHVc6wR3G1uq9opzSDJDmcGWdNrwyBNbLmvJHhcvbsGIBKfgXlllxYFH5hBFVTcjGWsYTbcYcc4498U8rNoTKrMCp5oSGaRC1SI" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-8h-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-8h-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-8h-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-8h-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-8h-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-8h-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

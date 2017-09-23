@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="AJAX PHP Example
+The following example will demonstrate how a web page can communicate with a web server while a user type characters in an input field:
+
+Example
+Start typing a name in the input field below:
+
+First name: 
+Suggestions:
+
+Example Explained
+In the example above, when a user types a character in the input field, a function called "showHint()" is executed.
+
+The function is triggered by the onkeyup event.
+
+Here is the HTML code:
+
+Example
+<html>
+<head>
+<script>
+function showHint(str) {
+    if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "gethint.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+</script>
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+
+<p><b>Start typing a name in the input field below:</b></p>
+<form> 
+First name: <input type="text" onkeyup="showHint(this.value)">
+</form>
+<p>Suggestions: <span id="txtHint"></span></p>
+  <input name="animation" type="hidden">
+  </body>
+</html>
+Code explanation:
+
+First, check if the input field is empty (str.length == 0). If it is, clear the content of the txtHint placeholder and exit the function.
+
+However, if the input field is not empty, do the following:
+
+Create an XMLHttpRequest object
+Create the function to be executed when the server response is ready
+Send the request off to a PHP file (gethint.php) on the server
+Notice that q parameter is added to the url (gethint.php?q="+str)
+And the str variable holds the content of the input field
+The PHP File - "gethint.php"
+The PHP file checks an array of names, and returns the corresponding name(s) to the browser:
+
+<?php
+// Array with names
+$a[] = "Anna";
+$a[] = "Brittany";
+$a[] = "Cinderella";
+$a[] = "Diana";
+$a[] = "Eva";
+$a[] = "Fiona";
+$a[] = "Gunda";
+$a[] = "Hege";
+$a[] = "Inga";
+$a[] = "Johanna";
+$a[] = "Kitty";
+$a[] = "Linda";
+$a[] = "Nina";
+$a[] = "Ophelia";
+$a[] = "Petunia";
+$a[] = "Amanda";
+$a[] = "Raquel";
+$a[] = "Cindy";
+$a[] = "Doris";
+$a[] = "Eve";
+$a[] = "Evita";
+$a[] = "Sunniva";
+$a[] = "Tove";
+$a[] = "Unni";
+$a[] = "Violet";
+$a[] = "Liza";
+$a[] = "Elizabeth";
+$a[] = "Ellen";
+$a[] = "Wenche";
+$a[] = "Vicky";
+
+// get the q parameter from URL
+$q = $_REQUEST["q"];
+
+$hint = "";
+
+// lookup all hints from array if $q is different from "" 
+if ($q !== "") {
+    $q = strtolower($q);
+    $len=strlen($q);
+    foreach($a as $name) {
+        if (stristr($q, substr($name, 0, $len))) {
+            if ($hint === "") {
+                $hint = $name;
+            } else {
+                $hint .= ", $name";
+            }
+        }
+    }
+}
+
+// Output "no suggestion" if no hint was found or output correct values 
+echo $hint === "" ? "no suggestion" : $hint;
+?>">
+  <title>PHP - AJAX and PHP</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+<section id="ext_menu-8y" data-rv-view="1072">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/j">how to design a website for free</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-9c" data-rv-view="1074" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">PHP - AJAX and PHP</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-9d" data-rv-view="1077" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2 id="mcetoc_1bmmukplcc">AJAX PHP Example</h2><p>The following example will demonstrate how a web page can communicate with a web server while a user type characters in an input field:</p><div class="w3-example"><h3 id="mcetoc_1bmmukplcd">Example</h3><div class="w3-padding w3-white w3-margin-bottom notranslate"><p><strong>Start typing a name in the input field below:</strong></p><form action="#">First name:&nbsp;<input id="txt1" size="20" type="text"></form><p>Suggestions:</p></div></div><h2 id="mcetoc_1bmmukplce">Example Explained</h2><p>In the example above, when a user types a character in the input field, a function called "showHint()" is executed.</p><p>The function is triggered by the onkeyup event.</p><p>Here is the HTML code:</p><div class="w3-example"><h3 id="mcetoc_1bmmukplcf">Example</h3><div class="w3-code notranslate htmlHigh"><strong>&lt;html&gt;</strong><br><strong>&lt;head&gt;</strong><br><strong>&lt;script&gt;</strong><br><strong>function&nbsp;showHint(str) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(str.length&nbsp;==&nbsp;0) {&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("txtHint").innerHTML&nbsp;=&nbsp;"";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</strong><br><strong>&nbsp;&nbsp;&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;xmlhttp =&nbsp;new&nbsp;XMLHttpRequest();</strong><br><strong>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; xmlhttp.onreadystatechange&nbsp;=&nbsp;function() {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(this.readyState&nbsp;==&nbsp;4&nbsp;&amp;&amp;&nbsp;this.status&nbsp;==&nbsp;200) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("txtHint").innerHTML&nbsp;=&nbsp;this.responseText;</strong><br><strong>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };</strong><br><strong>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; xmlhttp.open("GET",&nbsp;"gethint.php?q="&nbsp;+ str,&nbsp;true);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlhttp.send();</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>}</strong><br><strong>&lt;/script&gt;</strong><br><strong>&lt;/head&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;p&gt;&lt;b&gt;Start typing a name in the input field below:&lt;/b&gt;&lt;/p&gt;</strong><br><strong>&lt;form&gt;&nbsp;</strong><br><strong>First name:&nbsp;&lt;input&nbsp;type="text"&nbsp;onkeyup="showHint(this.value)"&gt;</strong><br><strong>&lt;/form&gt;</strong><br><strong>&lt;p&gt;Suggestions:&nbsp;&lt;span&nbsp;id="txtHint"&gt;&lt;/span&gt;&lt;/p&gt;</strong><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>Code explanation:</p><p>First, check if the input field is empty (str.length == 0). If it is, clear the content of the txtHint placeholder and exit the function.</p><p>However, if the input field is not empty, do the following:</p><ul><li>Create an XMLHttpRequest object</li><li>Create the function to be executed when the server response is ready</li><li>Send the request off to a PHP file (gethint.php) on the server</li><li>Notice that q parameter is added to the url (gethint.php?q="+str)</li><li>And the str variable holds the content of the input field</li></ul><h2 id="mcetoc_1bmmukplcg">The PHP File - "gethint.php"</h2><p>The PHP file checks an array of names, and returns the corresponding name(s) to the browser:</p><div class="w3-code w3-border notranslate"><div><strong>&lt;?php</strong><br><strong>// Array with names</strong><br><strong>$a[] = "Anna";</strong><br><strong>$a[] = "Brittany";</strong><br><strong>$a[] = "Cinderella";</strong><br><strong>$a[] = "Diana";</strong><br><strong>$a[] = "Eva";</strong><br><strong>$a[] = "Fiona";</strong><br><strong>$a[] = "Gunda";</strong><br><strong>$a[] = "Hege";</strong><br><strong>$a[] = "Inga";</strong><br><strong>$a[] = "Johanna";</strong><br><strong>$a[] = "Kitty";</strong><br><strong>$a[] = "Linda";</strong><br><strong>$a[] = "Nina";</strong><br><strong>$a[] = "Ophelia";</strong><br><strong>$a[] = "Petunia";</strong><br><strong>$a[] = "Amanda";</strong><br><strong>$a[] = "Raquel";</strong><br><strong>$a[] = "Cindy";</strong><br><strong>$a[] = "Doris";</strong><br><strong>$a[] = "Eve";</strong><br><strong>$a[] = "Evita";</strong><br><strong>$a[] = "Sunniva";</strong><br><strong>$a[] = "Tove";</strong><br><strong>$a[] = "Unni";</strong><br><strong>$a[] = "Violet";</strong><br><strong>$a[] = "Liza";</strong><br><strong>$a[] = "Elizabeth";</strong><br><strong>$a[] = "Ellen";</strong><br><strong>$a[] = "Wenche";</strong><br><strong>$a[] = "Vicky";</strong><br><br><strong>// get the q parameter from URL</strong><br><strong>$q = $_REQUEST["q"];</strong><br><br><strong>$hint = "";</strong><br><br><strong>// lookup all hints from array if $q is different from ""&nbsp;</strong><br><strong>if ($q !== "") {</strong><br><strong>&nbsp;&nbsp;&nbsp; $q = strtolower($q);</strong><br><strong>&nbsp;&nbsp;&nbsp; $len=strlen($q);</strong><br><strong>&nbsp;&nbsp;&nbsp; foreach($a as $name) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (stristr($q, substr($name, 0, $len))) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ($hint === "") {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $hint = $name;</strong><br><strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $hint .= ", $name";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>}</strong><br><br><strong>// Output "no suggestion" if no hint was found or output correct values&nbsp;</strong><br><strong>echo $hint === "" ? "no suggestion" : $hint;</strong><br><strong>?&gt;</strong></div></div></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-8z" data-rv-view="1079" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="u1jAwlqQKtO4WyASSOZB1A+sv5uDQ7+2QGMrgtJKQZHsEhZUVJP5dDjg/2ScKCgwhzNm5KSc9P82sf7TFdrGlYQoNDLv/DHLlsqmNvW4eKshWDiFtJo9KEZzT05FXfO3" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-8z-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-8z-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-8z-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-8z-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-8z-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-8z-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
+</html>

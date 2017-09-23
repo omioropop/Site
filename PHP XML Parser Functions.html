@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="PHP XML Parser Introduction
+The XML functions lets you parse, but not validate, XML documents.
+
+XML is a data format for standardized structured document exchange. More information on XML can be found in ourXML Tutorial.
+
+This extension uses the Expat XML parser.
+
+Expat is an event-based parser, it views an XML document as a series of events. When an event occurs, it calls a specified function to handle it.
+
+Expat is a non-validating parser, and ignores any DTDs linked to a document. However, if the document is not well formed it will end with an error message.
+
+Because it is an event-based, non validating parser, Expat is fast and well suited for web applications.
+
+The XML parser functions lets you create XML parsers and define handlers for XML events.
+
+Installation
+The XML functions are part of the PHP core. There is no installation needed to use these functions.
+
+PHP XML Parser Functions
+PHP: indicates the earliest version of PHP that supports the function.
+
+Function	Description	PHP
+utf8_decode()	Decodes an UTF-8 string to ISO-8859-1	3
+utf8_encode()	Encodes an ISO-8859-1 string to UTF-8	3
+xml_error_string()	Gets an error string from the XML parser	3
+xml_get_current_byte_index()	Gets the current byte index from the XML parser	3
+xml_get_current_column_number()	Gets the current column number from the XML parser	3
+xml_get_current_line_number()	Gets the current line number from the XML parser	3
+xml_get_error_code()	Gets an error code from the XML parser	3
+xml_parse()	Parses an XML document	3
+xml_parse_into_struct()	Parse XML data into an array	3
+xml_parser_create_ns()	Create an XML parser with namespace support	4
+xml_parser_create()	Create an XML parser	3
+xml_parser_free()	Free an XML parser	3
+xml_parser_get_option()	Get options from an XML parser	3
+xml_parser_set_option()	Set options in an XML parser	3
+xml_set_character_data_handler()	Set handler function for character data	3
+xml_set_default_handler()	Set default handler function	3
+xml_set_element_handler()	Set handler function for start and end element of elements	3
+xml_set_end_namespace_decl_handler()	Set handler function for the end of namespace declarations	4
+xml_set_external_entity_ref_handler()	Set handler function for external entities	3
+xml_set_notation_decl_handler()	Set handler function for notation declarations	3
+xml_set_object()	Use XML Parser within an object	4
+xml_set_processing_instruction_handler()	Set handler function for processing instruction	3
+xml_set_start_namespace_decl_handler()	Set handler function for the start of namespace declarations	4
+xml_set_unparsed_entity_decl_handler()	Set handler function for unparsed entity declarations	3
+ 
+PHP XML Parser Constants
+Constant
+XML_ERROR_NONE (integer)
+XML_ERROR_NO_MEMORY (integer)
+XML_ERROR_SYNTAX (integer)
+XML_ERROR_NO_ELEMENTS (integer)
+XML_ERROR_INVALID_TOKEN (integer)
+XML_ERROR_UNCLOSED_TOKEN (integer)
+XML_ERROR_PARTIAL_CHAR (integer)
+XML_ERROR_TAG_MISMATCH (integer)
+XML_ERROR_DUPLICATE_ATTRIBUTE (integer)
+XML_ERROR_JUNK_AFTER_DOC_ELEMENT (integer)
+XML_ERROR_PARAM_ENTITY_REF (integer)
+XML_ERROR_UNDEFINED_ENTITY (integer)
+XML_ERROR_RECURSIVE_ENTITY_REF (integer)
+XML_ERROR_ASYNC_ENTITY (integer)
+XML_ERROR_BAD_CHAR_REF (integer)
+XML_ERROR_BINARY_ENTITY_REF (integer)
+XML_ERROR_ATTRIBUTE_EXTERNAL_ENTITY_REF (integer)
+XML_ERROR_MISPLACED_XML_PI (integer)
+XML_ERROR_UNKNOWN_ENCODING (integer)
+XML_ERROR_INCORRECT_ENCODING (integer)
+XML_ERROR_UNCLOSED_CDATA_SECTION (integer)
+XML_ERROR_EXTERNAL_ENTITY_HANDLING (integer)
+XML_OPTION_CASE_FOLDING (integer)
+XML_OPTION_TARGET_ENCODING (integer)
+XML_OPTION_SKIP_TAGSTART (integer)
+XML_OPTION_SKIP_WHITE (integer)
+">
+  <title>PHP XML Parser Functions</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-ak" data-rv-view="1424">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/i">how to build a website</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-av" data-rv-view="1426" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">PHP XML Parser Functions</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-aw" data-rv-view="1429" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>PHP XML Parser Introduction</h2><p>The XML functions lets you parse, but not validate, XML documents.</p><p>XML is a data format for standardized structured document exchange. More information on XML can be found in our<a href="https://www.w3schools.com/xml/default.asp" target="_blank" class="text-info" rel="noopener" data-mce-href="https://www.w3schools.com/xml/default.asp">XML Tutorial</a>.</p><p>This extension uses the Expat XML parser.</p><p>Expat is an event-based parser, it views an XML document as a series of events. When an event occurs, it calls a specified function to handle it.</p><p>Expat is a non-validating parser, and ignores any DTDs linked to a document. However, if the document is not well formed it will end with an error message.</p><p>Because it is an event-based, non validating parser, Expat is fast and well suited for web applications.</p><p>The XML parser functions lets you create XML parsers and define handlers for XML events.</p><h2>Installation</h2><p>The XML functions are part of the PHP core. There is no installation needed to use these functions.</p><h2>PHP XML Parser Functions</h2><p><strong>PHP</strong>: indicates the earliest version of PHP that supports the function.</p><div class="w3-responsive"><table class="w3-table-all notranslate mce-item-table"><tbody><tr><th>Function</th><th>Description</th><th>PHP</th></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_utf8_decode.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_utf8_decode.asp">utf8_decode()</a></td><td>Decodes an UTF-8 string to ISO-8859-1</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_utf8_encode.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_utf8_encode.asp">utf8_encode()</a></td><td>Encodes an ISO-8859-1 string to UTF-8</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_error_string.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_error_string.asp">xml_error_string()</a></td><td>Gets an error string from the XML parser</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_get_current_byte_index.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_get_current_byte_index.asp">xml_get_current_byte_index()</a></td><td>Gets the current byte index from the XML parser</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_get_current_column_number.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_get_current_column_number.asp">xml_get_current_column_number()</a></td><td>Gets the current column number from the XML parser</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_get_current_line_number.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_get_current_line_number.asp">xml_get_current_line_number()</a></td><td>Gets the current line number from the XML parser</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_get_error_code.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_get_error_code.asp">xml_get_error_code()</a></td><td>Gets an error code from the XML parser</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_parse.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_parse.asp">xml_parse()</a></td><td>Parses an XML document</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_parse_into_struct.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_parse_into_struct.asp">xml_parse_into_struct()</a></td><td>Parse XML data into an array</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_parser_create_ns.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_parser_create_ns.asp">xml_parser_create_ns()</a></td><td>Create an XML parser with namespace support</td><td>4</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_parser_create.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_parser_create.asp">xml_parser_create()</a></td><td>Create an XML parser</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_parser_free.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_parser_free.asp">xml_parser_free()</a></td><td>Free an XML parser</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_parser_get_option.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_parser_get_option.asp">xml_parser_get_option()</a></td><td>Get options from an XML parser</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_parser_set_option.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_parser_set_option.asp">xml_parser_set_option()</a></td><td>Set options in an XML parser</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_set_character_data_handler.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_set_character_data_handler.asp">xml_set_character_data_handler()</a></td><td>Set handler function for character data</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_set_default_handler.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_set_default_handler.asp">xml_set_default_handler()</a></td><td>Set default handler function</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_set_element_handler.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_set_element_handler.asp">xml_set_element_handler()</a></td><td>Set handler function for start and end element of elements</td><td>3</td></tr><tr><td>xml_set_end_namespace_decl_handler()</td><td>Set handler function for the end of namespace declarations</td><td>4</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_set_external_entity_ref_handler.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_set_external_entity_ref_handler.asp">xml_set_external_entity_ref_handler()</a></td><td>Set handler function for external entities</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_set_notation_decl_handler.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_set_notation_decl_handler.asp">xml_set_notation_decl_handler()</a></td><td>Set handler function for notation declarations</td><td>3</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_set_object.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_set_object.asp">xml_set_object()</a></td><td>Use XML Parser within an object</td><td>4</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_set_processing_instruction_handler.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_set_processing_instruction_handler.asp">xml_set_processing_instruction_handler()</a></td><td>Set handler function for processing instruction</td><td>3</td></tr><tr><td>xml_set_start_namespace_decl_handler()</td><td>Set handler function for the start of namespace declarations</td><td>4</td></tr><tr><td><a href="https://www.w3schools.com/php/func_xml_set_unparsed_entity_decl_handler.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_xml_set_unparsed_entity_decl_handler.asp">xml_set_unparsed_entity_decl_handler()</a></td><td>Set handler function for unparsed entity declarations</td><td>3</td></tr></tbody></table></div><div>&nbsp;</div><h2>PHP XML Parser Constants</h2><div class="w3-responsive"><table class="w3-table-all notranslate mce-item-table"><tbody><tr><th>Constant</th></tr><tr><td>XML_ERROR_NONE (integer)</td></tr><tr><td>XML_ERROR_NO_MEMORY (integer)</td></tr><tr><td>XML_ERROR_SYNTAX (integer)</td></tr><tr><td>XML_ERROR_NO_ELEMENTS (integer)</td></tr><tr><td>XML_ERROR_INVALID_TOKEN (integer)</td></tr><tr><td>XML_ERROR_UNCLOSED_TOKEN (integer)</td></tr><tr><td>XML_ERROR_PARTIAL_CHAR (integer)</td></tr><tr><td>XML_ERROR_TAG_MISMATCH (integer)</td></tr><tr><td>XML_ERROR_DUPLICATE_ATTRIBUTE (integer)</td></tr><tr><td>XML_ERROR_JUNK_AFTER_DOC_ELEMENT (integer)</td></tr><tr><td>XML_ERROR_PARAM_ENTITY_REF (integer)</td></tr><tr><td>XML_ERROR_UNDEFINED_ENTITY (integer)</td></tr><tr><td>XML_ERROR_RECURSIVE_ENTITY_REF (integer)</td></tr><tr><td>XML_ERROR_ASYNC_ENTITY (integer)</td></tr><tr><td>XML_ERROR_BAD_CHAR_REF (integer)</td></tr><tr><td>XML_ERROR_BINARY_ENTITY_REF (integer)</td></tr><tr><td>XML_ERROR_ATTRIBUTE_EXTERNAL_ENTITY_REF (integer)</td></tr><tr><td>XML_ERROR_MISPLACED_XML_PI (integer)</td></tr><tr><td>XML_ERROR_UNKNOWN_ENCODING (integer)</td></tr><tr><td>XML_ERROR_INCORRECT_ENCODING (integer)</td></tr><tr><td>XML_ERROR_UNCLOSED_CDATA_SECTION (integer)</td></tr><tr><td>XML_ERROR_EXTERNAL_ENTITY_HANDLING (integer)</td></tr><tr><td>XML_OPTION_CASE_FOLDING (integer)</td></tr><tr><td>XML_OPTION_TARGET_ENCODING (integer)</td></tr><tr><td>XML_OPTION_SKIP_TAGSTART (integer)</td></tr><tr><td>XML_OPTION_SKIP_WHITE (integer)</td></tr></tbody></table></div></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-al" data-rv-view="1431" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="U2TFthTRo5dgIvIWlaM+CMBPo63wYi5gA6M9u7KaHX7dGXfULyVZa3fA/twfS8vx3sBuvQmdbiHsVpsv981fpn5J4FY446aQ9zLmR+wz4NWd2+vPkRE6KMNL/9sCmJrN" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-al-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-al-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-al-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-al-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-al-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-al-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

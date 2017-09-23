@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="What is a Cookie?
+A cookie is often used to identify a user. A cookie is a small file that the server embeds on the user's computer. Each time the same computer requests a page with a browser, it will send the cookie too. With PHP, you can both create and retrieve cookie values.
+
+Create Cookies With PHP
+A cookie is created with the setcookie() function.
+
+Syntax
+setcookie(name, value, expire, path, domain, secure, httponly);
+Only the name parameter is required. All other parameters are optional.
+
+PHP Create/Retrieve a Cookie
+The following example creates a cookie named "user" with the value "John Doe". The cookie will expire after 30 days (86400 * 30). The "/" means that the cookie is available in entire website (otherwise, select the directory you prefer).
+
+We then retrieve the value of the cookie "user" (using the global variable $_COOKIE). We also use the isset() function to find out if the cookie is set:
+
+Example
+<?php
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+?>
+<html>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+
+<?php
+if(!isset($_COOKIE[$cookie_name])) {
+    echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+    echo "Cookie '" . $cookie_name . "' is set!<br>";
+    echo "Value is: " . $_COOKIE[$cookie_name];
+}
+?>
+
+  <input name="animation" type="hidden">
+  </body>
+</html>
+Note: The setcookie() function must appear BEFORE the <html> tag.
+
+Note: The value of the cookie is automatically URLencoded when sending the cookie, and automatically decoded when received (to prevent URLencoding, use setrawcookie() instead).
+
+Modify a Cookie Value
+To modify a cookie, just set (again) the cookie using the setcookie() function:
+
+Example
+<?php
+$cookie_name = "user";
+$cookie_value = "Alex Porter";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+?>
+<html>
+<body>
+
+<?php
+if(!isset($_COOKIE[$cookie_name])) {
+    echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+    echo "Cookie '" . $cookie_name . "' is set!<br>";
+    echo "Value is: " . $_COOKIE[$cookie_name];
+}
+?>
+
+</body>
+</html>
+Delete a Cookie
+To delete a cookie, use the setcookie() function with an expiration date in the past:
+
+Example
+<?php
+// set the expiration date to one hour ago
+setcookie("user", "", time() - 3600);
+?>
+<html>
+<body>
+
+<?php
+echo "Cookie 'user' is deleted.";
+?>
+
+</body>
+</html>
+Check if Cookies are Enabled
+The following example creates a small script that checks whether cookies are enabled. First, try to create a test cookie with the setcookie() function, then count the $_COOKIE array variable:
+
+Example
+<?php
+setcookie("test_cookie", "test", time() + 3600, '/');
+?>
+<html>
+<body>
+
+<?php
+if(count($_COOKIE) > 0) {
+    echo "Cookies are enabled.";
+} else {
+    echo "Cookies are disabled.";
+}
+?>
+
+</body>
+</html>">
+  <title>Php Cookies</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+<section id="ext_menu-5s" data-rv-view="684">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/q">bootstrap carousel</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-6j" data-rv-view="686" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php Cookies</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-6k" data-rv-view="689" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>What is a Cookie?</h2><p>A cookie is often used to identify a user. A cookie is a small file that the server embeds on the user's computer. Each time the same computer requests a page with a browser, it will send the cookie too. With PHP, you can both create and retrieve cookie values.</p><h2>Create Cookies With PHP</h2><p>A cookie is created with the setcookie() function.</p><h3>Syntax</h3><div class="w3-code w3-border notranslate"><div>setcookie(<em>name, value, expire, path, domain, secure, httponly</em>);</div></div><p>Only the&nbsp;<em>name</em>&nbsp;parameter is required. All other parameters are optional.</p><h2>PHP Create/Retrieve a Cookie</h2><p>The following example creates a cookie named "user" with the value "John Doe". The cookie will expire after 30 days (86400 * 30). The "/" means that the cookie is available in entire website (otherwise, select the directory you prefer).</p><p>We then retrieve the value of the cookie "user" (using the global variable $_COOKIE). We also use the isset() function to find out if the cookie is set:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$cookie_name =&nbsp;"user";</strong><br><strong>$cookie_value =&nbsp;"John Doe";</strong><br><strong>setcookie($cookie_name, $cookie_value, time() + (86400&nbsp;*&nbsp;30),&nbsp;"/");&nbsp;// 86400 = 1 day</strong><br><strong>?&gt;</strong><br><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;?php</strong><br><strong>if(!isset($_COOKIE[$cookie_name])) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Cookie named '"&nbsp;. $cookie_name .&nbsp;"' is not set!";</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Cookie '"&nbsp;. $cookie_name .&nbsp;"' is set!&lt;br&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Value is: "&nbsp;.&nbsp;$_COOKIE[$cookie_name];</strong><br><strong>}</strong><br><strong>?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><div class="w3-panel w3-note"><p><strong>Note:</strong>&nbsp;The setcookie() function must appear BEFORE the &lt;html&gt; tag.</p></div><p><strong>Note:&nbsp;</strong>The value of the cookie is automatically URLencoded when sending the cookie, and automatically decoded when received (to prevent URLencoding, use setrawcookie() instead).</p><h2>Modify a Cookie Value</h2><p>To modify a cookie, just set (again) the cookie using the setcookie() function:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>$cookie_name =&nbsp;"user";</strong><br><strong>$cookie_value =&nbsp;"Alex Porter";</strong><br><strong>setcookie($cookie_name, $cookie_value, time() + (86400&nbsp;*&nbsp;30),&nbsp;"/");</strong><br><strong>?&gt;</strong><br><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;?php</strong><br><strong>if(!isset($_COOKIE[$cookie_name])) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Cookie named '"&nbsp;. $cookie_name .&nbsp;"' is not set!";</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Cookie '"&nbsp;. $cookie_name .&nbsp;"' is set!&lt;br&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Value is: "&nbsp;.&nbsp;$_COOKIE[$cookie_name];</strong><br><strong>}</strong><br><strong>?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><h2>Delete a Cookie</h2><p>To delete a cookie, use the setcookie() function with an expiration date in the past:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>// set the expiration date to one hour ago</strong><br><strong>setcookie("user",&nbsp;"", time() -&nbsp;3600);</strong><br><strong>?&gt;</strong><br><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;?php</strong><br><strong>echo&nbsp;"Cookie 'user' is deleted.";</strong><br><strong>?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><h2>Check if Cookies are Enabled</h2><p>The following example creates a small script that checks whether cookies are enabled. First, try to create a test cookie with the setcookie() function, then count the $_COOKIE array variable:</p><div class="w3-example"><h3>Example</h3><div class="w3-code htmlHigh notranslate"><strong>&lt;?php</strong><br><strong>setcookie("test_cookie",&nbsp;"test", time() +&nbsp;3600,&nbsp;'/');</strong><br><strong>?&gt;</strong><br><strong>&lt;html&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;?php</strong><br><strong>if(count($_COOKIE) &gt;&nbsp;0) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Cookies are enabled.";</strong><br><strong>}&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;"Cookies are disabled.";</strong><br><strong>}</strong><br><strong>?&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-5t" data-rv-view="691" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="Z9pi0K6bc/4FH/M5GyUy4WwOeYCQNRCsEwFEDgpTgqLsRMQWjYjgq5AiVGJLTt12qRcFfljlaA9s6hCd3LlA4jVONrN4Oi5dVQwDH7PH7o3QZ74aPjxUIBw7j+1yJLFc" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5t-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-5t-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5t-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-5t-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-5t-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-5t-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
+</html>

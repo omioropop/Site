@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="AJAX Database Example
+The following example will demonstrate how a web page can fetch information from a database with AJAX:
+
+Example
+
+
+Person info will be listed here...
+Example Explained - The MySQL Database
+The database table we use in the example above looks like this:
+
+id	FirstName	LastName	Age	Hometown	Job
+1	Peter	Griffin	41	Quahog	Brewery
+2	Lois	Griffin	40	Newport	Piano Teacher
+3	Joseph	Swanson	39	Quahog	Police Officer
+4	Glenn	Quagmire	41	Quahog	Pilot
+ 
+
+Example Explained
+In the example above, when a user selects a person in the dropdown list above, a function called "showUser()" is executed.
+
+The function is triggered by the onchange event.
+
+Here is the HTML code:
+
+Example
+<html>
+<head>
+<script>
+function showUser(str) {
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","getuser.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+</script>
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+
+<form>
+<select name="users" onchange="showUser(this.value)">
+  <option value="">Select a person:</option>
+  <option value="1">Peter Griffin</option>
+  <option value="2">Lois Griffin</option>
+  <option value="3">Joseph Swanson</option>
+  <option value="4">Glenn Quagmire</option>
+  </select>
+</form>
+<br>
+<div id="txtHint"><b>Person info will be listed here...</b></div>
+
+  <input name="animation" type="hidden">
+  </body>
+</html>
+Code explanation:
+
+First, check if person is selected. If no person is selected (str == ""), clear the content of txtHint and exit the function. If a person is selected, do the following:
+
+Create an XMLHttpRequest object
+Create the function to be executed when the server response is ready
+Send the request off to a file on the server
+Notice that a parameter (q) is added to the URL (with the content of the dropdown list)
+The PHP File
+The page on the server called by the JavaScript above is a PHP file called "getuser.php".
+
+The source code in "getuser.php" runs a query against a MySQL database, and returns the result in an HTML table:
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+th {text-align: left;}
+</style>
+</head>
+<body>
+
+<?php
+$q = intval($_GET['q']);
+
+$con = mysqli_connect('localhost','peter','abc123','my_db');
+if (!$con) {
+    die('Could not connect: ' . mysqli_error($con));
+}
+
+mysqli_select_db($con,"ajax_demo");
+$sql="SELECT * FROM user WHERE id = '".$q."'";
+$result = mysqli_query($con,$sql);
+
+echo "<table>
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+<th>Age</th>
+<th>Hometown</th>
+<th>Job</th>
+</tr>";
+while($row = mysqli_fetch_array($result)) {
+    echo "<tr>";
+    echo "<td>" . $row['FirstName'] . "</td>";
+    echo "<td>" . $row['LastName'] . "</td>";
+    echo "<td>" . $row['Age'] . "</td>";
+    echo "<td>" . $row['Hometown'] . "</td>";
+    echo "<td>" . $row['Job'] . "</td>";
+    echo "</tr>";
+}
+echo "</table>";
+mysqli_close($con);
+?>
+</body>
+</html>
+Explanation: When the query is sent from the JavaScript to the PHP file, the following happens:
+
+PHP opens a connection to a MySQL server
+The correct person is found
+An HTML table is created, filled with data, and sent back to the "txtHint" placeholder">
+  <title>PHP - AJAX and MySQL</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+<section id="ext_menu-90" data-rv-view="1088">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/o">bootstrap button</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-9e" data-rv-view="1090" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">PHP - AJAX and MySQL</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-9f" data-rv-view="1093" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2 id="mcetoc_1bmmumpruh">AJAX Database Example</h2><p>The following example will demonstrate how a web page can fetch information from a database with AJAX:</p><div class="w3-example"><h3 id="mcetoc_1bmmumprui">Example</h3><div class="w3-padding w3-white w3-margin-bottom notranslate"><form><select name="users" onchange="showUser(this.value)">&nbsp;<option value="">Select a person:</option>&nbsp;<option value="1">Peter Griffin</option>&nbsp;<option value="2">Lois Griffin</option>&nbsp;<option value="3">Joseph Swanson</option>&nbsp;<option value="4">Glenn Quagmire</option>&nbsp;</select></form><br><div id="txtHint"><strong>Person info will be listed here...</strong></div></div></div><h2 id="mcetoc_1bmmumpruj">Example Explained - The MySQL Database</h2><p>The database table we use in the example above looks like this:</p><table class="w3-table-all notranslate mce-item-table" style="width: 417px;" data-mce-style="width: 417px;"><tbody><tr><th style="width: 21px;" data-mce-style="width: 21px;">id</th><th style="width: 91px;" data-mce-style="width: 91px;">FirstName</th><th style="width: 83px;" data-mce-style="width: 83px;">LastName</th><th style="width: 54px;" data-mce-style="width: 54px;">Age</th><th style="width: 42px;" data-mce-style="width: 42px;">Hometown</th><th style="width: 98px;" data-mce-style="width: 98px;">Job</th></tr><tr><td style="width: 21px;" data-mce-style="width: 21px;">1</td><td style="width: 91px;" data-mce-style="width: 91px;">Peter</td><td style="width: 83px;" data-mce-style="width: 83px;">Griffin</td><td style="width: 54px;" data-mce-style="width: 54px;">41</td><td style="width: 42px;" data-mce-style="width: 42px;">Quahog</td><td style="width: 98px;" data-mce-style="width: 98px;">Brewery</td></tr><tr><td style="width: 21px;" data-mce-style="width: 21px;">2</td><td style="width: 91px;" data-mce-style="width: 91px;">Lois</td><td style="width: 83px;" data-mce-style="width: 83px;">Griffin</td><td style="width: 54px;" data-mce-style="width: 54px;">40</td><td style="width: 42px;" data-mce-style="width: 42px;">Newport</td><td style="width: 98px;" data-mce-style="width: 98px;">Piano Teacher</td></tr><tr><td style="width: 21px;" data-mce-style="width: 21px;">3</td><td style="width: 91px;" data-mce-style="width: 91px;">Joseph</td><td style="width: 83px;" data-mce-style="width: 83px;">Swanson</td><td style="width: 54px;" data-mce-style="width: 54px;">39</td><td style="width: 42px;" data-mce-style="width: 42px;">Quahog</td><td style="width: 98px;" data-mce-style="width: 98px;">Police Officer</td></tr><tr><td style="width: 21px;" data-mce-style="width: 21px;">4</td><td style="width: 91px;" data-mce-style="width: 91px;">Glenn</td><td style="width: 83px;" data-mce-style="width: 83px;">Quagmire</td><td style="width: 54px;" data-mce-style="width: 54px;">41</td><td style="width: 42px;" data-mce-style="width: 42px;">Quahog</td><td style="width: 98px;" data-mce-style="width: 98px;">Pilot</td></tr></tbody></table><p>&nbsp;</p><h2 id="mcetoc_1bmmumpruk">Example Explained</h2><p>In the example above, when a user selects a person in the dropdown list above, a function called "showUser()" is executed.</p><p>The function is triggered by the onchange event.</p><p>Here is the HTML code:</p><div class="w3-example"><h3 id="mcetoc_1bmmumprul">Example</h3><div class="w3-code notranslate htmlHigh"><strong>&lt;html&gt;</strong><br><strong>&lt;head&gt;</strong><br><strong>&lt;script&gt;</strong><br><strong>function&nbsp;showUser(str) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(str ==&nbsp;"") {</strong><br><strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("txtHint").innerHTML&nbsp;=&nbsp;"";</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</strong><br><strong>&nbsp;&nbsp;&nbsp; }&nbsp;else&nbsp;{&nbsp;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(window.XMLHttpRequest) {</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code for IE7+, Firefox, Chrome, Opera, Safari</strong><br><strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlhttp =&nbsp;new&nbsp;XMLHttpRequest();</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;else&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code for IE6, IE5</strong><br><strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlhttp =&nbsp;new&nbsp;ActiveXObject("Microsoft.XMLHTTP");</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlhttp.onreadystatechange&nbsp;=&nbsp;function() {</strong><br><strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(this.readyState&nbsp;==&nbsp;4&nbsp;&amp;&amp;&nbsp;this.status&nbsp;==&nbsp;200) {</strong><br><strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("txtHint").innerHTML&nbsp;=&nbsp;this.responseText;</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlhttp.open("GET","getuser.php?q="+str,true);</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; xmlhttp.send();</strong><br><strong>&nbsp;&nbsp;&nbsp; }</strong><br><strong>}</strong><br><strong>&lt;/script&gt;</strong><br><strong>&lt;/head&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;form&gt;</strong><br><strong>&lt;select&nbsp;name="users"&nbsp;onchange="showUser(this.value)"&gt;</strong><br><strong>&nbsp;&nbsp;&lt;option&nbsp;value=""&gt;Select a person:&lt;/option&gt;</strong><br><strong>&nbsp;&nbsp;&lt;option&nbsp;value="1"&gt;Peter Griffin&lt;/option&gt;</strong><br><strong>&nbsp;&nbsp;&lt;option&nbsp;value="2"&gt;Lois Griffin&lt;/option&gt;</strong><br><strong>&nbsp;&nbsp;&lt;option&nbsp;value="3"&gt;Joseph Swanson&lt;/option&gt;</strong><br><strong>&nbsp;&nbsp;&lt;option&nbsp;value="4"&gt;Glenn Quagmire&lt;/option&gt;</strong><br><strong>&nbsp;&nbsp;&lt;/select&gt;</strong><br><strong>&lt;/form&gt;</strong><br><strong>&lt;br&gt;</strong><br><strong>&lt;div&nbsp;id="txtHint"&gt;&lt;b&gt;Person info will be listed here...&lt;/b&gt;&lt;/div&gt;</strong><br><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>Code explanation:</p><p>First, check if person is selected. If no person is selected (str == ""), clear the content of txtHint and exit the function. If a person is selected, do the following:</p><ul><li>Create an XMLHttpRequest object</li><li>Create the function to be executed when the server response is ready</li><li>Send the request off to a file on the server</li><li>Notice that a parameter (q) is added to the URL (with the content of the dropdown list)</li></ul><h2 id="mcetoc_1bmmumprum">The PHP File</h2><p>The page on the server called by the JavaScript above is a PHP file called "getuser.php".</p><p>The source code in "getuser.php" runs a query against a MySQL database, and returns the result in an HTML table:</p><div class="w3-code w3-border notranslate"><div><strong>&lt;!DOCTYPE html&gt;</strong><br><strong>&lt;html&gt;</strong><br><strong>&lt;head&gt;</strong><br><strong>&lt;style&gt;</strong><br><strong>table {</strong><br><strong>&nbsp;&nbsp;&nbsp; width: 100%;</strong><br><strong>&nbsp;&nbsp;&nbsp; border-collapse: collapse;</strong><br><strong>}</strong><br><br><strong>table, td, th {</strong><br><strong>&nbsp;&nbsp;&nbsp; border: 1px solid black;</strong><br><strong>&nbsp;&nbsp;&nbsp; padding: 5px;</strong><br><strong>}</strong><br><br><strong>th {text-align: left;}</strong><br><strong>&lt;/style&gt;</strong><br><strong>&lt;/head&gt;</strong><br><strong>&lt;body&gt;</strong><br><br><strong>&lt;?php</strong><br><strong>$q = intval($_GET['q']);</strong><br><br><strong>$con = mysqli_connect('localhost','peter','abc123','my_db');</strong><br><strong>if (!$con)&nbsp;{</strong><br><strong>&nbsp;&nbsp;&nbsp; die('Could not connect: ' . mysqli_error($con));</strong><br><strong>}</strong><br><br><strong>mysqli_select_db($con,"ajax_demo");</strong><br><strong>$sql="SELECT * FROM user WHERE id = '".$q."'";</strong><br><strong>$result = mysqli_query($con,$sql);</strong><br><br><strong>echo "&lt;table&gt;</strong><br><strong>&lt;tr&gt;</strong><br><strong>&lt;th&gt;Firstname&lt;/th&gt;</strong><br><strong>&lt;th&gt;Lastname&lt;/th&gt;</strong><br><strong>&lt;th&gt;Age&lt;/th&gt;</strong><br><strong>&lt;th&gt;Hometown&lt;/th&gt;</strong><br><strong>&lt;th&gt;Job&lt;/th&gt;</strong><br><strong>&lt;/tr&gt;";</strong><br><strong>while($row = mysqli_fetch_array($result)) {</strong><br><strong>&nbsp;&nbsp;&nbsp; echo "&lt;tr&gt;";</strong><br><strong>&nbsp; &nbsp;&nbsp;echo "&lt;td&gt;" . $row['FirstName'] . "&lt;/td&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp; echo "&lt;td&gt;" . $row['LastName'] . "&lt;/td&gt;";</strong><br><strong>&nbsp; &nbsp;&nbsp;echo "&lt;td&gt;" . $row['Age'] . "&lt;/td&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp; echo "&lt;td&gt;" . $row['Hometown'] . "&lt;/td&gt;";</strong><br><strong>&nbsp; &nbsp;&nbsp;echo "&lt;td&gt;" . $row['Job'] . "&lt;/td&gt;";</strong><br><strong>&nbsp;&nbsp;&nbsp; echo "&lt;/tr&gt;";</strong><br><strong>}</strong><br><strong>echo "&lt;/table&gt;";</strong><br><strong>mysqli_close($con);</strong><br><strong>?&gt;</strong><br><strong>&lt;/body&gt;</strong><br><strong>&lt;/html&gt;</strong></div></div><p>Explanation: When the query is sent from the JavaScript to the PHP file, the following happens:</p><ol><li>PHP opens a connection to a MySQL server</li><li>The correct person is found</li><li>An HTML table is created, filled with data, and sent back to the "txtHint" placeholder</li></ol></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-91" data-rv-view="1095" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="CNh14YYVL7fIkgDCJ+3XJ0uSvg7DZ+KVkzJwCMEWypc+ajNhD2yyeCS1hdlzMuFRayvC9ox4hZg4ZDYdVZ470e//7jRUn8eqrgAPlHEY8qilxzwzbFmvsIHCpgkc8iN+" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-91-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-91-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-91-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-91-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-91-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-91-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="PHP SimpleXML Introduction
+SimpleXML is an extension that allows us to easily manipulate and get XML data.
+
+SimpleXML provides an easy way of getting an element's name, attributes and textual content if you know the XML document's structure or layout.
+
+SimpleXML turns an XML document into a data structure you can iterate through like a collection of arrays and objects.
+
+Installation
+As of PHP 5, the SimpleXML functions are part of the PHP core. No installation is required to use these functions.
+
+PHP 5 SimpleXML Functions
+Function	Description
+construct()	Creates a new SimpleXMLElement object
+addAttribute()	Adds an attribute to the SimpleXML element
+addChild()	Adds a child element the SimpleXML element
+asXML()	Returns a well-formed XML string (XML version 1.0) from a SimpleXML object
+attributes()	Returns the attributes/values of an element
+children()	Returns the children of a specified node
+count()	Counts the children of a specified node
+getDocNamespaces()	Returns the namespaces DECLARED in document
+getName()	Returns the name of the XML tag referenced by the SimpleXML element
+getNamespaces()	Returns the namespaces USED in document
+registerXPathNamespace()	Creates a namespace context for the next XPath query
+saveXML()	Alias of asXML()
+simplexml_import_dom()	Returns a SimpleXMLElement object from a DOM node
+simplexml_load_file()	Converts an XML file into a SimpleXMLElement object
+simplexml_load_string()	Converts an XML string into a SimpleXMLElement object
+xpath()	Runs an XPath query on XML data
+PHP 5 SimpleXML Iteration Functions
+Function	Description
+current()	Returns the current element
+getChildren()	Returns the child elements of the current element
+hasChildren()	Checks whether the current element has children
+key()	Return the current key
+next()	Moves to the next element
+rewind()	Rewind to the first element
+valid()	Check whether the current element is valid
+">
+  <title>Php SimpleXML Functions</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-ag" data-rv-view="1392">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/f">free bootstrap builder</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-az" data-rv-view="1394" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Php SimpleXML Functions</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-b0" data-rv-view="1397" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2>PHP SimpleXML Introduction</h2><p>SimpleXML is an extension that allows us to easily manipulate and get XML data.</p><p>SimpleXML provides an easy way of getting an element's name, attributes and textual content if you know the XML document's structure or layout.</p><p>SimpleXML turns an XML document into a data structure you can iterate through like a collection of arrays and objects.</p><h2>Installation</h2><p>As of PHP 5, the SimpleXML functions are part of the PHP core. No installation is required to use these functions.</p><h2>PHP 5 SimpleXML Functions</h2><div class="w3-responsive"><table class="w3-table-all notranslate mce-item-table"><tbody><tr><th>Function</th><th>Description</th></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml__construct.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml__construct.asp">construct()</a></td><td>Creates a new SimpleXMLElement object</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_addattribute.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_addattribute.asp">addAttribute()</a></td><td>Adds an attribute to the SimpleXML element</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_addchild.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_addchild.asp">addChild()</a></td><td>Adds a child element the SimpleXML element</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_asxml.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_asxml.asp">asXML()</a></td><td>Returns a well-formed XML string (XML version 1.0) from a SimpleXML object</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_attributes.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_attributes.asp">attributes()</a></td><td>Returns the attributes/values of an element</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_children.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_children.asp">children()</a></td><td>Returns the children of a specified node</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_count.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_count.asp">count()</a></td><td>Counts the children of a specified node</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_getdocnamespaces.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_getdocnamespaces.asp">getDocNamespaces()</a></td><td>Returns the namespaces DECLARED in document</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_getname.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_getname.asp">getName()</a></td><td>Returns the name of the XML tag referenced by the SimpleXML element</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_getnamespaces.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_getnamespaces.asp">getNamespaces()</a></td><td>Returns the namespaces USED in document</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_registerxpathnamespace.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_registerxpathnamespace.asp">registerXPathNamespace()</a></td><td>Creates a namespace context for the next XPath query</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_asxml.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_asxml.asp">saveXML()</a></td><td>Alias of&nbsp;<a href="https://www.w3schools.com/php/func_simplexml_asxml.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_asxml.asp">asXML()</a></td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_import_dom.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_import_dom.asp">simplexml_import_dom()</a></td><td>Returns a SimpleXMLElement object from a DOM node</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_load_file.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_load_file.asp">simplexml_load_file()</a></td><td>Converts an XML file into a SimpleXMLElement object</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_load_string.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_load_string.asp">simplexml_load_string()</a></td><td>Converts an XML string into a SimpleXMLElement object</td></tr><tr><td><a href="https://www.w3schools.com/php/func_simplexml_xpath.asp" class="text-info" data-mce-href="https://www.w3schools.com/php/func_simplexml_xpath.asp">xpath()</a></td><td>Runs an XPath query on XML data</td></tr></tbody></table></div><h2>PHP 5 SimpleXML Iteration Functions</h2><table class="w3-table-all notranslate mce-item-table" style="width: 462px;" data-mce-style="width: 462px;"><tbody><tr><th style="width: 123px;" data-mce-style="width: 123px;">Function</th><th style="width: 325px;" data-mce-style="width: 325px;">Description</th></tr><tr><td style="width: 123px;" data-mce-style="width: 123px;">current()</td><td style="width: 325px;" data-mce-style="width: 325px;">Returns the current element</td></tr><tr><td style="width: 123px;" data-mce-style="width: 123px;">getChildren()</td><td style="width: 325px;" data-mce-style="width: 325px;">Returns the child elements of the current element</td></tr><tr><td style="width: 123px;" data-mce-style="width: 123px;">hasChildren()</td><td style="width: 325px;" data-mce-style="width: 325px;">Checks whether the current element has children</td></tr><tr><td style="width: 123px;" data-mce-style="width: 123px;">key()</td><td style="width: 325px;" data-mce-style="width: 325px;">Return the current key</td></tr><tr><td style="width: 123px;" data-mce-style="width: 123px;">next()</td><td style="width: 325px;" data-mce-style="width: 325px;">Moves to the next element</td></tr><tr><td style="width: 123px;" data-mce-style="width: 123px;">rewind()</td><td style="width: 325px;" data-mce-style="width: 325px;">Rewind to the first element</td></tr><tr><td style="width: 123px;" data-mce-style="width: 123px;">valid()</td><td style="width: 325px;" data-mce-style="width: 325px;">Check whether the current element is valid</td></tr></tbody></table></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-ah" data-rv-view="1399" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="YgSPsV9TDaYmuziryQIjPeLKlZlK/kQd3EJAAXynrIUW7X2uFILwiFIiK9h+y+h+oEp2U1SMLWMwJOICUdOdGPCiSo9ohFoZt4wwYhapDEF2ybUPmeQ0hUtaIZia+2Pn" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-ah-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-ah-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-ah-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-ah-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-ah-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-ah-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

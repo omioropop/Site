@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.1.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.1.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/images/if-terminal-128x128.png" type="image/x-icon">
+  <meta name="description" content="CREATING (DECLARING) PHP VARIABLES
+In PHP, a variable starts with the $ sign, followed by the name of the variable:
+
+EXAMPLE
+<?php
+$txt = “Hello world!”;
+$x = 5;
+$y = 10.5;
+?>
+After the execution of the statements above, the variable $txt will hold the value Hello world!, the variable $xwill hold the value 5, and the variable $y will hold the value 10.5.
+
+Note: When you assign a text value to a variable, put quotes around the value.
+
+Note: Unlike other programming languages, PHP has no command for declaring a variable. It is created the moment you first assign a value to it.
+
+Think of variables as containers for storing data.
+
+PHP VARIABLES
+A variable can have a short name (like x and y) or a more descriptive name (age, carname, total_volume).
+
+Rules for PHP variables:
+
+A variable starts with the $ sign, followed by the name of the variable
+A variable name must start with a letter or the underscore character
+A variable name cannot start with a number
+A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
+Variable names are case-sensitive ($age and $AGE are two different variables)
+Remember that PHP variable names are case-sensitive!
+
+OUTPUT VARIABLES
+The PHP echo statement is often used to output data to the screen.
+
+The following example will show how to output text and a variable:
+
+EXAMPLE
+<?php
+$txt = “W3Schools.com”;
+echo “I love $txt!”;
+?>
+The following example will produce the same output as the example above:
+
+EXAMPLE
+<?php
+$txt = “W3Schools.com”;
+echo “I love ” . $txt . “!”;
+?>
+The following example will output the sum of two variables:
+
+EXAMPLE
+<?php
+$x = 5;
+$y = 4;
+echo $x + $y;
+?>
+Note: You will learn more about the echo statement and how to output data to the screen in the next chapter.
+
+PHP IS A LOOSELY TYPED LANGUAGE
+In the example above, notice that we did not have to tell PHP which data type the variable is.
+
+PHP automatically converts the variable to the correct data type, depending on its value.
+
+In other languages such as C, C++, and Java, the programmer must declare the name and type of the variable before using it.
+
+PHP VARIABLES SCOPE
+In PHP, variables can be declared anywhere in the script.
+
+The scope of a variable is the part of the script where the variable can be referenced/used.
+
+PHP has three different variable scopes:
+
+local
+global
+static
+GLOBAL AND LOCAL SCOPE
+A variable declared outside a function has a GLOBAL SCOPE and can only be accessed outside a function:
+
+EXAMPLE
+<?php
+$x = 5; // global scopefunction myTest() {
+    // using x inside this function will generate an error
+    echo “
+Variable x inside function is: $x
+
+”;
+} 
+myTest();echo “<p>Variable x outside function is: $x</p>”;
+?>
+A variable declared within a function has a LOCAL SCOPE and can only be accessed within that function:
+
+EXAMPLE
+<?php
+function myTest() {
+    $x = 5; // local scope
+    echo “
+Variable x inside function is: $x
+
+”;
+} 
+myTest();// using x outside the function will generate an error
+echo “<p>Variable x outside function is: $x</p>”;
+?>
+You can have local variables with the same name in different functions, because local variables are only recognized by the function in which they are declared.
+
+PHP THE GLOBAL KEYWORD
+The global keyword is used to access a global variable from within a function.
+
+To do this, use the global keyword before the variables (inside the function):
+
+EXAMPLE
+<?php
+$x = 5;
+$y = 10;function myTest() {
+    global $x, $y;
+    $y = $x + $y;
+}myTest();
+echo $y; // outputs 15
+?>
+ 
+PHP also stores all global variables in an array called $GLOBALS[index]. The index holds the name of the variable. This array is also accessible from within functions and can be used to update global variables directly.
+The example above can be rewritten like this:
+
+EXAMPLE
+<?php
+$x = 5;
+$y = 10;function myTest() {
+    $GLOBALS[‘y’] = $GLOBALS[‘x’] + $GLOBALS[‘y’];
+} myTest();
+echo $y; // outputs 15
+?>
+PHP THE STATIC KEYWORD
+Normally, when a function is completed/executed, all of its variables are deleted. However, sometimes we want a local variable NOT to be deleted. We need it for a further job.
+
+To do this, use the static keyword when you first declare the variable:
+
+EXAMPLE
+<?php
+function myTest() {
+    static $x = 0;
+    echo $x;
+    $x++;
+}myTest();
+myTest();
+myTest();
+?>
+Then, each time the function is called, that variable will still have the information it contained from the last time the function was called.
+
+Note: The variable is still local to the function.">
+  <title>Variables</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin">
+  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104305149-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- /Google Analytics -->
+
+
+<section id="ext_menu-2j" data-rv-view="241">
+
+    <nav class="navbar navbar-dropdown navbar-fixed-top">
+        <div class="container">
+
+            <div class="mbr-table">
+                <div class="mbr-table-cell">
+
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-logo"><img src="assets/images/if-terminal-128x128.png" alt="Mobirise"></a>
+                        <a class="navbar-caption" href="index.html">Tuts Point</a>
+                    </div>
+
+                </div>
+                <div class="mbr-table-cell">
+
+                    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="hamburger-icon"></div>
+                    </button>
+
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item dropdown"><a class="nav-link link" href="index.html" aria-expanded="false">HOME</a></li><li class="nav-item"><a class="nav-link link" href="PHP.html" aria-expanded="false">PHP</a></li><li class="nav-item"><a class="nav-link link" href="PRIVACY.html">PRIVACY</a></li><li class="nav-item nav-btn"><a class="nav-link btn btn-primary" href="index.html#form2-6">SUBSCRIBE</a></li></ul>
+                    <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                        <div class="close-icon"></div>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+</section>
+
+<section class="engine"><a href="https://mobirise.co/c">free web site maker</a></section><section class="mbr-section article mbr-after-navbar" id="msg-box8-3q" data-rv-view="236" style="background-color: rgb(124, 112, 107); padding-top: 160px; padding-bottom: 80px;">
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+                <h3 class="mbr-section-title display-2">Variables</h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="htmlblock-block-4j" data-rv-view="239" style="background-color: rgb(255, 255, 255);">
+	<style>.block {padding-bottom:0px; padding-top:0px;}</style>		
+            
+
+    <div class="mbr-section__container mbr-section__container--isolated container">
+        <div class="row block">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container mbr-section__container--middle">
+                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <div class="mbr-header__text tiny"></div>
+                        </div>
+                    </div>
+                    <div class="mbr-section__container">
+                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><div class="tiny"><h2 id="mcetoc_1bmgrt4ko0">CREATING (DECLARING) PHP VARIABLES</h2><p>In PHP, a variable starts with the $ sign, followed by the name of the variable:</p><div class="w3-example"><h3 id="mcetoc_1bmgrt4ko1">EXAMPLE</h3><blockquote><div class="w3-code notranslate htmlHigh"><strong>&lt;?php<br>$txt = “Hello world!”;<br>$x = 5;<br>$y = 10.5;<br>?&gt;</strong></div></blockquote></div><p>After the execution of the statements above, the variable&nbsp;<strong>$txt</strong>&nbsp;will hold the value&nbsp;<strong>Hello world!</strong>, the variable&nbsp;<strong>$x</strong>will hold the value&nbsp;<strong>5</strong>, and the variable&nbsp;<strong>$y</strong>&nbsp;will hold the value&nbsp;<strong>10.5</strong>.</p><p><strong>Note:</strong>&nbsp;When you assign a text value to a variable, put quotes around the value.</p><p><strong>Note:</strong>&nbsp;Unlike other programming languages, PHP has no command for declaring a variable. It is created the moment you first assign a value to it.</p><div class="w3-panel w3-note"><p>Think of variables as containers for storing data.</p></div><h2 id="mcetoc_1bmgrt4ko2">PHP VARIABLES</h2><p>A variable can have a short name (like x and y) or a more descriptive name (age, carname, total_volume).</p><p>Rules for PHP variables:</p><ul><li>A variable starts with the $ sign, followed by the name of the variable</li><li>A variable name must start with a letter or the underscore character</li><li>A variable name cannot start with a number</li><li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )</li><li>Variable names are case-sensitive ($age and $AGE are two different variables)</li></ul><div class="w3-panel w3-note"><p>Remember that PHP variable names are case-sensitive!</p></div><h2 id="mcetoc_1bmgrt4ko3">OUTPUT VARIABLES</h2><p>The PHP echo statement is often used to output data to the screen.</p><p>The following example will show how to output text and a variable:</p><div class="w3-example"><h3 id="mcetoc_1bmgrt4ko4">EXAMPLE</h3><blockquote><div class="w3-code notranslate htmlHigh"><strong>&lt;?php<br>$txt = “W3Schools.com”;<br>echo “I love $txt!”;<br>?&gt;</strong></div></blockquote></div><p>The following example will produce the same output as the example above:</p><div class="w3-example"><h3 id="mcetoc_1bmgrt4ko5">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$txt = “W3Schools.com”;<br>echo “I love ” . $txt . “!”;<br>?&gt;</strong></div></blockquote></div><p>The following example will output the sum of two variables:</p><div class="w3-example"><h3 id="mcetoc_1bmgrt4ko6">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$x = 5;<br>$y = 4;<br>echo $x + $y;<br>?&gt;</strong></div></blockquote></div><p><strong>Note:</strong>&nbsp;You will learn more about the echo statement and how to output data to the screen in the next chapter.</p><h2 id="mcetoc_1bmgrt4ko7">PHP IS A LOOSELY TYPED LANGUAGE</h2><p>In the example above, notice that we did not have to tell PHP which data type the variable is.</p><p>PHP automatically converts the variable to the correct data type, depending on its value.</p><p>In other languages such as C, C++, and Java, the programmer must declare the name and type of the variable before using it.</p><h2 id="mcetoc_1bmgrt4ko8">PHP VARIABLES SCOPE</h2><p>In PHP, variables can be declared anywhere in the script.</p><p>The scope of a variable is the part of the script where the variable can be referenced/used.</p><p>PHP has three different variable scopes:</p><ul><li>local</li><li>global</li><li>static</li></ul><h2 id="mcetoc_1bmgrt4ko9">GLOBAL AND LOCAL SCOPE</h2><p>A variable declared&nbsp;<strong>outside</strong>&nbsp;a function has a GLOBAL SCOPE and can only be accessed outside a function:</p><div class="w3-example"><h3 id="mcetoc_1bmgrt4koa">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$x = 5; // global scopefunction myTest() {<br>&nbsp;&nbsp;&nbsp; // using x inside this function will generate an error<br>&nbsp;&nbsp;&nbsp; echo “ </strong><p><strong>Variable x inside function is: $x</strong></p><strong> ”;<br>}&nbsp;<br>myTest();echo “&lt;p&gt;Variable x outside function is: $x&lt;/p&gt;”;<br>?&gt;</strong></div></blockquote></div><p>A variable declared&nbsp;<strong>within</strong>&nbsp;a function has a LOCAL SCOPE and can only be accessed within that function:</p><div class="w3-example"><h3 id="mcetoc_1bmgrt4kob">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>function myTest() {<br>&nbsp;&nbsp;&nbsp; $x = 5; // local scope<br>&nbsp;&nbsp;&nbsp; echo “ </strong><p><strong>Variable x inside function is: $x</strong></p><strong> ”;<br>}&nbsp;<br>myTest();// using x outside the function will generate an error<br>echo “&lt;p&gt;Variable x outside function is: $x&lt;/p&gt;”;<br>?&gt;</strong></div></blockquote></div><div class="w3-panel w3-note"><p>You can have local variables with the same name in different functions, because local variables are only recognized by the function in which they are declared.</p></div><h2 id="mcetoc_1bmgrt4koc">PHP THE GLOBAL KEYWORD</h2><p>The global keyword is used to access a global variable from within a function.</p><p>To do this, use the global keyword before the variables (inside the function):</p><div class="w3-example"><h3 id="mcetoc_1bmgrt4kod">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$x = 5;<br>$y = 10;function myTest() {<br>&nbsp;&nbsp;&nbsp; global $x, $y;<br>&nbsp; &nbsp; $y = $x + $y;<br>}myTest();<br>echo $y; // outputs 15<br>?&gt;</strong></div></blockquote></div><div>&nbsp;</div><div class="w3-example">PHP also stores all global variables in an array called $GLOBALS[<em>index</em>]. The&nbsp;<em>index</em>&nbsp;holds the name of the variable. This array is also accessible from within functions and can be used to update global variables directly.</div><p>The example above can be rewritten like this:</p><div class="w3-example"><h3 id="mcetoc_1bmgrt4koe">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>$x = 5;<br>$y = 10;function myTest() {<br>&nbsp; &nbsp; $GLOBALS[‘y’] = $GLOBALS[‘x’] + $GLOBALS[‘y’];<br>}&nbsp;myTest();<br>echo $y; // outputs 15<br>?&gt;</strong></div></blockquote></div><h2 id="mcetoc_1bmgrt4kof">PHP THE STATIC KEYWORD</h2><p>Normally, when a function is completed/executed, all of its variables are deleted. However, sometimes we want a local variable NOT to be deleted. We need it for a further job.</p><p>To do this, use the&nbsp;<strong>static</strong>&nbsp;keyword when you first declare the variable:</p><div class="w3-example"><h3 id="mcetoc_1bmgrt4kog">EXAMPLE</h3><blockquote><div class="w3-code htmlHigh notranslate"><strong>&lt;?php<br>function myTest() {<br>&nbsp;&nbsp;&nbsp; static $x = 0;<br>&nbsp;&nbsp;&nbsp; echo $x;<br>&nbsp;&nbsp;&nbsp; $x++;<br>}myTest();<br>myTest();<br>myTest();<br>?&gt;</strong></div></blockquote></div><p>Then, each time the function is called, that variable will still have the information it contained from the last time the function was called.</p><p><strong>Note:</strong>&nbsp;The variable is still local to the function.</p></div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	
+</section>
+
+<section class="mbr-footer footer4 mbr-section mbr-section-md-padding" id="contacts4-2k" data-rv-view="243" style="background-color: rgb(46, 46, 46); padding-top: 90px; padding-bottom: 90px;">
+    
+    <div class="container">
+        <div class="mbr-contacts row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p><strong>Address</strong><br>MUMBAI 40001<br>MH &nbsp;: INDIA<br><br><br>
+<strong>Credits</strong><br><a href="https://www.w3schools.com" class="text-warning">https://www.w3schools.com</a><strong><br></strong><br><br><br></p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>Link</strong></p><ul class="mbr-contacts__list"><li><a href="index.html">HOME</a></li><li><a href="PHP.html">PHP</a></li><li><a href="PRIVACY.html">PRIVACY</a></li><p></p></ul></div>
+                </div>
+            </div>
+            <div class="col-sm-4" data-form-type="formoid">
+                <div data-form-alert="true">
+                    <div hidden="" data-form-alert-success="true">Thanks for filling out form!</div>
+                </div>
+                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
+                    <input type="hidden" value="BGcbVZg3piGGeGh0TMWaSpu43yO6jC90y8Xb7VVi7V5/jKgTFBmvEEjwj4hKx/GT+GDlHhTkdzZO+0Pft2Wj7Q/R5WCsO7x9oLj8eMzzgD+Hd7DFX6c9elfB/PeBdFZW" data-form-email="true">
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-2k-name">Name<span class="form-asterisk">*</span></label>
+                        <input type="text" class="form-control input-sm input-inverse" name="name" required="" data-form-field="Name" id="contacts4-2k-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-2k-email">Email<span class="form-asterisk">*</span></label>
+                        <input type="email" class="form-control input-sm input-inverse" name="email" required="" data-form-field="Email" id="contacts4-2k-email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-control-label" for="contacts4-2k-message">Message</label>
+                        <textarea class="form-control input-sm input-inverse" name="message" data-form-field="Message" rows="4" id="contacts4-2k-message"></textarea>
+                    </div>
+                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="btn btn-sm btn-black">Contact us</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>
